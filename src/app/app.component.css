@@ -1,0 +1,8 @@
+.body{
+    background: linear-gradient(to right,#054E82 0%,#0badcf 100%);
+    height: 100vw;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+}

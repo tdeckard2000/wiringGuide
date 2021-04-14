@@ -1,0 +1,25 @@
+input{
+    background-color: transparent;
+    border: none;
+    color: black;
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.15;
+    padding-left: 10px;
+    width: 100%;
+}
+
+/* remove outline from text box when active */
+input:focus{
+    outline: none;
+}
+
+.searchBarDiv{
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    height: 35px;
+    margin: auto;
+    max-width: 600px;
+}
