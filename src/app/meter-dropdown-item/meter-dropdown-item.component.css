@@ -1,0 +1,17 @@
+.itemContainer{
+    max-width: 700px;
+    margin: auto;
+}
+
+.itemHeader{
+    font-family: sans-serif;
+    font-weight: 300;
+    margin-bottom: 0;
+}
+
+.underlineDivider{
+    background-color: black;
+    border: 0;
+    height: 1px;
+    margin-top: 5px;
+}
