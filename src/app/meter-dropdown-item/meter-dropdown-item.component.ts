@@ -1,14 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatAccordion} from '@angular/material/expansion';
+import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-meter-dropdown-item',
   templateUrl: './meter-dropdown-item.component.html',
   styleUrls: ['./meter-dropdown-item.component.css']
 })
-export class MeterDropdownItemComponent implements OnInit {
-  @ViewChild(MatAccordion, { static: true }) accordion: MatAccordion = new MatAccordion;
 
+export class MeterDropdownItemComponent implements OnInit {
   dropdownOpen = false;
   panelOpenState = true;
 

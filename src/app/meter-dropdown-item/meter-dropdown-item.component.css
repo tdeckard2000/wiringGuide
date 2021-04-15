@@ -20,8 +20,16 @@
 }
 
 .itemContainer{
-    max-width: 700px;
+    max-width: 740px;
     margin: auto;
+}
+
+.itemDropdownHeader{
+    padding: 0 25px;
+}
+
+.itemHeader:after{
+    border-bottom: solid black 1px;
 }
 
 .itemHeader{
@@ -35,5 +43,9 @@
     background-color: black;
     border: 0;
     height: 1px;
+    margin-left: 25px;
     margin-top: 5px;
+    width: 85%;
 }
+
+/* test */
