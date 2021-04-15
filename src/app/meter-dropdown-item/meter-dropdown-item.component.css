@@ -1,9 +1,31 @@
+.container{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.container:hover{
+    cursor: pointer;
+}
+
+.dropdownCaret{
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    display: inline-block;
+    height: 8px;
+    margin-bottom: 3px;
+    margin-right: 5px;
+    width: 8px;
+}
+
 .itemContainer{
     max-width: 700px;
     margin: auto;
 }
 
 .itemHeader{
+    display: inline-block;
     font-family: sans-serif;
     font-weight: 300;
     margin-bottom: 0;
