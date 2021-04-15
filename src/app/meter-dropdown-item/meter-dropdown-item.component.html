@@ -1,18 +1,17 @@
 <div (click)="onMeterItemClick()" class="itemContainer">
-    <!-- <div class="container">
-        <h3 class="itemHeader">ABB</h3>
-        <div class="dropdownCaretDiv">
-            <span [ngStyle]="{'transform': dropdownOpen ? 'rotate(225deg)' : 'rotate(45deg)'}" class="dropdownCaret"></span>
-        </div>
-    </div>
-    <hr class="underlineDivider"> -->
-
     <mat-accordion>
         <mat-expansion-panel>
             <mat-expansion-panel-header class="itemDropdownHeader">
-                <h3 class="itemHeader">ABB</h3>
+                <mat-panel-title>
+                    <h3 class="itemHeader">ABB</h3>
+                </mat-panel-title>
             </mat-expansion-panel-header>
-            <p>This is the primary content of the panel.</p>
+            <div class="itemBody">
+                <div class="itemTableDiv">
+                    <p>This is the primary content of the panel.</p>
+                    <p>This is the primary content of the panel.</p>
+                </div>
+            </div>
         </mat-expansion-panel>
     </mat-accordion>
     <hr class="underlineDivider">
