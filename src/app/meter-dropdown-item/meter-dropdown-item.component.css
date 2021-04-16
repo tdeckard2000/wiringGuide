@@ -30,6 +30,7 @@
 .itemClusterDiv{
     background-color: white;
     border-radius: 10px;
+    box-shadow: black 1px 1px 10px;
     margin: auto;
     max-width: 950px;
     overflow: auto;

@@ -10,9 +10,9 @@
                     </mat-expansion-panel-header>
                     <div class="itemBody">
                         <div class="itemTableDiv">
-                            <!-- Meter Model Names -->
+                            <!-- Meter Model Category Names -->
                             <p class="meterModelText" *ngIf= "meter.series && meter.series.seriesModel" >Models: {{ meter.series.seriesModel }}</p>
-                            <!-- Individual Meter -->
+                            <!-- Individual Meter Models -->
                             <div *ngIf="meter.series">
                                 <div *ngFor="let model of meter.series.meters; index as e">
                                     <p>{{model}}</p>
