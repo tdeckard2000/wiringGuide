@@ -1,7 +1,7 @@
 <div class="itemClusterDiv">
-    <div  *ngFor="let meter of meterData; index as i">
-        <div (click)="onMeterItemClick(i)" class="itemContainer">
-            <mat-accordion>
+    <div  *ngFor="let meter of meterDataWater; index as i">
+        <div class="itemContainer">
+            <mat-accordion  (click)="onMeterItemClick(i)">
                 <mat-expansion-panel>
                     <mat-expansion-panel-header class="itemDropdownHeader">
                         <mat-panel-title>
@@ -10,8 +10,14 @@
                     </mat-expansion-panel-header>
                     <div class="itemBody">
                         <div class="itemTableDiv">
-                            <p>This is the primary content of the panel.</p>
-                            <p>This is the primary content of the panel.</p>
+                            <!-- Meter Model Names -->
+                            <p class="meterModelText" *ngIf= "meter.series && meter.series.seriesModel" >Models: {{ meter.series.seriesModel }}</p>
+                            <!-- Individual Meter -->
+                            <div *ngIf="meter.series">
+                                <div *ngFor="let model of meter.series.meters; index as e">
+                                    <p>{{model}}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </mat-expansion-panel>

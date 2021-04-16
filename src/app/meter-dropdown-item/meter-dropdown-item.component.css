@@ -32,7 +32,13 @@
     border-radius: 10px;
     margin: auto;
     max-width: 950px;
+    overflow: auto;
     padding: 20px 10px;
+    height: 65vh;
+}
+
+.itemClusterDiv::-webkit-scrollbar{
+    display: none;
 }
 
 .itemContainer{
@@ -51,8 +57,12 @@
     padding: 10px;
 }
 
+.meterModelText{
+    font-family: sans-serif;
+}
+
 .underlineDivider{
-    background-color: black;
+    background: linear-gradient(to right, black 95%, white);
     border: 0;
     height: 1px;
     margin-left: 23px;

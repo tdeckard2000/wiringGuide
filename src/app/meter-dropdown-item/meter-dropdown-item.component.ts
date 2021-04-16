@@ -11,9 +11,15 @@ export class MeterDropdownItemComponent implements OnInit {
   panelOpenState = true;
 
 // All meter data stored here
-  meterData = [
+  meterDataWater = [
     {
-      manufacturer: 'ABB'
+      manufacturer: 'ABB',
+      series: {
+        seriesName: '',
+        seriesModel: 'C700 & InsideR',
+        meters:['Inovonics/ABB Integrated', 'Pulse Register', 'Scancoder']
+      }
+
     },
     {
       manufacturer: 'Actaris'
