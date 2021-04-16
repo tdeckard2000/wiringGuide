@@ -1,18 +1,23 @@
-<div (click)="onMeterItemClick()" class="itemContainer">
-    <mat-accordion>
-        <mat-expansion-panel>
-            <mat-expansion-panel-header class="itemDropdownHeader">
-                <mat-panel-title>
-                    <h3 class="itemHeader">ABB</h3>
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div class="itemBody">
-                <div class="itemTableDiv">
-                    <p>This is the primary content of the panel.</p>
-                    <p>This is the primary content of the panel.</p>
-                </div>
-            </div>
-        </mat-expansion-panel>
-    </mat-accordion>
-    <hr *ngIf="!dropdownOpen" class="underlineDivider">
+<div class="itemClusterDiv">
+    <div  *ngFor="let meter of meterData; index as i">
+        <div (click)="onMeterItemClick(i)" class="itemContainer">
+            <mat-accordion>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header class="itemDropdownHeader">
+                        <mat-panel-title>
+                            <h3 class="itemHeader">{{meter.manufacturer}}</h3>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="itemBody">
+                        <div class="itemTableDiv">
+                            <p>This is the primary content of the panel.</p>
+                            <p>This is the primary content of the panel.</p>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+            <hr [ngStyle]="{'opacity': (dropdownOpen[i] !== true) ? '1' : '0'}" class="underlineDivider">
+            <!-- <hr *ngIf="dropdownOpen[i] !== true" class="underlineDivider"> -->
+        </div>
+    </div>
 </div>
