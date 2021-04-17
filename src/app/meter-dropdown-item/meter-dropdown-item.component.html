@@ -2,10 +2,10 @@
     <!-- Water Meters Section -->
     <div  *ngFor="let item of meterDataWater; index as i">
         <div class="itemContainer">
-            <mat-accordion  (click)="onMeterItemClick(i)">
+            <mat-accordion>
                 <mat-expansion-panel>
                     <mat-expansion-panel-header class="itemDropdownHeader">
-                        <mat-panel-title>
+                        <mat-panel-title (click)="onMeterItemClick(i)">
                             <!-- Meter Manufacturer Name -->
                             <h3 class="itemHeader">{{item.manufacturer}}</h3>
                         </mat-panel-title>

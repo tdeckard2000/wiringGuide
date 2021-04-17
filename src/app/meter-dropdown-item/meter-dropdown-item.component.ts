@@ -35,24 +35,125 @@ export class MeterDropdownItemComponent implements OnInit {
               compatibleTR201: true,
               compatibleTR4: true,
               compatibleRR4: true,
+              notes: ''
             },
             {
               meterName: 'Scancoder',
               signalType: 'Encoded',
-              wiringProtocol: 'sensus',
+              wiringProtocol: 'Sensus',
               compatibleTR201: false,
               compatibleTR4: true,
-              compatibleRR4: true
+              compatibleRR4: true,
+              notes: ''
             }
           ]
         }]
     },
     {
-      manufacturer: 'Actaris'
+      manufacturer: 'Actaris',
+      sections: [
+        {
+          seriesName: '',
+          seriesModel: '',
+          meters: [
+            {
+              meterName: 'MultiMag',
+              signalType: 'Pulse',
+              wiringProtocol: 'Pulse',
+              compatibleTR201: true,
+              compatibleTR4: true,
+              compatibleRR4: true,
+              notes: ''
+            }
+          ]
+        }]
     },
     {
-      manufacturer: 'AMCO'
-    },
+      manufacturer: 'AMCO',
+      sections: [
+        {
+          seriesName: '',
+          seriesModel: 'C700, C400, V100 & Compound',
+          meters: [
+            {
+              meterName: 'Digital',
+              signalType: 'Pulse',
+              wiringProtocol: 'Pulse',
+              compatibleTR201: true,
+              compatibleTR4: true,
+              compatibleRR4: true,
+              notes: ''
+            },
+            {
+              meterName: 'InVISION',
+              signalType: 'Encoded',
+              wiringProtocol: 'Sensus',
+              compatibleTR201: false,
+              compatibleTR4: true,
+              compatibleRR4: true,
+              notes: ''
+            },
+            {
+              meterName: 'RS Pulser',
+              signalType: 'Pulse',
+              wiringProtocol: 'Pulse',
+              compatibleTR201: true,
+              compatibleTR4: true,
+              compatibleRR4: true
+            },
+            {
+              meterName: 'Scancoder',
+              signalType: 'Encoded',
+              wiringProtocol: 'Sensus',
+              compatibleTR201: false,
+              compatibleTR4: true,
+              compatibleRR4: true
+            },
+            {
+              meterName: 'InsideR (Inovonics/AMCO Integrated',
+              signalType: 'Integrated',
+              wiringProtocol: 'Integrated',
+              compatibleTR201: false,
+              compatibleTR4: false,
+              compatibleRR4: false
+            }
+          ]
+        },
+        {
+          seriesName: '',
+          seriesModel: 'Misc',
+          meters: [
+            {
+              meterName: 'BK-G 1.6',
+              signalType: 'Pulse',
+              wiringProtocol: 'Pulse',
+              compatibleTR201: true,
+              compatibleTR4: true,
+              compatibleRR4: true,
+              notes: ''
+            },
+            {
+              meterName: 'G200',
+              signalType: 'Pulse',
+              wiringProtocol: 'Pulse',
+              compatibleTR201: true,
+              compatibleTR4: true,
+              compatibleRR4: true,
+              notes: ''
+            },
+            {
+              meterName: 'G4 200',
+              signalType: 'Pulse',
+              wiringProtocol: 'Pulse',
+              compatibleTR201: true,
+              compatibleTR4: true,
+              compatibleRR4: true,
+              notes: ''
+            }
+          ]
+        }
+       ] 
+      },
     {
       manufacturer: 'Assured Automation'
     },
