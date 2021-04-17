@@ -22,6 +22,5 @@ input:focus{
     display: flex;
     height: 35px;
     margin: auto;
-    margin-bottom: 50px;
     max-width: 600px;
 }

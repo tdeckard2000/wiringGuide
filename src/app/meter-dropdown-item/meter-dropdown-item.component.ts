@@ -14,12 +14,38 @@ export class MeterDropdownItemComponent implements OnInit {
   meterDataWater = [
     {
       manufacturer: 'ABB',
-      series: {
-        seriesName: '',
-        seriesModel: 'C700 & InsideR',
-        meters:['Inovonics/ABB Integrated', 'Pulse Register', 'Scancoder']
-      }
-
+      sections: [
+        {
+          seriesName: '',
+          seriesModel: 'C700 & InsideR',
+          meters: [
+            {
+              meterName: 'Inovonics/ABB Integrated',
+              signalType: 'Integrated',
+              wiringProtocol: 'Integrated',
+              compatibleTR201: false,
+              compatibleTR4: false,
+              compatibleRR4: false,
+              notes: 'This is a third party meter.'
+            },
+            {
+              meterName: 'Pulse Register',
+              signalType: 'Pulse',
+              wiringProtocol: 'Pulse',
+              compatibleTR201: true,
+              compatibleTR4: true,
+              compatibleRR4: true,
+            },
+            {
+              meterName: 'Scancoder',
+              signalType: 'Encoded',
+              wiringProtocol: 'sensus',
+              compatibleTR201: false,
+              compatibleTR4: false,
+              compatibleRR4: false
+            }
+          ]
+        }]
     },
     {
       manufacturer: 'Actaris'
@@ -81,6 +107,10 @@ export class MeterDropdownItemComponent implements OnInit {
     //note: removing element from DOM causes page to 'jump'
     //so set opacity to 0
     this.dropdownOpen[i] = this.dropdownOpen[i] === true ? false : true;
+  }
+
+  logThis(data:any){
+    console.log(data);
   }
 
 }

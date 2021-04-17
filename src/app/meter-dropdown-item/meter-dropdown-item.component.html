@@ -1,23 +1,36 @@
 <div class="itemClusterDiv">
-    <div  *ngFor="let meter of meterDataWater; index as i">
+    <!-- Water Meters Section -->
+    <div  *ngFor="let item of meterDataWater; index as i">
         <div class="itemContainer">
             <mat-accordion  (click)="onMeterItemClick(i)">
                 <mat-expansion-panel>
                     <mat-expansion-panel-header class="itemDropdownHeader">
                         <mat-panel-title>
-                            <h3 class="itemHeader">{{meter.manufacturer}}</h3>
+                            <!-- Meter Manufacturer Name -->
+                            <h3 class="itemHeader">{{item.manufacturer}}</h3>
                         </mat-panel-title>
                     </mat-expansion-panel-header>
+                    <!-- Dropdown Body -->
                     <div class="itemBody">
                         <div class="itemTableDiv">
-                            <!-- Meter Model Category Names -->
-                            <p class="meterModelText" *ngIf= "meter.series && meter.series.seriesModel" >Models: {{ meter.series.seriesModel }}</p>
-                            <!-- Individual Meter Models -->
-                            <div *ngIf="meter.series">
-                                <div *ngFor="let model of meter.series.meters; index as e">
-                                    <p>{{model}}</p>
+                            <div *ngFor="let section of item.sections">
+                                <!-- Series Name (optional)-->
+                                <p *ngIf="section.seriesName">{{ section.seriesName }}</p>
+                                <!-- Series Models Names (optional) -->
+                                <p *ngIf="section.seriesModel" class="textMeterModel">{{ section.seriesModel }}</p>
+                                <div *ngIf="section.meters.length > 0">
+                                    <!-- List of Meters in Flexbox -->
+                                    <div *ngFor="let meter of section.meters">
+                                        <div class="flexBox">
+                                            <span class="textMeterName">{{ meter.meterName }} &nbsp;</span>
+                                            <span class="textSignalType">{{ meter.signalType }}</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            <p class="textSelectMeterNote">
+                                <img class="iconInformation" src="assets/icons/help.svg" alt="">
+                             Select a meter for more information.</p>
                         </div>
                     </div>
                 </mat-expansion-panel>

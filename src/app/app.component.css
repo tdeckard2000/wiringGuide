@@ -12,3 +12,16 @@
     padding: 0 15px;
     
 }
+
+.topDiv{
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px black;
+    height: fit-content;
+    max-width: 938px;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 80px;
+    padding: 35px 15px;
+}
