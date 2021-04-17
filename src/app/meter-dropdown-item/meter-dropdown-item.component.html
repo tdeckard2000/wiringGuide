@@ -12,26 +12,26 @@
                     </mat-expansion-panel-header>
                     <!-- Dropdown Body -->
                     <div class="itemBody">
-                        <div class="itemTableDiv">
-                            <div *ngFor="let section of item.sections">
-                                <!-- Series Name (optional)-->
-                                <p *ngIf="section.seriesName">{{ section.seriesName }}</p>
-                                <!-- Series Models Names (optional) -->
-                                <p *ngIf="section.seriesModel" class="textMeterModel">{{ section.seriesModel }}</p>
-                                <div *ngIf="section.meters.length > 0">
-                                    <!-- List of Meters in Flexbox -->
-                                    <div *ngFor="let meter of section.meters">
-                                        <div class="flexBox">
-                                            <span class="textMeterName">{{ meter.meterName }} &nbsp;</span>
-                                            <span class="textSignalType">{{ meter.signalType }}</span>
-                                        </div>
+                        <div *ngFor="let section of item.sections">
+                            <!-- Series Name (optional)-->
+                            <p *ngIf="section.seriesName">{{ section.seriesName }}</p>
+                            <!-- Series Models Names (optional) -->
+                            <p *ngIf="section.seriesModel" class="textMeterModel">{{ section.seriesModel }}</p>
+                            <div *ngIf="section.meters.length > 0">
+                                <!-- List of Meters in Flexbox -->
+                                <div *ngFor="let meter of section.meters">
+                                    <div class="flexBox">
+                                        <span class="textMeterName">{{ meter.meterName }}&nbsp;</span>
+                                        <span class="textSignalType">{{ meter.signalType }}</span>
+                                        <span class="compatibilityTable">TR201 ✔ TR4 ✔</span>
+                                        
                                     </div>
                                 </div>
                             </div>
-                            <p class="textSelectMeterNote">
-                                <img class="iconInformation" src="assets/icons/help.svg" alt="">
-                             Select a meter for more information.</p>
                         </div>
+                        <p class="textSelectMeterNote">
+                            <img class="iconInformation" src="assets/icons/help.svg" alt="">
+                            Select a meter for more information.</p>
                     </div>
                 </mat-expansion-panel>
             </mat-accordion>

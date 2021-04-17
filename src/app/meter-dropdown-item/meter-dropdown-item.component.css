@@ -5,19 +5,13 @@
     justify-content: space-between;
 }
 
-/* .container:hover{
-    cursor: pointer;
-} */
-
-/* .dropdownCaret{
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
-    display: inline-block;
-    height: 8px;
-    margin-bottom: 3px;
-    margin-right: 5px;
-    width: 8px;
-} */
+.compatibilityTable{
+    background-color: burlywood;
+    flex-grow: 1;
+    font-family: sans-serif;
+    font-size: .8rem;
+    text-align: end;
+}
 
 .flexBox{
     display: flex;
@@ -33,16 +27,17 @@
 }
 
 .itemBody{
-    background: whitesmoke;
-    border-radius: 5px;
+    border-top: 1px solid #9995;
+    border-bottom: 1px solid #9995;
     margin-top: 10px;
     min-height: 150px;
+    padding: 0 10px;
     position: relative;
 }
 
 .itemClusterDiv{
     background-color: white;
-    border-radius: 10px;
+    border-radius: 4px;
     box-shadow: black 1px 1px 10px;
     margin: auto;
     max-width: 950px;
@@ -65,10 +60,6 @@
     font-family: sans-serif;
     font-weight: 300;
     margin-bottom: 0;
-}
-
-.itemTableDiv{
-    padding: 10px;
 }
 
 .textMeterModel{

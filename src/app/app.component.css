@@ -16,7 +16,7 @@
 .topDiv{
     background-color: rgba(0, 0, 0, 0.05);
     border: 1px solid transparent;
-    border-radius: 10px;
+    border-radius: 4px;
     box-shadow: 1px 1px 6px black;
     height: fit-content;
     max-width: 938px;
