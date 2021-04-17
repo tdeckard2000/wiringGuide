@@ -41,8 +41,8 @@ export class MeterDropdownItemComponent implements OnInit {
               signalType: 'Encoded',
               wiringProtocol: 'sensus',
               compatibleTR201: false,
-              compatibleTR4: false,
-              compatibleRR4: false
+              compatibleTR4: true,
+              compatibleRR4: true
             }
           ]
         }]

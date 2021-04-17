@@ -16,14 +16,31 @@
                             <!-- Series Name (optional)-->
                             <p *ngIf="section.seriesName">{{ section.seriesName }}</p>
                             <!-- Series Models Names (optional) -->
-                            <p *ngIf="section.seriesModel" class="textMeterModel">{{ section.seriesModel }}</p>
+                            <div class="flexBox">
+                                <p *ngIf="section.seriesModel" class="textMeterModel">{{ section.seriesModel }}</p>
+                                <span class="compatibilityTableHeader">
+                                        <span>TR201</span>
+                                        <span>TR4</span>
+                                        <span>RR4</span>
+                                </span>
+                            </div>
                             <div *ngIf="section.meters.length > 0">
                                 <!-- List of Meters in Flexbox -->
                                 <div *ngFor="let meter of section.meters">
                                     <div class="flexBox">
                                         <span class="textMeterName">{{ meter.meterName }}&nbsp;</span>
                                         <span class="textSignalType">{{ meter.signalType }}</span>
-                                        <span class="compatibilityTable">TR201 ✔ TR4 ✔</span>
+                                        <div class="compatibilityTable">
+                                            <span class="compatibilityTableLabel">TR201&nbsp;</span>
+                                            <span *ngIf="meter.compatibleTR201" class="compatibilityTableCheckMarks">✔</span>
+                                            <span *ngIf="!meter.compatibleTR201" class="compatibilityTableCheckMarks">-</span>
+                                            <span class="compatibilityTableLabel">TR4&nbsp;</span>
+                                            <span *ngIf="meter.compatibleTR4" class="compatibilityTableCheckMarks">✔</span>
+                                            <span *ngIf="!meter.compatibleTR4" class="compatibilityTableCheckMarks">-</span>
+                                            <span class="compatibilityTableLabel">RR4&nbsp;</span>
+                                            <span *ngIf="meter.compatibleRR4" class="compatibilityTableCheckMarks">✔</span>
+                                            <span *ngIf="!meter.compatibleRR4" class="compatibilityTableCheckMarks">-</span>
+                                        </div>
                                         
                                     </div>
                                 </div>

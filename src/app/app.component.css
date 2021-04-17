@@ -25,3 +25,14 @@
     margin-top: 80px;
     padding: 35px 15px;
 }
+
+/* Media Queries */
+
+/* ~iPhone X and smaller */
+@media screen and (max-width: 500px){
+
+    .topDiv{
+        margin-top: 40px;
+    }
+
+}

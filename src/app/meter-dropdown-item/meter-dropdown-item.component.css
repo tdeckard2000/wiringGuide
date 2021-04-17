@@ -6,11 +6,36 @@
 }
 
 .compatibilityTable{
-    background-color: burlywood;
     flex-grow: 1;
     font-family: sans-serif;
     font-size: .8rem;
     text-align: end;
+}
+
+.compatibilityTableCheckMarks{
+    display: inline-block;
+    text-align: center;
+    width: 55px;
+}
+
+.compatibilityTableHeader{
+    align-self: flex-end;
+    flex-grow: 1;
+    text-align: end;
+}
+
+.compatibilityTableHeader span{
+    display: inline-block;
+    font-family: sans-serif;
+    font-size: .8rem;
+    text-align: center;
+    width: 55px;
+}
+
+.compatibilityTableLabel{
+    display: none;
+    font-size: .7rem;
+    width: 55px;
 }
 
 .flexBox{
@@ -27,8 +52,8 @@
 }
 
 .itemBody{
-    border-top: 1px solid #9995;
-    border-bottom: 1px solid #9995;
+    /* border-top: 1px solid #9995; */
+    /* border-bottom: 1px solid #9995; */
     margin-top: 10px;
     min-height: 150px;
     padding: 0 10px;
@@ -65,6 +90,8 @@
 .textMeterModel{
     border-bottom: 1px solid #999;
     font-family: sans-serif;
+    margin-bottom: 0;
+    margin-top: 10px;
     padding: 1px;
     width: fit-content;
 }
@@ -101,4 +128,32 @@
     width: 85%;
 }
 
-/* test */
+/* Media Queries */
+
+/* ~iPhone X and smaller */
+@media screen and (max-width: 500px){ 
+    
+    /* Minimize compatibility Chart */
+    .compatibilityTable{
+        text-align: start;
+    }
+    
+    .compatibilityTableCheckMarks{
+        padding-right: 10px;
+        width: fit-content;
+    }
+
+    .compatibilityTableHeader{
+        display: none;    
+    }
+
+    .compatibilityTableLabel{
+        display: inline-block;
+        text-align: left;
+        width: fit-content;
+    }
+
+    .flexBox{
+        flex-direction: column;
+    }
+}
