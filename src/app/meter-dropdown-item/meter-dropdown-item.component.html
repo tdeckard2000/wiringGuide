@@ -1,4 +1,5 @@
 <div class="itemClusterDiv">
+    {{ testString | json }}
     <!-- Water Meters Section -->
     <div  *ngFor="let item of meterDataWater; index as i">
         <div class="itemContainer">
@@ -25,11 +26,14 @@
                                 </span>
                             </div>
                             <div *ngIf="section.meters.length > 0">
-                                <!-- List of Meters in Flexbox -->
+                                <!-- List of Meters in FlexBox -->
                                 <div *ngFor="let meter of section.meters">
                                     <div class="flexBox">
+                                        <!-- Name of Meter -->
                                         <span class="textMeterName">{{ meter.meterName }}&nbsp;</span>
-                                        <span class="textSignalType">{{ meter.signalType }}</span>
+                                        <!-- Meter Signal Type -->
+                                        <span class="textSignalType">{{ meter.signalType | titlecase }}</span>
+                                        <!-- Meter Compatibility Table` -->
                                         <div class="compatibilityTable">
                                             <span class="compatibilityTableLabel">TR201&nbsp;</span>
                                             <span *ngIf="meter.compatibleTR201" class="compatibilityTableCheckMarks">✔</span>

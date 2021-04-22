@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { PageTitleComponent } from './page-title/page-title.component';
 import { MeterDropdownItemComponent } from './meter-dropdown-item/meter-dropdown-item.component';
+import {MainService} from './main.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,9 +22,10 @@ import { MeterDropdownItemComponent } from './meter-dropdown-item/meter-dropdown
     BrowserModule,
     AppRoutingModule,
     MatExpansionModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
   ],
-  providers: [],
+  providers: [MainService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
