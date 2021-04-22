@@ -9,10 +9,10 @@ import { MainService } from '../main.service';
 })
 export class SearchBarComponent implements OnInit {
   constructor(private mainService : MainService){}
-  myText= '...';
+  searchBarText= '';
 
   onTextInput(){
-    this.mainService.updateString(this.myText);
+    this.mainService.updateString(this.searchBarText);
   }
   
   ngOnInit(): void {

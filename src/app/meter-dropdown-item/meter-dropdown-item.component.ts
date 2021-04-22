@@ -10,7 +10,7 @@ import { MainService } from '../main.service';
 export class MeterDropdownItemComponent implements OnInit {
   dropdownOpen: {[k:number]:boolean} = {};
   panelOpenState = true;
-  testString = '';
+  searchBarText = '';
 
   constructor(private mainService : MainService){}
 
@@ -18,8 +18,8 @@ export class MeterDropdownItemComponent implements OnInit {
   meterDataWater = this.mainService.meterData;
 
   ngOnInit(): void {
-    this.mainService.typedString$.subscribe(data =>{
-      this.testString = data;
+    this.mainService.searchBarText$.subscribe(data =>{
+      this.searchBarText = data;
     });
     // this.testString = this.mainService.typedString$;
   }
