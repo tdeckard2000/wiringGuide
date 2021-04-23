@@ -13,6 +13,7 @@
 }
 
 .compatibilityTableCheckMarks{
+    color: grey;
     display: inline-block;
     text-align: center;
     width: 55px;
@@ -63,7 +64,7 @@
 .itemClusterDiv{
     background-color: white;
     border-radius: 4px;
-    box-shadow: black 1px 1px 10px;
+    box-shadow: 3px 3px 6px rgb(0, 0, 0, .2);
     margin: auto;
     max-width: 950px;
     overflow: auto;
@@ -101,9 +102,22 @@
     font-size: .95rem;
 }
 
+/* Highlight Meter Name on Hover */
 .textMeterName:hover{
     cursor: pointer;
     color: rgb(92, 159, 232);
+}
+
+/* Highlight Meter Compatibility Check Mark on Hover */
+.textMeterName:hover ~ .compatibilityTable .checkMark{
+    cursor: pointer;
+    color: #7ed321;
+}
+
+/* Highlight Meter Compatibility Dash on Hover */
+.textMeterName:hover ~ .compatibilityTable .dash{
+    cursor: pointer;
+    color: black
 }
 
 .textSelectMeterNote{
