@@ -8,15 +8,17 @@ import { AppComponent } from './app.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { PageTitleComponent } from './page-title/page-title.component';
 import { MeterDropdownItemComponent } from './meter-dropdown-item/meter-dropdown-item.component';
-import {MainService} from './main.service';
+import { MainService} from './main.service';
 import { FormsModule } from '@angular/forms';
+import { FilterMetersPipe } from './filter-meters.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBarComponent,
     PageTitleComponent,
-    MeterDropdownItemComponent
+    MeterDropdownItemComponent,
+    FilterMetersPipe
   ],
   imports: [
     BrowserModule,

@@ -23,7 +23,7 @@ meterData = [
     manufacturer: 'ABB',
     sections: [
       {
-        seriesName: '',
+        seriesName: '123',
         seriesModel: 'C700 & InsideR',
         meters: [
           {

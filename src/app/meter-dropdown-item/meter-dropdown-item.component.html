@@ -1,7 +1,6 @@
 <div class="itemClusterDiv">
-    {{ searchBarText | json }}
     <!-- Water Meters Section -->
-    <div  *ngFor="let item of meterDataWater; index as i">
+    <div  *ngFor="let item of (meterDataWater | filterMeters:searchBarText); index as i">
         <div class="itemContainer">
             <mat-accordion>
                 <mat-expansion-panel>
