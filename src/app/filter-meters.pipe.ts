@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterMetersPipe implements PipeTransform {  
   transform(meterData:Array<object> , searchBarText: string) {
-    let filteredMeterData = {};
+    let filteredMeterData:any;
     //Begin filtering only if 3 characters are entered
     if(searchBarText && searchBarText.length >= 3){
       searchBarText = searchBarText.toLowerCase();
