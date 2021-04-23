@@ -3,9 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
   name: 'filterMeters'
 })
-export class FilterMetersPipe implements PipeTransform {
-  // private seriesModel = [''];
-  
+export class FilterMetersPipe implements PipeTransform {  
   transform(meterData:Array<object> , searchBarText: string) {
     let filteredMeterData = {};
     //Begin filtering only if 3 characters are entered
@@ -55,9 +53,13 @@ export class FilterMetersPipe implements PipeTransform {
         }
         return keepMeter;
       });
+
     }else{
+      //If 3 characters are not enters, return all meters
       return meterData;
-    }
+    };
+
+    //Finally, return filtered results
     return filteredMeterData;
-  }
-}
+  };
+};
