@@ -6,18 +6,24 @@ import { BehaviorSubject } from 'rxjs';
 
 })
 export class MainService {
-  searchBarText = '';
-  searchBarText$: BehaviorSubject<string>;
-
   constructor() { 
     this.searchBarText$ = new BehaviorSubject(this.searchBarText);
   }
+
+// ************************************
+//       Track Search Bar Input
+// ************************************
   
+  searchBarText = '';
+  searchBarText$: BehaviorSubject<string>;
   updateString(newString:string){
     this.searchBarText$.next(newString);
   }
 
-// Meter Data Store (temporary)
+// ************************************
+//       Meter Data (temporary)
+// ************************************
+
 meterData = [
   {
     manufacturer: 'ABB',

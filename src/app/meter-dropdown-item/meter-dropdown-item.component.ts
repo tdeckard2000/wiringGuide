@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { MainService } from '../main.service';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-meter-dropdown-item',
@@ -12,7 +13,7 @@ export class MeterDropdownItemComponent implements OnInit {
   panelOpenState = true;
   searchBarText = '';
 
-  constructor(private mainService : MainService){}
+  constructor(private mainService : MainService,  public dialog: MatDialog){}
 
   // All meter data stored here
   meterDataWater = this.mainService.meterData;
@@ -24,10 +25,29 @@ export class MeterDropdownItemComponent implements OnInit {
     // this.testString = this.mainService.typedString$;
   }
 
+  //Hide meter manufacturer underline when tile is open
   onMeterItemClick(i:any){
-    //hide meter manufacturer underline when tile is open
-    //note: removing element from DOM causes page to 'jump'
-    //so set opacity to 0
     this.dropdownOpen[i] = this.dropdownOpen[i] === true ? false : true;
   }
+
+  //Open Wiring Guide Modal
+  openWiringModal() {
+    const dialogRef = this.dialog.open(WiringModalBody);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
 }
+
+// ************************************
+//       Wiring Modal/Dialog
+// ************************************
+
+@Component({
+  selector: 'app-wiring-modal-body',
+  templateUrl: 'wiring-modal-body.html',
+  styleUrls: ['wiring-modal-body.css']
+})
+export class WiringModalBody {}

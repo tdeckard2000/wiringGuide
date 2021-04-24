@@ -27,7 +27,7 @@
                             <div *ngIf="section.meters.length > 0">
                                 <!-- List of Meters in FlexBox -->
                                 <div *ngFor="let meter of section.meters">
-                                    <div class="flexBox">
+                                    <div class="flexBox" (click)="openWiringModal()">
                                         <!-- Name of Meter -->
                                         <span class="textMeterName">{{ meter.meterName }}&nbsp;</span>
                                         <!-- Meter Signal Type -->

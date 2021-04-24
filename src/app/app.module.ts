@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +11,7 @@ import { MeterDropdownItemComponent } from './meter-dropdown-item/meter-dropdown
 import { MainService} from './main.service';
 import { FormsModule } from '@angular/forms';
 import { FilterMetersPipe } from './filter-meters.pipe';
+import { MatDialogModule } from '@angular/material/dialog'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { FilterMetersPipe } from './filter-meters.pipe';
     SearchBarComponent,
     PageTitleComponent,
     MeterDropdownItemComponent,
-    FilterMetersPipe
+    FilterMetersPipe,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +27,7 @@ import { FilterMetersPipe } from './filter-meters.pipe';
     MatExpansionModule,
     BrowserAnimationsModule,
     FormsModule,
+    MatDialogModule
   ],
   providers: [MainService],
   bootstrap: [AppComponent]
