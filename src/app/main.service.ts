@@ -48,7 +48,7 @@ meterData = [
             compatibleTR201: true,
             compatibleTR4: true,
             compatibleRR4: true,
-            notes: ''
+            notes: 'This is an example support team note. Be sure that your wire is connected to the meter.'
           },
           {
             meterName: 'Scancoder',

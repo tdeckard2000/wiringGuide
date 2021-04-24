@@ -11,7 +11,8 @@ import { MeterDropdownItemComponent } from './meter-dropdown-item/meter-dropdown
 import { MainService} from './main.service';
 import { FormsModule } from '@angular/forms';
 import { FilterMetersPipe } from './filter-meters.pipe';
-import { MatDialogModule } from '@angular/material/dialog'
+import { MatDialogModule } from '@angular/material/dialog';
+import { WiringModalComponent } from './wiring-modal/wiring-modal.component'
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MatDialogModule } from '@angular/material/dialog'
     PageTitleComponent,
     MeterDropdownItemComponent,
     FilterMetersPipe,
+    WiringModalComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,20 @@
+<div class="modalBody angularTheme">
+  <div class="modalContent">
+    <h2>{{ meterData.meterName }}</h2>
+    <h3>Signal Type: {{ meterData.signalType | titlecase }}</h3>
+    <p>Wiring Protocol: {{ meterData.wiringProtocol | titlecase }}</p>
+    
+    <p>Compatible with:</p>
+    <span *ngIf="meterData.compatibleTR201"> TR201 </span>
+    <span *ngIf="meterData.compatibleTR4"> TR4 </span>
+    <span *ngIf="meterData.compatibleRR4"> RR4 </span>
+    
+    <div *ngIf="meterData.notes">
+      <hr>
+      <p>Notes from the NextCentury support team:</p>
+      <p>{{ meterData.notes }}</p>
+    </div>
+
+    <button class="buttonClose" mat-dialog-close cdkFocusInitial>Close</button>
+  </div>
+</div>

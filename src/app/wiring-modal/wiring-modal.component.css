@@ -1,0 +1,16 @@
+.buttonClose{
+    display: block;
+    text-align: end;
+    margin-top: 20px;
+}
+
+.modalBody{
+    background-color: white;
+    border-radius: 3px;
+    padding: 20px;
+}
+
+.modalContent{
+    max-width: 100%;
+    width: 450px;
+}
