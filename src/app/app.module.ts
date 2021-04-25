@@ -12,7 +12,8 @@ import { MainService} from './main.service';
 import { FormsModule } from '@angular/forms';
 import { FilterMetersPipe } from './filter-meters.pipe';
 import { MatDialogModule } from '@angular/material/dialog';
-import { WiringModalComponent } from './wiring-modal/wiring-modal.component'
+import { WiringModalComponent } from './wiring-modal/wiring-modal.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { WiringModalComponent } from './wiring-modal/wiring-modal.component'
     MatExpansionModule,
     BrowserAnimationsModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTabsModule
   ],
   providers: [MainService],
   bootstrap: [AppComponent]

@@ -1,20 +1,48 @@
 <div class="modalBody angularTheme">
   <div class="modalContent">
-    <h2>{{ meterData.meterName }}</h2>
-    <h3>Signal Type: {{ meterData.signalType | titlecase }}</h3>
-    <p>Wiring Protocol: {{ meterData.wiringProtocol | titlecase }}</p>
+
+    <!-- Meter Name -->
+    <h2 class="meterName">{{ meterData.meterName }}</h2>
+
+    <!-- Human Readable Summary of Meter -->
+    <div class="meterSummary">
+      <p *ngIf="meterData.signalType === 'pulse'">This is a pulse-output meter</p>
+      <p *ngIf="meterData.signalType === 'encoded'">
+        This is an encoded meter. It uses the {{ meterData.wiringProtocol | titlecase }} protocol.</p>
+      <p *ngIf="!meterData.compatibleTR201 && !meterData.compatibleTR4 && !meterData.compatibleRR4">
+        This meter is not currently compatible with NextCentury</p>
+      <p *ngIf="meterData.signalType === 'integrated' && (meterData.compatibleTR201 || meterData.compatibleTR4 ||
+      meterData.compatibleRR4)">
+        This meter has an integrated NextCentury Transceiver</p>
+    </div>
     
-    <p>Compatible with:</p>
-    <span *ngIf="meterData.compatibleTR201"> TR201 </span>
-    <span *ngIf="meterData.compatibleTR4"> TR4 </span>
-    <span *ngIf="meterData.compatibleRR4"> RR4 </span>
+    <!-- NextCentury Compatibility List/Images-->
+    <div *ngIf="meterData.compatibleTR201 || meterData.compatibleTR4 || meterData.compatibleRR4">
+      <mat-tab-group mat-align-tabs="start">
+
+        <mat-tab *ngIf="meterData.compatibleTR201" label="TR201">
+          <img src="assets/images/placeholderImage.jpeg" alt="">
+        </mat-tab>
+
+        <mat-tab *ngIf="meterData.compatibleTR4" label="TR4">
+          <img src="assets/images/placeholderImage.jpeg" alt="">
+        </mat-tab>
+
+        <mat-tab *ngIf="meterData.compatibleRR4" label="RR4">
+          <img src="assets/images/placeholderImage.jpeg" alt="">
+        </mat-tab>
+
+      </mat-tab-group>
+    </div>
     
-    <div *ngIf="meterData.notes">
-      <hr>
-      <p>Notes from the NextCentury support team:</p>
+    <hr>
+    
+    <div *ngIf="meterData.notes" class="meterNotes">
+      <h4>More Information</h4>
       <p>{{ meterData.notes }}</p>
     </div>
-
-    <button class="buttonClose" mat-dialog-close cdkFocusInitial>Close</button>
+    <div class="flexBox">
+      <button class="buttonClose" mat-dialog-close>Close</button>
+    </div>
   </div>
 </div>

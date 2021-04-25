@@ -1,7 +1,61 @@
+hr{
+    border-top: none;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+img{
+    padding-top: 10px;
+    width: 100%;
+}
+
 .buttonClose{
+    align-self: flex-end;
+    background-color: #777;
+    border: 2px solid;
+    border-radius: 6px;
+    color: white;
     display: block;
-    text-align: end;
+    font-size: 1rem;
+    line-height: 1.5;
     margin-top: 20px;
+    padding: .375rem .75rem;
+    text-align: center;
+    width: 75px;
+}
+
+.buttonClose:hover{
+    cursor: pointer;
+}
+
+.buttonClose:focus{
+    background-color: #666;
+    border: 2px solid rgb(163, 163, 163);
+}
+
+.flexBox{
+    display: flex;
+    flex-direction: column;
+}
+
+.meterName{
+    font-family: sans-serif;
+    font-weight: 400;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.meterNotes {
+    font-family: sans-serif;
+    font-weight: 300;
+}
+
+.meterNotes h4{
+    font-weight: 400;
+    margin-bottom: 0px;
+}
+
+.meterNotes p{
+    margin-top: 5px;
 }
 
 .modalBody{
@@ -11,7 +65,23 @@
     padding: 20px;
 }
 
+.meterSummary p{
+    font-family: sans-serif;
+    font-weight: 100;
+    margin-top: 0;
+}
+
 .modalContent{
     max-width: 100%;
     width: 450px;
+}
+
+/* Adjust size of wiring guide selector tabs */
+:host ::ng-deep .mat-tab-label{
+    min-width: 50px;
+}
+
+/* Change color of selector tab underline */
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+    background-color: rgb(92, 159, 232) !important;
 }

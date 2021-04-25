@@ -14,9 +14,9 @@
                     <div class="itemBody">
                         <div *ngFor="let section of item.sections">
                             <!-- Series Name (optional)-->
-                            <p *ngIf="section.seriesName">{{ section.seriesName }}</p>
+                            <p *ngIf="section.seriesName" class="textSeriesName">series: {{ section.seriesName }}</p>
                             <!-- Series Models Names (optional) -->
-                            <div class="flexBox">
+                            <div class="flexBox textSeriesModel">
                                 <p *ngIf="section.seriesModel" class="textMeterModel">{{ section.seriesModel }}</p>
                                 <span class="compatibilityTableHeader">
                                         <span>TR201</span>

@@ -126,6 +126,14 @@
     font-size: .7rem;
 }
 
+.textSeriesModel{
+    margin-top: 0;
+}
+
+.textSeriesName{
+    margin-bottom: 0;
+}
+
 .textSignalType{
     color: #999;
     font-family: sans-serif;

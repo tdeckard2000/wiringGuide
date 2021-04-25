@@ -34,7 +34,8 @@ export class MeterDropdownItemComponent implements OnInit {
   //Open Wiring Guide Modal
   openWiringModal(meterData:object) {
     const dialogRef = this.dialog.open(WiringModalComponent, {
-      data: meterData
+      data: meterData,
+      autoFocus:false
     });
 
     dialogRef.afterClosed().subscribe(result => {
