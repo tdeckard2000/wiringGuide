@@ -14,6 +14,8 @@ import { FilterMetersPipe } from './filter-meters.pipe';
 import { MatDialogModule } from '@angular/material/dialog';
 import { WiringModalComponent } from './wiring-modal/wiring-modal.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { HomePageComponent } from './home-page/home-page.component';
+import { EditPageComponent } from './edit-page/edit-page.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MeterDropdownItemComponent,
     FilterMetersPipe,
     WiringModalComponent,
+    HomePageComponent,
+    EditPageComponent,
   ],
   imports: [
     BrowserModule,
