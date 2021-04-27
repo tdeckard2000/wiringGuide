@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { MainService } from '../main.service';
 import { MatDialog } from '@angular/material/dialog';
 import { WiringModalComponent } from '../wiring-modal/wiring-modal.component'
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-meter-dropdown-item',
@@ -24,7 +25,10 @@ export class MeterDropdownItemComponent implements OnInit {
       this.searchBarText = data;
     });
 
-    this.meterData = this.mainService.getAllMeters();
+    this.mainService.getAllMeters().subscribe((res:any)=>{
+      console.log(res)
+      this.meterData = res;
+    });
     // this.testString = this.mainService.typedString$;
   }
 
