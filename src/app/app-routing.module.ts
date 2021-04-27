@@ -9,9 +9,9 @@ import { WiringModalComponent } from './wiring-modal/wiring-modal.component';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: '',
     component: HomePageComponent,
-    
+
   },
   {
     path: 'edit',

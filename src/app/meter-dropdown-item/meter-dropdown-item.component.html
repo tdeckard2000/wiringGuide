@@ -1,6 +1,6 @@
 <div class="itemClusterDiv">
     <!-- Water Meters Section -->
-    <div  *ngFor="let item of (meterDataWater | filterMeters:searchBarText); index as i">
+    <div  *ngFor="let item of (meterData | filterMeters:searchBarText); index as i">
         <div class="itemContainer">
             <mat-accordion>
                 <mat-expansion-panel>
@@ -44,7 +44,7 @@
                                             <span *ngIf="meter.compatibleRR4" class="compatibilityTableCheckMarks checkMark">✔</span>
                                             <span *ngIf="!meter.compatibleRR4" class="compatibilityTableCheckMarks dash">-</span>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>

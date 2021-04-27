@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { PageTitleComponent } from './page-title/page-title.component';
 import { MeterDropdownItemComponent } from './meter-dropdown-item/meter-dropdown-item.component';
-import { MainService} from './main.service';
 import { FormsModule } from '@angular/forms';
 import { FilterMetersPipe } from './filter-meters.pipe';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -16,6 +15,7 @@ import { WiringModalComponent } from './wiring-modal/wiring-modal.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HomePageComponent } from './home-page/home-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -35,9 +35,10 @@ import { EditPageComponent } from './edit-page/edit-page.component';
     BrowserAnimationsModule,
     FormsModule,
     MatDialogModule,
-    MatTabsModule
+    MatTabsModule,
+    HttpClientModule
   ],
-  providers: [MainService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

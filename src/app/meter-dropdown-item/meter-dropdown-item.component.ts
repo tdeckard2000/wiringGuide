@@ -13,16 +13,18 @@ export class MeterDropdownItemComponent implements OnInit {
   dropdownOpen: {[k:number]:boolean} = {};
   panelOpenState = true;
   searchBarText = '';
+  meterData:Array<object> = [];
 
   constructor(private mainService : MainService,  public dialog: MatDialog){}
 
   // All meter data
-  meterDataWater = this.mainService.meterData;
 
   ngOnInit(): void {
     this.mainService.searchBarText$.subscribe(data =>{
       this.searchBarText = data;
     });
+
+    this.meterData = this.mainService.getAllMeters();
     // this.testString = this.mainService.typedString$;
   }
 

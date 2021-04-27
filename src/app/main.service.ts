@@ -6,19 +6,28 @@ import { BehaviorSubject } from 'rxjs';
 
 })
 export class MainService {
-  constructor() { 
+  constructor() {
     this.searchBarText$ = new BehaviorSubject(this.searchBarText);
   }
 
 // ************************************
 //       Track Search Bar Input
 // ************************************
-  
+
   searchBarText = '';
   searchBarText$: BehaviorSubject<string>;
+
   updateString(newString:string){
     this.searchBarText$.next(newString);
-  }
+  };
+
+// ************************************
+//        Database Requests
+// ************************************
+
+  getAllMeters(){
+    return([...this.meterData])
+  };
 
 // ************************************
 //       Meter Data (temporary)
@@ -165,7 +174,7 @@ meterData = [
           }
         ]
       }
-     ] 
+     ]
     },
   {
     manufacturer: 'Assured Automation'
