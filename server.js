@@ -2,9 +2,24 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const MongoClient = require('mongodb').MongoClient;
 
 app.use(bodyParser.json());
 app.use(cors());
+
+// ************************************
+//            DB Settings
+// ************************************
+const uri = "mongodb+srv://trent:0HONfGEFoXjy9L2B@cluster0.j4cu5.mongodb.net/test?authSource=admin&replicaSet=atlas-14et0y-shard-0&readPreference=primary";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+client.connect(err => {
+  const collection = client.db("testDB").collection("meterGuideData");
+  // perform actions on the collection object
+
+  if(err){console.log(err)};
+  // client.close();
+});
 
 // ************************************
 //            DB Functions
@@ -15,15 +30,16 @@ app.use(cors());
 // ************************************
 
 app.get('/', (req, res)=>{
-    res.send('<p>Hello World</p>')
+  res.send('<p>Hello World</p>')
 });
 
-app.get('/api/allMeters', (req, res)=>{
-    res.json(meterData)
+app.get('/api/allMeters', async(req, res)=>{
+
+  res.json(meterData)
 });
 
 app.listen(3000, (req, res)=>{
-    console.log('Listening on Port 3000');
+  console.log('Listening on Port 3000');
 });
 
 
