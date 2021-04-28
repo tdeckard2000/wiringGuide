@@ -6,18 +6,19 @@ const MongoClient = require('mongodb').MongoClient;
 
 app.use(bodyParser.json());
 app.use(cors());
+require('dotenv').config();
 
 // ************************************
 //            DB Settings
 // ************************************
-const uri = "mongodb+srv://trent:0HONfGEFoXjy9L2B@cluster0.j4cu5.mongodb.net/test?authSource=admin&replicaSet=atlas-14et0y-shard-0&readPreference=primary";
+const uri = process.env.DB_URL;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 client.connect(err => {
   const collection = client.db("testDB").collection("meterGuideData");
   // perform actions on the collection object
 
-  if(err){console.log(err)};
+  if(err){console.log(err)}else{console.log('Connected to DB')};
   // client.close();
 });
 
