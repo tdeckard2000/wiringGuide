@@ -26,7 +26,6 @@ export class MeterDropdownItemComponent implements OnInit {
     });
 
     this.mainService.getAllMeters().subscribe((res:any)=>{
-      console.log(res)
       this.meterData = res;
     });
     // this.testString = this.mainService.typedString$;

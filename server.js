@@ -3,6 +3,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
+const { cpuUsage } = require('node:process');
+const { resourceLimits } = require('node:worker_threads');
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -15,10 +17,21 @@ const uri = process.env.DB_URL;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 client.connect(err => {
-  const collection = client.db("testDB").collection("meterGuideData");
-  // perform actions on the collection object
+  const meterGuideData = client.db("testDB").collection("meterGuideData");
+
+// ************************************
+//             API Routes
+// ************************************
+
+  app.get('/api/allMeters', async(req, res)=>{
+
+    result = await meterGuideData.find().toArray();
+    result.sort();
+    res.json(result);
+  })
 
   if(err){console.log(err)}else{console.log('Connected to DB')};
+
   // client.close();
 });
 
@@ -27,17 +40,17 @@ client.connect(err => {
 // ************************************
 
 // ************************************
-//               Routes
+//             API Routes
 // ************************************
 
 app.get('/', (req, res)=>{
   res.send('<p>Hello World</p>')
 });
 
-app.get('/api/allMeters', async(req, res)=>{
+// app.get('/api/allMeters', async(req, res)=>{
 
-  res.json(meterData)
-});
+//   res.json(meterData)
+// });
 
 app.listen(3000, (req, res)=>{
   console.log('Listening on Port 3000');
