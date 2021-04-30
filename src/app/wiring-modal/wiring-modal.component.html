@@ -9,36 +9,37 @@
       <p *ngIf="meterData.signalType === 'pulse'">This is a pulse-output meter</p>
       <p *ngIf="meterData.signalType === 'encoded'">
         This is an encoded meter. It uses the {{ meterData.wiringProtocol | titlecase }} protocol.</p>
-      <p *ngIf="!meterData.compatibleTR201 && !meterData.compatibleTR4 && !meterData.compatibleRR4">
+      <p *ngIf="!meterData.compatibleWith.TR201 && !meterData.compatibleWith.TR4 && !meterData.compatibleWith.RR4">
         This meter is not currently compatible with NextCentury</p>
-      <p *ngIf="meterData.signalType === 'integrated' && (meterData.compatibleTR201 || meterData.compatibleTR4 ||
-      meterData.compatibleRR4)">
+      <p *ngIf="meterData.signalType === 'integrated' && (meterData.compatibleWith.TR201 || meterData.compatibleWith.TR4 ||
+      meterData.compatibleWith.RR4)">
         This meter has an integrated NextCentury Transceiver</p>
     </div>
-    
+
     <!-- NextCentury Compatibility List/Images-->
-    <div *ngIf="meterData.compatibleTR201 || meterData.compatibleTR4 || meterData.compatibleRR4">
+    <div *ngIf="meterData.compatibleWith.TR201 || meterData.compatibleWith.TR4 || meterData.compatibleWith.RR4">
       <mat-tab-group mat-align-tabs="start">
 
-        <mat-tab *ngIf="meterData.compatibleTR201" label="TR201">
+        <mat-tab *ngIf="meterData.compatibleWith.TR201" label="TR201">
           <img src="assets/images/placeholderImage.jpeg" alt="">
         </mat-tab>
 
-        <mat-tab *ngIf="meterData.compatibleTR4" label="TR4">
+        <mat-tab *ngIf="meterData.compatibleWith.TR4" label="TR4">
           <img src="assets/images/placeholderImage.jpeg" alt="">
         </mat-tab>
 
-        <mat-tab *ngIf="meterData.compatibleRR4" label="RR4">
+        <mat-tab *ngIf="meterData.compatibleWith.RR4" label="RR4">
           <img src="assets/images/placeholderImage.jpeg" alt="">
         </mat-tab>
 
       </mat-tab-group>
     </div>
-    
+
     <hr>
-    
+
     <div *ngIf="meterData.notes" class="meterNotes">
-      <h4>More Information</h4>
+      <!-- <h4>More Information</h4> -->
+      <img class="infoSVG" src="assets/icons/help.svg" alt="">
       <p>{{ meterData.notes }}</p>
     </div>
     <div class="flexBox">

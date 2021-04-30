@@ -37,6 +37,11 @@ img{
     flex-direction: column;
 }
 
+.infoSVG{
+  opacity: .5;
+  width: 15px;
+}
+
 .meterName{
     font-family: sans-serif;
     font-weight: 400;
