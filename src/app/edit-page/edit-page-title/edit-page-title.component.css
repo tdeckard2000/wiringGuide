@@ -1,0 +1,30 @@
+h1{
+  color: white;
+  font-family: sans-serif;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+h5{
+  color: white;
+  font-family: sans-serif;
+  left: 71px;
+  margin-top: -3px;
+  position: relative;
+  text-align: center;
+}
+
+.titleDiv{
+  background-color: rgba(000, 000, 000, .1);
+  border-radius: 5px;
+  box-shadow: 4px 4px 5px rgba(000, 000, 000, .15);
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 35px;
+  height: 100px;
+  width: 80vw;
+}
+
+.titleInnerDiv{
+}
