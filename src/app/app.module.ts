@@ -16,7 +16,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { HomePageComponent } from './home-page/home-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { HttpClientModule } from '@angular/common/http';
-import { EditPageTitleComponent } from './edit-page/edit-page-title/edit-page-title.component'
+import { EditPageTitleComponent } from './edit-page/edit-page-title/edit-page-title.component';
+import { EditPageBodyComponent } from './edit-page/edit-page-body/edit-page-body.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { EditPageTitleComponent } from './edit-page/edit-page-title/edit-page-ti
     HomePageComponent,
     EditPageComponent,
     EditPageTitleComponent,
+    EditPageBodyComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { EditPageTitleComponent } from './edit-page/edit-page-title/edit-page-ti
     FormsModule,
     MatDialogModule,
     MatTabsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
