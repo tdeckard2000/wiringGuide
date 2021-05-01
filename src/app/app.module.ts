@@ -15,7 +15,8 @@ import { WiringModalComponent } from './wiring-modal/wiring-modal.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HomePageComponent } from './home-page/home-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { EditPageTitleComponent } from './edit-page/edit-page-title/edit-page-title.component'
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http'
     WiringModalComponent,
     HomePageComponent,
     EditPageComponent,
+    EditPageTitleComponent,
   ],
   imports: [
     BrowserModule,
