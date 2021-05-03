@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EditPageTitleComponent } from './edit-page/edit-page-title/edit-page-title.component';
 import { EditPageBodyComponent } from './edit-page/edit-page-body/edit-page-body.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatDialogModule,
     MatTabsModule,
     HttpClientModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,20 +1,20 @@
 <!-- Create New / Edit Existing -->
-<div class="divFormat">
-  <label for="radioSelections">I would like to...</label>
-  <mat-radio-group [(ngModel)]="radioSelection" ria-labelledby="radioSelections" class="radioSelectionsGroup">
-    <mat-radio-button class="radioButton" *ngFor="let option of radioOptions" [value]="option">
-      {{option}}
-    </mat-radio-button>
-  </mat-radio-group>
-</div>
+<div class="divContainer angularTheme">
+  <div class="divBody">
 
-<label id="example-radio-group-label">Pick your favorite season</label>
-<mat-radio-group
-  aria-labelledby="example-radio-group-label"
-  class="example-radio-group"
-  [(ngModel)]="radioSelection">
-  <mat-radio-button class="example-radio-button" *ngFor="let season of radioOptions" [value]="season">
-    {{season}}
-  </mat-radio-button>
-</mat-radio-group>
-<div>Your favorite season is: {{radioSelection}}</div>
+    <label for="radioSelections">I would like to...</label>
+    <!-- Radio Button Options -->
+    <mat-radio-group [(ngModel)]="radioSelection" ria-labelledby="radioSelections" class="radioSelectionsGroup">
+      <mat-radio-button class="radioButtons flexColumn" *ngFor="let option of radioOptions" [value]="option">
+        {{option}}
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <img class="nameKeyImage" src="./assets/images/nameKey.png" alt="">
+
+    <div class="flexColumn">
+      <button (click)="onClickNext()" [disabled]="radioSelection == ''" class="button">Next</button>
+    </div>
+
+  </div>
+</div>

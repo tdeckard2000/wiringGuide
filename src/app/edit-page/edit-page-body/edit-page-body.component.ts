@@ -6,8 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-page-body.component.css']
 })
 export class EditPageBodyComponent implements OnInit {
+  currentPage = "I would like to";
   radioSelection = "";
-  radioOptions= ["1", "2", "3", "4", "5"]
+  radioOptions= [
+    "Add a Meter Manufacturer",
+    "Edit/Delete a Meter Manufacturer",
+    "Add/Edit/Delete a Meter (including series and sections)"
+  ];
+
+  onClickNext(){
+    this.currentPage = this.radioSelection;
+    console.log(this.currentPage)
+  }
+
   constructor() { }
 
   ngOnInit(): void {
