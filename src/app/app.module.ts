@@ -18,8 +18,11 @@ import { EditPageComponent } from './edit-page/edit-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EditPageTitleComponent } from './edit-page/edit-page-title/edit-page-title.component';
 import { EditPageBodyComponent } from './edit-page/edit-page-body/edit-page-body.component';
-import { MatRadioModule } from '@angular/material/radio';
+import { MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -44,9 +47,14 @@ import { MatSliderModule } from '@angular/material/slider';
     MatTabsModule,
     HttpClientModule,
     MatRadioModule,
-    MatSliderModule
+    MatSliderModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_RADIO_DEFAULT_OPTIONS, useValue: {color: 'primary'}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

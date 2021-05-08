@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-edit-page-body',
@@ -6,20 +7,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-page-body.component.css']
 })
 export class EditPageBodyComponent implements OnInit {
-  currentPage = "I would like to";
   radioSelection = "";
   radioOptions= [
+    "Add a Meter",
+    "Edit/Delete a Meter",
     "Add a Meter Manufacturer",
     "Edit/Delete a Meter Manufacturer",
-    "Add/Edit/Delete a Meter (including series and sections)"
   ];
+  utilityTypeOptions = [
+    "Electric",
+    "Gas",
+    "Run Time",
+    "Thermal",
+    "Water"
+  ]
+  visibleTile = "Home";
 
   onClickNext(){
-    this.currentPage = this.radioSelection;
-    console.log(this.currentPage)
+    this.visibleTile = this.radioSelection;
   }
 
-  constructor() { }
+  onReturnHome(){
+    this.visibleTile = 'Home';
+  }
+
+  constructor(overlayContainer: OverlayContainer) {
+    overlayContainer.getContainerElement().classList.add('angularTheme');
+  }
 
   ngOnInit(): void {
   }

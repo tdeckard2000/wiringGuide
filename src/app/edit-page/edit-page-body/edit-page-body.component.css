@@ -1,5 +1,8 @@
-.button{
+.alignRight{
   align-self: flex-end;
+}
+
+.button{
   background-color: #777;
   border: 2px solid;
   border-radius: 6px;
@@ -43,6 +46,25 @@
   flex-direction: column;
 }
 
+.helpIcon{
+  height: 15px;
+  margin-right: 5px;
+  margin-top: 1px;
+  opacity: .5;
+}
+
+
+/* Remove Angular dropdown outline */
+.imageDropdown{
+  box-shadow: none !important;
+}
+
+.imageDropdown mat-expansion-panel-header{
+  margin-top: 20px;
+  padding-left: 0;
+  width: fit-content;
+}
+
 .nameKeyImage{
   border: 1px solid #999;
   border-radius: 5px;
@@ -55,4 +77,15 @@
 .radioButtons{
   margin: 20px 20px;
   width: 50%;
+}
+
+.tileTitle{
+  font-family: sans-serif;
+  font-weight: 100;
+  margin-bottom: 35px;
+}
+
+/* Remove padding from image dropdown body */
+:host ::ng-deep .mat-expansion-panel-body {
+  padding: 2px !important;
 }
