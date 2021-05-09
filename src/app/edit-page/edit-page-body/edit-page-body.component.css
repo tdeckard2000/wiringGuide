@@ -25,6 +25,60 @@
   border: 2px solid rgb(163, 163, 163);
 }
 
+.buttonAdd{
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  font-size: .9rem;
+  width: 125px;
+}
+
+.buttonAdd:focus{
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #3f51b5;
+  color: #3f51b5;
+}
+
+.buttonAdd:focus img{
+  filter: invert(34%) sepia(87%) saturate(527%) hue-rotate(193deg) brightness(84%) contrast(97%);
+}
+
+.buttonAdd img{
+  margin-bottom: -5px;
+  margin-left: -6px;
+  position: relative;
+  width: 20px;
+}
+
+.buttonRemove{
+  background-color: white;
+  border: 1px solid rgb(255, 108, 108);
+  color: rgb(255, 108, 108);
+  display: inline-block;
+  font-size: .9rem;
+  margin-left: 25px;
+  width: 125px;
+}
+
+.buttonRemove:focus{
+  background-color: rgb(255, 255, 255);
+  border: 1px solid red;
+  color: red;
+}
+
+.buttonRemove:focus img{
+  filter: invert(23%) sepia(72%) saturate(5730%) hue-rotate(353deg) brightness(101%) contrast(130%);
+}
+
+.buttonRemove img{
+  filter: invert(59%) sepia(100%) saturate(2525%) hue-rotate(322deg) brightness(113%) contrast(108%);
+  margin-bottom: -5px;
+  margin-left: -6px;
+  position: relative;
+  transform: rotate(45deg);
+  width: 20px;
+}
+
 .divBody{
   margin: 30px;
 }
@@ -44,6 +98,11 @@
 .flexColumn{
   display: flex;
   flex-direction: column;
+}
+
+.flexRow{
+  display: flex;
+  flex-direction: row;
 }
 
 .helpIcon{

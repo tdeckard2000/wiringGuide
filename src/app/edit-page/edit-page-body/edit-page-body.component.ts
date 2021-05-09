@@ -7,6 +7,8 @@ import { OverlayContainer } from '@angular/cdk/overlay';
   styleUrls: ['./edit-page-body.component.css']
 })
 export class EditPageBodyComponent implements OnInit {
+  newSectionsCount = [];
+  newSectionValues : Object[] = [];
   radioSelection = "";
   radioOptions= [
     "Add a Meter",
@@ -20,22 +22,43 @@ export class EditPageBodyComponent implements OnInit {
     "Run Time",
     "Thermal",
     "Water"
-  ]
+  ];
   visibleTile = "Home";
 
   onClickNext(){
     this.visibleTile = this.radioSelection;
-  }
+  };
 
   onReturnHome(){
     this.visibleTile = 'Home';
   }
 
-  constructor(overlayContainer: OverlayContainer) {
-    overlayContainer.getContainerElement().classList.add('angularTheme');
+  onNewSection(){
+    this.newSectionsCount.length ++;
+  };
+
+  onRemoveSection(){
+    this.newSectionsCount.length --;
   }
 
-  ngOnInit(): void {
+  //Store Series and Model Names Together
+  onSeriesName(seriesName:string, modelsName:string, index:number){
+    this.newSectionValues[index] =
+      {
+        "seriesName": seriesName,
+        "modelsName": modelsName
+      };
+
+    // Track if at least one of the two newest Series/Model fields has a value
+    // if(this.newSectionValues[index].seriesName)
+    console.log(this.newSectionValues)
   }
+
+  constructor(overlayContainer: OverlayContainer) {
+    overlayContainer.getContainerElement().classList.add('angularTheme');
+  };
+
+  ngOnInit(): void {
+  };
 
 }

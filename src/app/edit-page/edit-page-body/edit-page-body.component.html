@@ -57,10 +57,29 @@
         <mat-form-field class="dropdownOptions">
           <mat-label>Utility Type</mat-label>
           <mat-select>
-            <mat-option *ngFor="let utilityTypeOption of utilityTypeOptions" value="option">{{utilityTypeOption}}</mat-option>
+            <mat-option *ngFor="let utilityTypeOption of utilityTypeOptions;" value="option">{{utilityTypeOption}}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
+      <!-- Add Section Inputs -->
+      <div *ngFor="let section of newSectionsCount; let i = index" class="formContainer">
+        <mat-form-field>
+          <mat-label>Series Name</mat-label>
+          <input #seriesName (keyup)="onSeriesName(seriesName.value, modelsName.value, i)" matInput #input maxlength="30" minlength="1" autocomplete="new-password">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Models Name</mat-label>
+          <input #modelsName (keyup)="onSeriesName(seriesName.value, modelsName.value, i)" matInput #input maxlength="30" autocomplete="new-password">
+        </mat-form-field>
+      </div>
+      <!-- Add New Section Button -->
+
+      <span class="flexRow">
+        <p>Is Empty</p>
+        <button (click)="onNewSection()" class="button buttonAdd"><img src="./assets/icons/plusBlack.svg" alt=""> Add Section</button>
+        <button *ngIf="newSectionsCount.length > 0" (click)="onRemoveSection()" class="button buttonRemove"><img src="./assets/icons/plusBlack.svg" alt=""> Remove</button>
+      </span>
+
       <!-- Show/Hide Reference Image -->
       <mat-accordion>
         <mat-expansion-panel class="imageDropdown" hideToggle>
