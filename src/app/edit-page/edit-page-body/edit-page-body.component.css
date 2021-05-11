@@ -112,6 +112,13 @@
   opacity: .5;
 }
 
+.helperText{
+  font-family: sans-serif;
+  font-size: .8rem;
+  margin-top: -12px;
+  position: absolute;
+}
+
 
 /* Remove Angular dropdown outline */
 .imageDropdown{
@@ -136,6 +143,10 @@
 .radioButtons{
   margin: 20px 20px;
   width: 50%;
+}
+
+.spaceBetween{
+  justify-content: space-between;
 }
 
 .tileTitle{

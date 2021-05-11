@@ -72,11 +72,14 @@
           <input #modelsName (keyup)="onSeriesName(seriesName.value, modelsName.value, i)" matInput #input maxlength="30" autocomplete="new-password">
         </mat-form-field>
       </div>
+      <!-- Helper Text -->
+      <p *ngIf="!canAddNewSection" class="helperText">*Both fields cannot be empty.</p>
       <!-- Add New Section Button -->
-
       <span class="flexRow">
-        <p>Is Empty</p>
-        <button (click)="onNewSection()" class="button buttonAdd"><img src="./assets/icons/plusBlack.svg" alt=""> Add Section</button>
+        <button (click)="onNewSection()" class="button buttonAdd" [disabled]="!canAddNewSection" [ngStyle]="{'opacity': (!canAddNewSection? .5 : 1)}">
+          <img src="./assets/icons/plusBlack.svg" alt=""> Add Section
+        </button>
+      <!-- Remove Section Button -->
         <button *ngIf="newSectionsCount.length > 0" (click)="onRemoveSection()" class="button buttonRemove"><img src="./assets/icons/plusBlack.svg" alt=""> Remove</button>
       </span>
 
@@ -91,9 +94,10 @@
           <img class="nameKeyImage" src="./assets/images/nameKey.png" alt="">
         </mat-expansion-panel>
       </mat-accordion>
-      <!-- Button Back -->
-      <div class="flexColumn">
+      <!-- Button Back & Save -->
+      <div class="flexRow spaceBetween">
         <button (click)="onReturnHome()" class="button">Back</button>
+        <button (click)="onReturnHome()" [disabled]="!canAddNewSection" [ngStyle]="{'opacity': (!canAddNewSection? .5 : 1)}" class="button">Save</button>
       </div>
     </div>
 
@@ -101,7 +105,7 @@
     <div class="divBody" *ngIf="visibleTile == 'Edit/Delete a Meter Manufacturer'">
       <h3 class="tileTitle">Edit/Delete a Meter Manufacturer</h3>
       <!-- Button Back -->
-      <div class="flexColumn">
+      <div class="flexRow">
         <button (click)="onReturnHome()" class="button">Back</button>
       </div>
     </div>
