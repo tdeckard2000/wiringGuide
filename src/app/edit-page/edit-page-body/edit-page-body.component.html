@@ -1,112 +1,19 @@
 <!-- Create New / Edit Existing -->
 <div class="divContainer angularTheme">
 
-  <!-- * Home Tile -->
-  <div class="divBody" *ngIf="visibleTile == 'Home'">
-    <h3 class="tileTitle">I would like to..</h3>
-    <!-- Radio Button Options -->
-    <mat-radio-group [(ngModel)]="radioSelection" ria-labelledby="radioSelections" class="radioSelectionsGroup">
-      <mat-radio-button class="radioButtons flexColumn" *ngFor="let option of radioOptions" [value]="option">
-        {{option}}
-      </mat-radio-button>
-    </mat-radio-group>
-    <!-- Button Next -->
-    <div class="flexColumn">
-      <button (click)="onClickNext()" [disabled]="radioSelection == ''" class="button alignRight" [ngStyle]="{'opacity': (radioSelection == '' ? .5 : 1)}">Next</button>
-    </div>
-  </div>
+  <!-- * Home -->
+  <app-edit-page-home *ngIf="visibleTile == 'Home'"></app-edit-page-home>
 
-    <!-- * Add a Meter Tile -->
-    <div class="divBody" *ngIf="visibleTile == 'Add a Meter'">
-      <h3 class="tileTitle">Add a Meter</h3>
-      <!-- Show/Hide Reference Image -->
-      <mat-accordion>
-        <mat-expansion-panel class="imageDropdown" hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-            <img class="helpIcon" src="./assets/icons/help.svg" alt=""> Help
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <img class="nameKeyImage" src="./assets/images/nameKey.png" alt="">
-        </mat-expansion-panel>
-      </mat-accordion>
-      <!-- Button Back -->
-      <div class="flexColumn">
-        <button (click)="onReturnHome()" class="button">Back</button>
-      </div>
-    </div>
+  <!-- * Add a Meter -->
+  <app-new-meter *ngIf="visibleTile == 'Add a Meter'"></app-new-meter>
 
-    <!-- * Edit/Delete a Meter Tile -->
-    <div class="divBody" *ngIf="visibleTile == 'Edit/Delete a Meter'">
-      <h3 class="tileTitle">Edit/Delete a Meter</h3>
-      <!-- Button Back -->
-      <div class="flexColumn">
-        <button (click)="onReturnHome()" class="button">Back</button>
-      </div>
-    </div>
+  <!-- * Edit/Delete a Meter -->
+  <app-edit-meter *ngIf="visibleTile == 'Edit/Delete a Meter'"></app-edit-meter>
 
-    <!-- * Add a Meter Manufacturer Tile -->
-    <div class="divBody" *ngIf="visibleTile == 'Add a Meter Manufacturer'">
-      <h3 class="tileTitle">Add a Meter Manufacturer</h3>
-      <!-- Form Fields -->
-      <div class="formContainer">
-        <mat-form-field>
-          <mat-label>Name</mat-label>
-          <input matInput #input maxlength="30">
-        </mat-form-field>
-        <mat-form-field class="dropdownOptions">
-          <mat-label>Utility Type</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let utilityTypeOption of utilityTypeOptions;" value="option">{{utilityTypeOption}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <!-- Add Section Inputs -->
-      <div *ngFor="let section of newSectionsCount; let i = index" class="formContainer">
-        <mat-form-field>
-          <mat-label>Series Name</mat-label>
-          <input #seriesName (keyup)="onSeriesName(seriesName.value, modelsName.value, i)" matInput #input maxlength="30" minlength="1" autocomplete="new-password">
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Models Name</mat-label>
-          <input #modelsName (keyup)="onSeriesName(seriesName.value, modelsName.value, i)" matInput #input maxlength="30" autocomplete="new-password">
-        </mat-form-field>
-      </div>
-      <!-- Helper Text -->
-      <p *ngIf="!canAddNewSection" class="helperText">*Both fields cannot be empty.</p>
-      <!-- Add New Section Button -->
-      <span class="flexRow">
-        <button (click)="onNewSection()" class="button buttonAdd" [disabled]="!canAddNewSection" [ngStyle]="{'opacity': (!canAddNewSection? .5 : 1)}">
-          <img src="./assets/icons/plusBlack.svg" alt=""> Add Section
-        </button>
-      <!-- Remove Section Button -->
-        <button *ngIf="newSectionsCount.length > 0" (click)="onRemoveSection()" class="button buttonRemove"><img src="./assets/icons/plusBlack.svg" alt=""> Remove</button>
-      </span>
+  <!-- * Add a Meter Manufacturer -->
+  <app-new-manufacturer *ngIf="visibleTile == 'Add a Meter Manufacturer'"></app-new-manufacturer>
 
-      <!-- Show/Hide Reference Image -->
-      <mat-accordion>
-        <mat-expansion-panel class="imageDropdown" hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-            <img class="helpIcon" src="./assets/icons/help.svg" alt=""> Help
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <img class="nameKeyImage" src="./assets/images/nameKey.png" alt="">
-        </mat-expansion-panel>
-      </mat-accordion>
-      <!-- Button Back & Save -->
-      <div class="flexRow spaceBetween">
-        <button (click)="onReturnHome()" class="button">Back</button>
-        <button (click)="onReturnHome()" [disabled]="!canAddNewSection" [ngStyle]="{'opacity': (!canAddNewSection? .5 : 1)}" class="button">Save</button>
-      </div>
-    </div>
+  <!-- * Edit/Delete a Meter Manufacturer -->
+  <app-edit-manufacturer *ngIf="visibleTile == 'Edit/Delete a Meter Manufacturer'"></app-edit-manufacturer>
 
-    <!-- * Edit/Delete a Meter Manufacturer Tile -->
-    <div class="divBody" *ngIf="visibleTile == 'Edit/Delete a Meter Manufacturer'">
-      <h3 class="tileTitle">Edit/Delete a Meter Manufacturer</h3>
-      <!-- Button Back -->
-      <div class="flexRow">
-        <button (click)="onReturnHome()" class="button">Back</button>
-      </div>
-    </div>
 </div>

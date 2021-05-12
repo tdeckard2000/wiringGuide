@@ -1,0 +1,32 @@
+.helpIcon{
+  height: 15px;
+  margin-right: 5px;
+  margin-top: 1px;
+  opacity: .5;
+}
+
+.imageDropdown mat-expansion-panel-header{
+  margin-top: 20px;
+  padding-left: 0;
+  width: fit-content;
+}
+
+
+/* Remove Angular dropdown outline */
+.imageDropdown{
+  box-shadow: none !important;
+}
+
+.nameKeyImage{
+  border: 1px solid #999;
+  border-radius: 5px;
+  display: block;
+  margin: auto;
+  max-width: 450px;
+  width: 100%;
+}
+
+/* Remove padding from image dropdown body */
+:host ::ng-deep .mat-expansion-panel-body {
+  padding: 2px !important;
+}
