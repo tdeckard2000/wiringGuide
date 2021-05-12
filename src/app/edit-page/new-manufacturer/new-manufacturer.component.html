@@ -1,18 +1,21 @@
 <div class="divBody">
+
   <h3 class="tileTitle">Add a Meter Manufacturer</h3>
+
   <!-- Form Fields -->
   <div class="formContainer">
     <mat-form-field>
       <mat-label>Name</mat-label>
-      <input matInput #input maxlength="30">
+      <input #manufacturerName (keyup)="onManufacturerName(manufacturerName.value)" matInput #input maxlength="30">
     </mat-form-field>
     <mat-form-field class="dropdownOptions">
       <mat-label>Utility Type</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let utilityTypeOption of utilityTypeOptions;" value="option">{{utilityTypeOption}}</mat-option>
+      <mat-select (selectionChange)="onUtilityType($event)">
+        <mat-option *ngFor="let utilityTypeOption of utilityTypeOptions;" value={{utilityTypeOption}}>{{utilityTypeOption}}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
+
   <!-- Add Section Inputs -->
   <div *ngFor="let section of newSectionsCount; let i = index" class="formContainer">
     <mat-form-field>
@@ -24,13 +27,16 @@
       <input #modelsName (keyup)="onSeriesName(seriesName.value, modelsName.value, i)" matInput #input maxlength="30" autocomplete="new-password">
     </mat-form-field>
   </div>
+
   <!-- Helper Text -->
   <p *ngIf="!canAddNewSection" class="helperText">*Both fields cannot be empty.</p>
+
   <!-- Add New Section Button -->
   <span class="flexRow">
     <button (click)="onNewSection()" class="button buttonAdd" [disabled]="!canAddNewSection" [ngStyle]="{'opacity': (!canAddNewSection? .5 : 1)}">
       <img src="./assets/icons/plusBlack.svg" alt=""> Add Section
     </button>
+
   <!-- Remove Section Button -->
     <button *ngIf="newSectionsCount.length > 0" (click)="onRemoveSection()" class="button buttonRemove"><img src="./assets/icons/plusBlack.svg" alt=""> Remove</button>
   </span>
@@ -41,6 +47,7 @@
   <!-- Button Back & Save -->
   <div class="flexRow spaceBetween">
     <button (click)="onReturnHome()" class="button">Back</button>
-    <button (click)="onReturnHome()" [disabled]="!canAddNewSection" [ngStyle]="{'opacity': (!canAddNewSection? .5 : 1)}" class="button">Save</button>
+    <button (click)="onSave()" [disabled]="!canSave" [ngStyle]="{'opacity': (!canSave? .5 : 1)}" class="button">Save</button>
   </div>
+
 </div>

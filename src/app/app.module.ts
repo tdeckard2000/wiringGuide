@@ -23,6 +23,12 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { NewManufacturerComponent } from './edit-page/new-manufacturer/new-manufacturer.component';
+import { EditPageHomeComponent } from './edit-page/edit-page-home/edit-page-home.component';
+import { NewMeterComponent } from './edit-page/new-meter/new-meter.component';
+import { EditMeterComponent } from './edit-page/edit-meter/edit-meter.component';
+import { EditManufacturerComponent } from './edit-page/edit-manufacturer/edit-manufacturer.component';
+import { HelpDropdownComponent } from './edit-page/help-dropdown/help-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +42,12 @@ import { MatInputModule } from '@angular/material/input';
     EditPageComponent,
     EditPageTitleComponent,
     EditPageBodyComponent,
+    NewManufacturerComponent,
+    EditPageHomeComponent,
+    NewMeterComponent,
+    EditMeterComponent,
+    EditManufacturerComponent,
+    HelpDropdownComponent,
   ],
   imports: [
     BrowserModule,

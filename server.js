@@ -3,8 +3,6 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
-const { cpuUsage } = require('node:process');
-const { resourceLimits } = require('node:worker_threads');
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -25,13 +23,16 @@ client.connect(err => {
 // ************************************
 
   app.get('/api/allMeters', async(req, res)=>{
-
     result = await meterGuideData.find().toArray();
     result.sort(sortMeterManufacturers);
     res.json(result);
-  })
+  });
 
-  if(err){console.log(err)}else{console.log('Connected to DB')};
+  app.post('/api/newMeterManufacturer', async(req, res)=>{
+    console.log(req + " server")
+  });
+
+  if(err){console.warn(err)}else{console.warn('Connected to DB')};
 });
 
 // ************************************
@@ -56,5 +57,5 @@ const sortMeterManufacturers = function(meterA, meterB){
 // ************************************
 
 app.listen(3000, (req, res)=>{
-  console.log('Listening on Port 3000');
+  console.warn('Listening on Port 3000');
 });

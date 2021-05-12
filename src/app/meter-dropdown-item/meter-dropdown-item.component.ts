@@ -44,7 +44,7 @@ export class MeterDropdownItemComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('Dialog result:' + result);
+      console.warn('Dialog result:' + result);
     });
   }
 }

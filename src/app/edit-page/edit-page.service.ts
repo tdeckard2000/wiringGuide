@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { MainService } from '../main.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EditPageService {
-  constructor() { }
+  constructor(private mainService: MainService) { }
 
   public radioOptions = [
     "Add a Meter",
