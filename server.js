@@ -29,7 +29,8 @@ client.connect(err => {
   });
 
   app.post('/api/newMeterManufacturer', async(req, res)=>{
-    console.log(req + " server")
+    console.dir(req.body)
+    res.send({"test":"huh"})
   });
 
   if(err){console.warn(err)}else{console.warn('Connected to DB')};

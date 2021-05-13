@@ -28,7 +28,6 @@ export class MeterDropdownItemComponent implements OnInit {
     this.mainService.getAllMeters().subscribe((res:any)=>{
       this.meterData = res;
     });
-    // this.testString = this.mainService.typedString$;
   }
 
   //Hide meter manufacturer underline while tile is open

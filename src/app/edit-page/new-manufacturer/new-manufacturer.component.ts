@@ -48,7 +48,10 @@ export class NewManufacturerComponent implements OnInit {
 
   onSave(){
     console.log("save")
-    this.mainService.saveNewMeterManufacturer(this.manufacturerName, this.utilityTypeSelected, this.newSectionValues);
+    this.mainService.saveNewMeterManufacturer(this.manufacturerName, this.utilityTypeSelected, this.newSectionValues)
+    .subscribe((data:any)=>{
+      console.log(data);
+    });
   };
 
   onNewSection(){

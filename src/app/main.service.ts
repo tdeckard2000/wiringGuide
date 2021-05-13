@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
-import { element } from 'protractor';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +16,11 @@ export class MainService {
 //       Track Search Bar Input
 // ************************************
 
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
   searchBarText = '';
   searchBarText$: BehaviorSubject<string>;
 
@@ -29,13 +33,14 @@ export class MainService {
 // ************************************
 
   getAllMeters(){
+    console.log("GET Request Sent")
     return this.http.get('http://localhost:3000/api/allmeters', {
       observe: 'body',
       responseType: 'json'
     });
   };
 
-  saveNewMeterManufacturer(manufacturerName: string, utilityTypeSelected: string, newSectionValues: Array<object>){
+  saveNewMeterManufacturer(manufacturerName: string, utilityTypeSelected: string, newSectionsArray: Array<object>){
     //Create object for DB
     let manufacturerObject = {
       manufacturer: manufacturerName,
@@ -44,22 +49,19 @@ export class MainService {
     };
 
     //Add user defined sections to object
-    newSectionValues.forEach(element => {
+    newSectionsArray.forEach(element => {
       manufacturerObject.sections.push(element);
     });
 
     //If no user defined sections, add blank section (for storing meters within)
-    if(newSectionValues.length < 1){
+    if(newSectionsArray.length < 1){
       manufacturerObject.sections.push({
         seriesName: "",
         modelsName: ""
       });
     };
 
-    console.log(manufacturerObject)
-
-    return this.http.post('http://localhost:3000/api/newMeterManufacturer',
-      'test'
+    return this.http.post('http://localhost:3000/api/newMeterManufacturer', manufacturerObject, this.httpOptions
     );
   }
 
