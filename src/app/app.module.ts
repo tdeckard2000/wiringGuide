@@ -29,6 +29,8 @@ import { NewMeterComponent } from './edit-page/new-meter/new-meter.component';
 import { EditMeterComponent } from './edit-page/edit-meter/edit-meter.component';
 import { EditManufacturerComponent } from './edit-page/edit-manufacturer/edit-manufacturer.component';
 import { HelpDropdownComponent } from './edit-page/help-dropdown/help-dropdown.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,9 @@ import { HelpDropdownComponent } from './edit-page/help-dropdown/help-dropdown.c
     MatSliderModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: MAT_RADIO_DEFAULT_OPTIONS, useValue: {color: 'primary'}}

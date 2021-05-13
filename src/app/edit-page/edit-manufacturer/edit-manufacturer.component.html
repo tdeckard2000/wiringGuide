@@ -1,6 +1,26 @@
 <div class="divBody">
   <h3 class="tileTitle">Edit/Delete a Meter Manufacturer</h3>
 
+  <!-- Select Existing Manufacturer -->
+
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Manufacturer Name</mat-label>
+      <input type="text"
+             placeholder=""
+             aria-label="Number"
+             matInput
+             [formControl]="myControl"
+             [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+
+
   <!-- Show/Hide Reference Image -->
   <app-help-dropdown></app-help-dropdown>
 

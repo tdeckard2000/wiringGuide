@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError, retry, toArray } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 interface NewSectionsArrayObject{
@@ -45,6 +45,10 @@ export class MainService {
       observe: 'body',
       responseType: 'json'
     });
+  };
+
+  getArrayOfManufacturers(){
+    return ["test"]
   };
 
   saveNewMeterManufacturer(manufacturerName: string, utilityTypeSelected: string, newSectionsArray: Array<NewSectionsArrayObject>){
