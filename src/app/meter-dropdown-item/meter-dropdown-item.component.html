@@ -23,7 +23,7 @@
                                         <span>RR4</span>
                                 </span>
                             </div>
-                            <div *ngIf="section.meters.length > 0">
+                            <div *ngIf="section.meters && section.meters.length > 0">
                                 <!-- List of Meters in FlexBox -->
                                 <div *ngFor="let meter of section.meters">
                                     <div class="flexBox" (click)="openWiringModal(meter)">

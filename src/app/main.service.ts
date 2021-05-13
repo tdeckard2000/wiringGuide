@@ -3,10 +3,17 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+interface NewSectionsArrayObject{
+  seriesName:string,
+  seriesModel:string
+}
+
 @Injectable({
   providedIn: 'root',
 
 })
+
+
 export class MainService {
   constructor(private http:HttpClient) {
     this.searchBarText$ = new BehaviorSubject(this.searchBarText);
@@ -40,12 +47,12 @@ export class MainService {
     });
   };
 
-  saveNewMeterManufacturer(manufacturerName: string, utilityTypeSelected: string, newSectionsArray: Array<object>){
+  saveNewMeterManufacturer(manufacturerName: string, utilityTypeSelected: string, newSectionsArray: Array<NewSectionsArrayObject>){
     //Create object for DB
     let manufacturerObject = {
       manufacturer: manufacturerName,
       utilityType: utilityTypeSelected,
-      sections: [] as Array<object>
+      sections: [] as Array<NewSectionsArrayObject>
     };
 
     //Add user defined sections to object
@@ -57,7 +64,7 @@ export class MainService {
     if(newSectionsArray.length < 1){
       manufacturerObject.sections.push({
         seriesName: "",
-        modelsName: ""
+        seriesModel: "",
       });
     };
 

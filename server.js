@@ -23,14 +23,15 @@ client.connect(err => {
 // ************************************
 
   app.get('/api/allMeters', async(req, res)=>{
-    result = await meterGuideData.find().toArray();
+    const result = await meterGuideData.find().toArray();
     result.sort(sortMeterManufacturers);
     res.json(result);
   });
 
   app.post('/api/newMeterManufacturer', async(req, res)=>{
-    console.dir(req.body)
-    res.send({"test":"huh"})
+    const data = req.body;
+    const result = await meterGuideData.insertOne(data);
+    console.log(result.insertedCount);
   });
 
   if(err){console.warn(err)}else{console.warn('Connected to DB')};
@@ -39,6 +40,7 @@ client.connect(err => {
 // ************************************
 //             Functions
 // ************************************
+
 const sortMeterManufacturers = function(meterA, meterB){
 
   if(meterA.manufacturer < meterB.manufacturer){

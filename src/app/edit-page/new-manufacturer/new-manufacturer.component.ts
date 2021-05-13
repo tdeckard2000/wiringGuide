@@ -20,7 +20,7 @@ export class NewManufacturerComponent implements OnInit {
   canSave = false;
   manufacturerName = "";
   newSectionsCount = [];
-  newSectionValues: [{seriesName:string, modelsName:string }] = [{seriesName: "", modelsName: ""}];
+  newSectionValues: [{seriesName:string, seriesModel:string }] = [{seriesName: "", seriesModel: ""}];
   utilityTypeSelected = "";
   utilityTypeOptions = this.editPageService.utilityTypeOptions;
 
@@ -47,7 +47,6 @@ export class NewManufacturerComponent implements OnInit {
   };
 
   onSave(){
-    console.log("save")
     this.mainService.saveNewMeterManufacturer(this.manufacturerName, this.utilityTypeSelected, this.newSectionValues)
     .subscribe((data:any)=>{
       console.log(data);
@@ -58,7 +57,7 @@ export class NewManufacturerComponent implements OnInit {
     this.newSectionsCount.length ++;
     this.canAddNewSection = false;
     this.canSave = false;
-    this.newSectionValues[this.newSectionsCount.length - 1] = ({"seriesName":"", "modelsName":""});
+    this.newSectionValues[this.newSectionsCount.length - 1] = ({"seriesName":"", "seriesModel":""});
   };
 
   onRemoveSection(){
@@ -69,11 +68,11 @@ export class NewManufacturerComponent implements OnInit {
   };
 
   //Store Series and Model Names Together (Add a Meter Manufacturer)
-  onSeriesName(seriesName:string, modelsName:string, index:number){
+  onSeriesName(seriesName:string, seriesModel:string, index:number){
     this.newSectionValues[index] =
       {
         "seriesName": seriesName,
-        "modelsName": modelsName
+        "seriesModel": seriesModel
       };
 
       this.canAddNewSection = this.hasSeriesOrModelName();
@@ -87,7 +86,7 @@ export class NewManufacturerComponent implements OnInit {
       if(this.newSectionsCount.length < 1){
         return true
       }
-      if(section.seriesName.length < 1 && section.modelsName.length < 1){
+      if(section.seriesName.length < 1 && section.seriesModel.length < 1){
         return false;
       }
     };
@@ -98,7 +97,7 @@ export class NewManufacturerComponent implements OnInit {
   ngOnInit(): void {
     interface SeriesModelNames{
       seriesName: string;
-      modelsName: string;
+      seriesModel: string;
     };
   };
 
