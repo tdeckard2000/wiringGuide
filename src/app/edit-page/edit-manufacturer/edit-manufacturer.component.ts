@@ -22,16 +22,39 @@ export class EditManufacturerComponent implements OnInit {
   filteredOptions: Observable<string[]> | undefined;
   myControl = new FormControl();
   manufacturerNames = [""];
+  utilityTypeOptions = this.editPageService.utilityTypeOptions;
+  utilityTypeSelection = "";
 
   onReturnHome(){
+    //go back to home tile
     this.editPageService.visibleTile$.next('Home');
   };
 
-  ngOnInit() {
+  onUtilityType(data:{value:string}){
+    //track selected utility type
+    this.utilityTypeSelection = data.value;
+    this.setManufacturerList();
+  };
+
+  setManufacturerList(){
+    //define array for manufacturer drop down list
+    this.mainService.getArrayOfManufacturersByUtility(this.utilityTypeSelection)
+    .subscribe((data:object)=>{
+
+      this.manufacturerNames = data as Array<string>;
+      this.updateManufacturerDropdownList();
+    });
+  };
+
+  updateManufacturerDropdownList(){
+    //update manufacturer dropdown list with new options
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
     );
-    this.manufacturerNames = this.mainService.getArrayOfManufacturers();
+  }
+
+  ngOnInit() {
+
   }
 }

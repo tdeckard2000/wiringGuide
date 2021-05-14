@@ -23,15 +23,27 @@ client.connect(err => {
 // ************************************
 
   app.get('/api/allMeters', async(req, res)=>{
+    //returns all meter data
     const result = await meterGuideData.find().toArray();
     result.sort(sortMeterManufacturers);
     res.json(result);
   });
 
+  app.get('/api/meterManufacturers/:utilityType', async(req, res)=>{
+    //return array of meter manufacturers under given utility type
+    const utilityType = req.params.utilityType;
+    const result = await meterGuideData.find({"utilityType": utilityType}).project({_id:0, manufacturer:1}).toArray();
+    //convert array of objects to array of strings
+    const arrayOfStrings = result.map(x => x.manufacturer);
+    arrayOfStrings.sort();
+    res.json(arrayOfStrings);
+  });
+
   app.post('/api/newMeterManufacturer', async(req, res)=>{
+    //adds a new manufacturer document to collection
     const data = req.body;
     const result = await meterGuideData.insertOne(data);
-    console.log(result.insertedCount);
+    res.json(result);
   });
 
   if(err){console.warn(err)}else{console.warn('Connected to DB')};

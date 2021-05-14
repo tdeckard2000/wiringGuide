@@ -40,15 +40,17 @@ export class MainService {
 // ************************************
 
   getAllMeters(){
-    console.log("GET Request Sent")
     return this.http.get('http://localhost:3000/api/allmeters', {
       observe: 'body',
       responseType: 'json'
     });
   };
 
-  getArrayOfManufacturers(){
-    return ["test"]
+  getArrayOfManufacturersByUtility(utilityType:string){
+    return this.http.get('http://localhost:3000/api/meterManufacturers/' + utilityType, {
+      observe: 'body',
+      responseType: 'json'
+    });
   };
 
   saveNewMeterManufacturer(manufacturerName: string, utilityTypeSelected: string, newSectionsArray: Array<NewSectionsArrayObject>){

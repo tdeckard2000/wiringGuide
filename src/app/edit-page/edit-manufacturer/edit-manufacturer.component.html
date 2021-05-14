@@ -1,10 +1,17 @@
 <div class="divBody">
   <h3 class="tileTitle">Edit/Delete a Meter Manufacturer</h3>
 
-  <!-- Select Existing Manufacturer -->
+  <!-- Select Utility Type of Manufacturer -->
+  <mat-form-field class="dropdownOptions">
+    <mat-label>Utility Type</mat-label>
+    <mat-select (selectionChange)="onUtilityType($event)">
+      <mat-option *ngFor="let utilityTypeOption of utilityTypeOptions;" value={{utilityTypeOption}}>{{utilityTypeOption}}</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-  <form class="example-form">
-    <mat-form-field class="example-full-width">
+  <!-- Select Existing Manufacturer -->
+  <form class="manufacturerDropdown">
+    <mat-form-field>
       <mat-label>Manufacturer Name</mat-label>
       <input type="text"
              placeholder=""
