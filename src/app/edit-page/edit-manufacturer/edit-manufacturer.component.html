@@ -1,4 +1,7 @@
-<div class="divBody">
+<!-- #########################################################
+                     Select Manufacturer
+######################################################### -->
+<div *ngIf="!showEditDiv" class="divBody">
   <h3 class="tileTitle">Edit/Delete a Meter Manufacturer</h3>
 
   <!-- Select Utility Type of Manufacturer -->
@@ -10,17 +13,13 @@
   </mat-form-field>
 
   <!-- Select Existing Manufacturer -->
-  <form class="manufacturerDropdown">
+  <form>
     <mat-form-field>
       <mat-label>Manufacturer Name</mat-label>
-      <input type="text"
-             placeholder=""
-             aria-label="Number"
-             matInput
-             [formControl]="myControl"
-             [matAutocomplete]="auto">
+      <input type="text" placeholder="" aria-label="Number"
+             matInput [formControl]="selectedManufacturerName" [matAutocomplete]="auto">
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        <mat-option *ngFor="let option of filteredDropdownOptions | async" [value]="option">
           {{option}}
         </mat-option>
       </mat-autocomplete>
@@ -31,8 +30,40 @@
   <!-- Show/Hide Reference Image -->
   <app-help-dropdown></app-help-dropdown>
 
-  <!-- Button Back -->
-  <div class="flexRow">
+  <!-- Button Back & Next -->
+  <div class="flexRow spaceBetween">
     <button (click)="onReturnHome()" class="button">Back</button>
+    <button (click)="onClickNext()" [disabled]="!canClickNext" [ngStyle]="{'opacity': (!canClickNext? .5 : 1)}" class="button">Next</button>
   </div>
 </div>
+
+<!-- #########################################################
+                    Edit Manufacturer
+######################################################### -->
+<div *ngIf="showEditDiv" class="divBody">
+  <h3 class="tileTitle">Edit/Delete a Meter Manufacturer</h3>
+
+  <form>
+    <!-- Manufacturer Name -->
+    <mat-form-field>
+      <mat-label>Manufacturer Name</mat-label>
+      <input type="text" aria-label="Number"
+             matInput [formControl]="manufacturerName">
+    </mat-form-field>
+    <!-- Utility Type -->
+    <mat-form-field>
+      <mat-label>Utility Type</mat-label>
+      <mat-select [formControl]="utilityType">
+        <mat-option *ngFor="let utilityTypeOption of utilityTypeOptions;" value={{utilityTypeOption}}>{{utilityTypeOption}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <!-- Show/Hide Reference Image -->
+  <app-help-dropdown></app-help-dropdown>
+
+  <!-- Button Back & Save -->
+  <div class="flexRow spaceBetween">
+    <button (click)="onCancel()" class="button">Cancel</button>
+    <button (click)="onSave()" [disabled]="!canSave" [ngStyle]="{'opacity': (!canSave? .5 : 1)}" class="button">Save</button>
+  </div>

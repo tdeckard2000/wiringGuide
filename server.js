@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
+const { createScanner } = require('typescript');
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -38,6 +39,24 @@ client.connect(err => {
     arrayOfStrings.sort();
     res.json(arrayOfStrings);
   });
+
+  app.get('/api/meterManufacturerData/:utilityType/:manufacturerName', async(req, res)=>{
+    //return all meter manufacturer data
+    const utilityType = req.params.utilityType;
+    const manufacturerName = req.params.manufacturerName;
+
+    if(!utilityType || !manufacturerName){
+      res.json({result:"missingParams"})
+    };
+
+    const result = await meterGuideData.find({utilityType: utilityType, manufacturer: manufacturerName}).toArray();
+    res.json(result[0])
+  });
+
+  app.all("*", (req, res)=>{
+    console.warn("Invalid API request");
+    res.send();
+  })
 
   app.post('/api/newMeterManufacturer', async(req, res)=>{
     //adds a new manufacturer document to collection

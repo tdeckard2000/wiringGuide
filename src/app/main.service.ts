@@ -3,6 +3,12 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, retry, toArray } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+export interface MeterManufacturer{
+  manufacturer: string,
+  utilityType: string,
+  sections: Array<object>
+};
+
 interface NewSectionsArrayObject{
   seriesName:string,
   seriesModel:string
@@ -48,6 +54,13 @@ export class MainService {
 
   getArrayOfManufacturersByUtility(utilityType:string){
     return this.http.get('http://localhost:3000/api/meterManufacturers/' + utilityType, {
+      observe: 'body',
+      responseType: 'json'
+    });
+  };
+
+  getMeterManufacturerData(utilityType:string, manufacturerName:string){
+    return this.http.get('http://localhost:3000/api/meterManufacturerData/' + utilityType + '/' + manufacturerName, {
       observe: 'body',
       responseType: 'json'
     });
