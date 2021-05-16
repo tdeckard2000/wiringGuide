@@ -7,3 +7,8 @@
   top: 0;
   width: 100vw;
 }
+
+.underlineTouched.ng-touched{
+  border-bottom: 2px solid #6bcc6b;
+  margin-bottom: -2px;
+}

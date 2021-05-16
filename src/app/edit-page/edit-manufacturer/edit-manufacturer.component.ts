@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EditPageService } from '../edit-page.service';
-import { FormControl } from '@angular/forms';
+import { FormControl, NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { MainService, MeterManufacturer } from '../../main.service';
@@ -9,7 +9,7 @@ import { MainService, MeterManufacturer } from '../../main.service';
 @Component({
   selector: 'app-edit-manufacturer',
   templateUrl: './edit-manufacturer.component.html',
-  styleUrls: ['./edit-manufacturer.component.css', '../edit-page-body/edit-page-body.component.css']
+  styleUrls: ['./edit-manufacturer.component.css', '../edit-page-body/edit-page-body.component.css', '../edit-page.component.css']
 })
 
 export class EditManufacturerComponent implements OnInit {
@@ -30,11 +30,6 @@ export class EditManufacturerComponent implements OnInit {
   showEditDiv = false;
   utilityTypeOptions = this.editPageService.utilityTypeOptions;
   utilityTypeSelection = "";
-
-  //Form Controls
-  editManufacturerName = new FormControl;
-  editSections = new FormControl;
-  editUtilityType = new FormControl;
   selectedManufacturerName = new FormControl();
 
   clearManufacturerData(){
@@ -68,6 +63,10 @@ export class EditManufacturerComponent implements OnInit {
 
   };
 
+  onSubmit(data:NgForm){
+    console.log(data)
+  }
+
   onUtilityType(data:{value:string}){
     //track selected utility type
     this.utilityTypeSelection = data.value;
@@ -76,9 +75,6 @@ export class EditManufacturerComponent implements OnInit {
 
   setupManufacturerEditForm(){
     //populate edit form with current manufacturer values
-    this.editManufacturerName.setValue(this.manufacturerData.manufacturer);
-    this.editUtilityType.setValue(this.manufacturerData.utilityType);
-
   }
 
   setManufacturerList(){

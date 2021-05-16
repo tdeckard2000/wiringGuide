@@ -43,26 +43,39 @@
 <div *ngIf="showEditDiv" class="divBody">
   <h3 class="tileTitle">Edit/Delete a Meter Manufacturer</h3>
 
-  <form>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+
     <!-- Manufacturer Name -->
     <mat-form-field>
       <mat-label>Manufacturer Name</mat-label>
-      <input type="text" aria-label="Number"
-             matInput [formControl]="editManufacturerName">
+      <input class="underlineTouched" type="text" aria-label="Number"
+             matInput name="editManufacturerName"
+             [ngModel]="manufacturerData.manufacturer">
     </mat-form-field>
+
     <!-- Utility Type -->
     <mat-form-field>
       <mat-label>Utility Type</mat-label>
-      <mat-select [formControl]="editUtilityType">
+      <mat-select class="underlineTouched" name="editUtilityType" [ngModel]="manufacturerData.utilityType">
         <mat-option *ngFor="let utilityTypeOption of utilityTypeOptions;" value={{utilityTypeOption}}>{{utilityTypeOption}}</mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field *ngFor="let section of manufacturerData.sections">
-      <mat-label>Series</mat-label>
-      <p>{{ section.seriesName}}</p>
-      <input type="text" aria-label="Number"
-      matInput [formControl]="editSections">
-    </mat-form-field>
+
+    <!-- Sections -->
+    <div *ngFor="let section of manufacturerData.sections">
+      <!-- Series Name -->
+      <mat-form-field>
+        <mat-label>Series</mat-label>
+        <input class="underlineTouched" type="text" aria-label="Number"
+        matInput name="editSeriesName" [ngModel]="section.seriesName">
+      </mat-form-field>
+      <!-- Models Name -->
+      <mat-form-field>
+        <mat-label>Series</mat-label>
+        <input class="underlineTouched" type="text" aria-label="Number"
+        matInput name="editModelsName" [ngModel]="section.modelsName">
+      </mat-form-field>
+    </div>
   </form>
 
   <!-- Show/Hide Reference Image -->
