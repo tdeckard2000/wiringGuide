@@ -26,18 +26,19 @@ export class EditManufacturerComponent implements OnInit {
   canSave = false;
   filteredDropdownOptions: Observable<string[]> | undefined;
   manufacturerNames = [""];
-  manufacturerData: MeterManufacturer = {manufacturer: "", utilityType: "", sections: []};
+  manufacturerData: MeterManufacturer = {manufacturer: "", utilityType: "", sections: [{seriesName:"", modelsName:""}]};
   showEditDiv = false;
   utilityTypeOptions = this.editPageService.utilityTypeOptions;
   utilityTypeSelection = "";
 
   //Form Controls
-  manufacturerName = new FormControl;
+  editManufacturerName = new FormControl;
+  editSections = new FormControl;
+  editUtilityType = new FormControl;
   selectedManufacturerName = new FormControl();
-  utilityType = new FormControl;
 
   clearManufacturerData(){
-    this.manufacturerData = {manufacturer: "", utilityType: "", sections: []};
+    this.manufacturerData = {manufacturer: "", utilityType: "", sections: [{seriesName:"", modelsName:""}]};
   }
 
   onCancel(){
@@ -74,8 +75,10 @@ export class EditManufacturerComponent implements OnInit {
   };
 
   setupManufacturerEditForm(){
-    this.manufacturerName.setValue(this.manufacturerData.manufacturer);
-    this.utilityType.setValue(this.manufacturerData.utilityType);
+    //populate edit form with current manufacturer values
+    this.editManufacturerName.setValue(this.manufacturerData.manufacturer);
+    this.editUtilityType.setValue(this.manufacturerData.utilityType);
+
   }
 
   setManufacturerList(){

@@ -6,7 +6,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export interface MeterManufacturer{
   manufacturer: string,
   utilityType: string,
-  sections: Array<object>
+  sections: [{
+    seriesName: string,
+    modelsName: string,
+    meters?:Array<object>
+  }];
 };
 
 interface NewSectionsArrayObject{

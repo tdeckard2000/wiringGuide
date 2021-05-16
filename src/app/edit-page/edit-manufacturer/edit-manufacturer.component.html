@@ -48,14 +48,20 @@
     <mat-form-field>
       <mat-label>Manufacturer Name</mat-label>
       <input type="text" aria-label="Number"
-             matInput [formControl]="manufacturerName">
+             matInput [formControl]="editManufacturerName">
     </mat-form-field>
     <!-- Utility Type -->
     <mat-form-field>
       <mat-label>Utility Type</mat-label>
-      <mat-select [formControl]="utilityType">
+      <mat-select [formControl]="editUtilityType">
         <mat-option *ngFor="let utilityTypeOption of utilityTypeOptions;" value={{utilityTypeOption}}>{{utilityTypeOption}}</mat-option>
       </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngFor="let section of manufacturerData.sections">
+      <mat-label>Series</mat-label>
+      <p>{{ section.seriesName}}</p>
+      <input type="text" aria-label="Number"
+      matInput [formControl]="editSections">
     </mat-form-field>
   </form>
 
