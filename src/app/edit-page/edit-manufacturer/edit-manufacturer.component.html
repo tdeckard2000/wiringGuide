@@ -48,7 +48,7 @@
     <!-- Manufacturer Name -->
     <mat-form-field>
       <mat-label>Manufacturer Name</mat-label>
-      <input class="underlineTouched" type="text" aria-label="Number"
+      <input class="underlineDirty" type="text" aria-label="Number"
              matInput name="editManufacturerName"
              [ngModel]="manufacturerData.manufacturer">
     </mat-form-field>
@@ -56,33 +56,44 @@
     <!-- Utility Type -->
     <mat-form-field>
       <mat-label>Utility Type</mat-label>
-      <mat-select class="underlineTouched" name="editUtilityType" [ngModel]="manufacturerData.utilityType">
+      <mat-select class="underlineDirty" name="editUtilityType" [ngModel]="manufacturerData.utilityType">
         <mat-option *ngFor="let utilityTypeOption of utilityTypeOptions;" value={{utilityTypeOption}}>{{utilityTypeOption}}</mat-option>
       </mat-select>
     </mat-form-field>
 
     <!-- Sections -->
-    <div *ngFor="let section of manufacturerData.sections">
-      <!-- Series Name -->
-      <mat-form-field>
-        <mat-label>Series</mat-label>
-        <input class="underlineTouched" type="text" aria-label="Number"
-        matInput name="editSeriesName" [ngModel]="section.seriesName">
-      </mat-form-field>
-      <!-- Models Name -->
-      <mat-form-field>
-        <mat-label>Series</mat-label>
-        <input class="underlineTouched" type="text" aria-label="Number"
-        matInput name="editModelsName" [ngModel]="section.modelsName">
-      </mat-form-field>
+    <div *ngFor="let section of manufacturerData.sections; index as i">
+      <div *ngIf="!section.deleted">
+        <!-- Series Name -->
+        <mat-form-field>
+          <mat-label>Series</mat-label>
+          <input class="underlineDirty" type="text" aria-label="Number"
+          matInput name="editSeriesName.{{i}}" [ngModel]="section.seriesName">
+        </mat-form-field>
+        <!-- Models Name -->
+        <mat-form-field>
+          <mat-label>Model</mat-label>
+          <input class="underlineDirty" type="text" aria-label="Number"
+          matInput name="editModelsName.{{i}}" [ngModel]="section.modelsName">
+        </mat-form-field>
+        <!-- Delete Button -->
+        <button class="trashIcon" type="button" (click)="onDeleteSection($event)" name="section.{{i}}">
+          <img src="./assets/icons/trashBlack.svg" alt="">
+        </button>
+      </div>
+    </div>
+    <span class="flexRow">
+      <button type="button" (click)="onNewSection()" class="button buttonAdd">
+        <img src="./assets/icons/plusBlack.svg" alt=""> Add Section
+      </button>
+    </span>
+    <!-- Show/Hide Reference Image -->
+    <app-help-dropdown></app-help-dropdown>
+
+    <!-- Button Back & Save -->
+    <div class="flexRow spaceBetween">
+      <button (click)="onCancel()" class="button">Cancel</button>
+      <button type="submit" [disabled]="canSave" [ngStyle]="{'opacity': (!canSave? .5 : 1)}" class="button">Save</button>
     </div>
   </form>
 
-  <!-- Show/Hide Reference Image -->
-  <app-help-dropdown></app-help-dropdown>
-
-  <!-- Button Back & Save -->
-  <div class="flexRow spaceBetween">
-    <button (click)="onCancel()" class="button">Cancel</button>
-    <button (click)="onSave()" [disabled]="!canSave" [ngStyle]="{'opacity': (!canSave? .5 : 1)}" class="button">Save</button>
-  </div>

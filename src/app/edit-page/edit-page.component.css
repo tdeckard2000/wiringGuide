@@ -8,7 +8,21 @@
   width: 100vw;
 }
 
-.underlineTouched.ng-touched{
+.trashIcon{
+  background: none;
+  border: none;
+}
+
+.trashIcon:hover{
+  cursor: pointer;
+}
+
+.trashIcon img{
+  filter: invert(86%) sepia(6%) saturate(6673%) hue-rotate(303deg) brightness(103%) contrast(92%);
+  pointer-events: none;
+}
+
+.underlineDirty.ng-dirty{
   border-bottom: 2px solid #6bcc6b;
   margin-bottom: -2px;
 }

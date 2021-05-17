@@ -20,7 +20,7 @@ export class NewManufacturerComponent implements OnInit {
   canSave = false;
   manufacturerName = "";
   newSectionsCount = [];
-  newSectionValues: [{seriesName:string, seriesModel:string }] = [{seriesName: "", seriesModel: ""}];
+  newSectionValues: [{seriesName:string, modelsName:string }] = [{seriesName: "", modelsName: ""}];
   utilityTypeSelected = "";
   utilityTypeOptions = this.editPageService.utilityTypeOptions;
 
@@ -57,7 +57,7 @@ export class NewManufacturerComponent implements OnInit {
     this.newSectionsCount.length ++;
     this.canAddNewSection = false;
     this.canSave = false;
-    this.newSectionValues[this.newSectionsCount.length - 1] = ({"seriesName":"", "seriesModel":""});
+    this.newSectionValues[this.newSectionsCount.length - 1] = ({"seriesName":"", "modelsName":""});
   };
 
   onRemoveSection(){
@@ -68,11 +68,11 @@ export class NewManufacturerComponent implements OnInit {
   };
 
   //Store Series and Model Names Together (Add a Meter Manufacturer)
-  onSeriesName(seriesName:string, seriesModel:string, index:number){
+  onSeriesName(seriesName:string, modelsName:string, index:number){
     this.newSectionValues[index] =
       {
         "seriesName": seriesName,
-        "seriesModel": seriesModel
+        "modelsName": modelsName
       };
 
       this.canAddNewSection = this.hasSeriesOrModelName();
@@ -86,7 +86,7 @@ export class NewManufacturerComponent implements OnInit {
       if(this.newSectionsCount.length < 1){
         return true
       }
-      if(section.seriesName.length < 1 && section.seriesModel.length < 1){
+      if(section.seriesName.length < 1 && section.modelsName.length < 1){
         return false;
       }
     };

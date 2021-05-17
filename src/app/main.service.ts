@@ -10,12 +10,13 @@ export interface MeterManufacturer{
     seriesName: string,
     modelsName: string,
     meters?:Array<object>
+    deleted?: boolean
   }];
 };
 
 interface NewSectionsArrayObject{
   seriesName:string,
-  seriesModel:string
+  modelsName:string
 }
 
 @Injectable({
@@ -87,7 +88,7 @@ export class MainService {
     if(newSectionsArray.length < 1){
       manufacturerObject.sections.push({
         seriesName: "",
-        seriesModel: "",
+        modelsName: "",
       });
     };
 

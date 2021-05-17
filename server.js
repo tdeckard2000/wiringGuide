@@ -53,17 +53,17 @@ client.connect(err => {
     res.json(result[0])
   });
 
-  app.all("*", (req, res)=>{
-    console.warn("Invalid API request");
-    res.send();
-  })
-
   app.post('/api/newMeterManufacturer', async(req, res)=>{
     //adds a new manufacturer document to collection
     const data = req.body;
     const result = await meterGuideData.insertOne(data);
     res.json(result);
   });
+
+  app.all("*", (req, res)=>{
+    console.warn("Invalid API request");
+    res.send();
+  })
 
   if(err){console.warn(err)}else{console.warn('Connected to DB')};
 });

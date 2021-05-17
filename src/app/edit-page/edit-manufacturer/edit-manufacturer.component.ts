@@ -37,6 +37,7 @@ export class EditManufacturerComponent implements OnInit {
   }
 
   onCancel(){
+    //Return to manufacturer selection div
     this.showEditDiv = false;
     this.selectedManufacturerName.setValue("");
     this.canClickNext = false;
@@ -44,6 +45,7 @@ export class EditManufacturerComponent implements OnInit {
   }
 
   onClickNext(){
+    //Move to edit div and populate with data from DB
     this.showEditDiv = true;
     this.clearManufacturerData();
     this.mainService.getMeterManufacturerData(this.utilityTypeSelection, this.selectedManufacturerName.value)
@@ -54,13 +56,21 @@ export class EditManufacturerComponent implements OnInit {
     });
   };
 
+  onDeleteSection(data:any){
+    //Determine which element should be deleted
+    let sectionToDelete = (data.toElement.name).split(".")[1];
+    //Remove that element from local copy of object
+    this.manufacturerData.sections[sectionToDelete].deleted = true;
+  };
+
+  onNewSection(){
+    //Add a new section with empty Series and Model names
+    this.manufacturerData.sections.push({seriesName:"", modelsName:""});
+  };
+
   onReturnHome(){
     //go back to home tile
     this.editPageService.visibleTile$.next('Home');
-  };
-
-  onSave(){
-
   };
 
   onSubmit(data:NgForm){
