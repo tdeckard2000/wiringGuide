@@ -43,7 +43,7 @@
 <div *ngIf="showEditDiv" class="divBody">
   <h3 class="tileTitle">Edit/Delete a Meter Manufacturer</h3>
 
-  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm" (keyup)="onKeyUp()">
 
     <!-- Manufacturer Name -->
     <mat-form-field>
@@ -62,7 +62,8 @@
     </mat-form-field>
 
     <!-- Sections -->
-    <div *ngFor="let section of manufacturerData.sections; index as i">
+    <div *ngFor="let section of manufacturerData.sections; index as i" ngModelGroup="manufacturerSection">
+      <!-- Don't populate sections with "deleted = true" -->
       <div *ngIf="!section.deleted">
         <!-- Series Name -->
         <mat-form-field>
@@ -82,6 +83,7 @@
         </button>
       </div>
     </div>
+    <p *ngIf="showSeriesModelNameMissingText" class="helperText">*Both fields cannot be empty.</p>
     <span class="flexRow">
       <button type="button" (click)="onNewSection()" class="button buttonAdd">
         <img src="./assets/icons/plusBlack.svg" alt=""> Add Section
@@ -93,7 +95,6 @@
     <!-- Button Back & Save -->
     <div class="flexRow spaceBetween">
       <button (click)="onCancel()" class="button">Cancel</button>
-      <button type="submit" [disabled]="canSave" [ngStyle]="{'opacity': (!canSave? .5 : 1)}" class="button">Save</button>
+      <button type="submit" [disabled]="!formIsValid" [ngStyle]="{'opacity': (!formIsValid? .5 : 1)}" class="button">Save</button>
     </div>
   </form>
-

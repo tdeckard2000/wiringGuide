@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewChecked } from '@angular/core';
 import { EditPageService } from '../edit-page.service';
 import { FormControl, NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -21,13 +21,17 @@ export class EditManufacturerComponent implements OnInit {
     return this.manufacturerNames.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
   };
 
+  //Form Data
+  @ViewChild('f') public formData: NgForm = {} as NgForm;
+
   //Declarations
   canClickNext = false;
-  canSave = false;
   filteredDropdownOptions: Observable<string[]> | undefined;
+  formIsValid = false;
   manufacturerNames = [""];
   manufacturerData: MeterManufacturer = {manufacturer: "", utilityType: "", sections: [{seriesName:"", modelsName:""}]};
   showEditDiv = false;
+  showSeriesModelNameMissingText = false;
   utilityTypeOptions = this.editPageService.utilityTypeOptions;
   utilityTypeSelection = "";
   selectedManufacturerName = new FormControl();
@@ -59,13 +63,22 @@ export class EditManufacturerComponent implements OnInit {
   onDeleteSection(data:any){
     //Determine which element should be deleted
     let sectionToDelete = (data.toElement.name).split(".")[1];
-    //Remove that element from local copy of object
+    //Remove that element from local copy of object (DOM will then update)
     this.manufacturerData.sections[sectionToDelete].deleted = true;
-  };
+    //Allow DOM to update before validation
+    setTimeout(()=>{
+      this.validateForm();
+    }, 0);
+};
+
+  onKeyUp(){
+    this.validateForm();
+  }
 
   onNewSection(){
     //Add a new section with empty Series and Model names
     this.manufacturerData.sections.push({seriesName:"", modelsName:""});
+    this.formIsValid = false;
   };
 
   onReturnHome(){
@@ -75,7 +88,8 @@ export class EditManufacturerComponent implements OnInit {
 
   onSubmit(data:NgForm){
     console.log(data)
-  }
+    this.validateForm()
+  };
 
   onUtilityType(data:{value:string}){
     //track selected utility type
@@ -104,6 +118,36 @@ export class EditManufacturerComponent implements OnInit {
       startWith(''),
       map(value => this._filter(value))
     );
+  };
+
+  validateForm(){
+    let manufacturerName = this.formData.form.value.editManufacturerName;
+    let utilityType = this.formData.form.value.editUtilityType;
+    let manufacturerSection = this.formData.form.value.manufacturerSection;
+    let sectionValues = Object.values(manufacturerSection);
+
+    //Ensure each section contains at least model OR series name
+    for(let i=0; i<sectionValues.length; i+=2){
+      let seriesName = sectionValues[i] as string;
+      let modelsName = sectionValues[i+1] as string;
+      if(seriesName.length < 1 && modelsName.length <1){
+        this.showSeriesModelNameMissingText = true;
+        return this.formIsValid = false;
+      }
+    }
+
+    //Ensure Manufacturer Name exists
+    if(manufacturerName.length<1){
+      return this.formIsValid = false;
+    }
+
+    //Ensure Utility Type is valid
+    if(!this.editPageService.utilityTypeOptions.includes(utilityType)){
+      return this.formIsValid = false;
+    }
+
+    this.showSeriesModelNameMissingText = false;
+    return this.formIsValid = true;
   };
 
   validateManufacturerSelection(){

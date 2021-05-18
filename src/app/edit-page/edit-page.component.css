@@ -22,7 +22,7 @@
   pointer-events: none;
 }
 
-.underlineDirty.ng-dirty{
-  border-bottom: 2px solid #6bcc6b;
+/* .underlineDirty.ng-dirty{
+  border-bottom: 2px solid #65c8da;
   margin-bottom: -2px;
-}
+} */
