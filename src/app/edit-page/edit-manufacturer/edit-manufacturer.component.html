@@ -84,8 +84,9 @@
       </div>
     </div>
     <p *ngIf="showSeriesModelNameMissingText" class="helperText">*Both fields cannot be empty.</p>
+    <!-- New Section Button -->
     <span class="flexRow">
-      <button type="button" (click)="onNewSection()" class="button buttonAdd">
+      <button type="button" [disabled]="showSeriesModelNameMissingText" (click)="onNewSection()" class="button buttonAdd">
         <img src="./assets/icons/plusBlack.svg" alt=""> Add Section
       </button>
     </span>

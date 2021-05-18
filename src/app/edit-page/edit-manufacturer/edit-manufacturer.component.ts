@@ -79,6 +79,7 @@ export class EditManufacturerComponent implements OnInit {
     //Add a new section with empty Series and Model names
     this.manufacturerData.sections.push({seriesName:"", modelsName:""});
     this.formIsValid = false;
+    this.validateForm();
   };
 
   onReturnHome(){
