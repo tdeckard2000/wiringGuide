@@ -43,7 +43,7 @@
 <div *ngIf="showEditDiv" class="divBody">
   <h3 class="tileTitle">Edit/Delete a Meter Manufacturer</h3>
 
-  <form (ngSubmit)="onSubmit(f)" #f="ngForm" (keyup)="onKeyUp()">
+  <form (ngSubmit)="onSubmit(f.value)" #f="ngForm" (keyup)="onKeyUp()">
 
     <!-- Manufacturer Name -->
     <mat-form-field>

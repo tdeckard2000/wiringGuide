@@ -4,6 +4,7 @@ import { FormControl, NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { MainService, MeterManufacturer } from '../../main.service';
+import { EditManufacturerFormData } from '../edit-page.service';
 // import { MeterManufacturer } from '../..'
 
 @Component({
@@ -36,9 +37,16 @@ export class EditManufacturerComponent implements OnInit {
   utilityTypeSelection = "";
   selectedManufacturerName = new FormControl();
 
+  buildFormObject(formData: EditManufacturerFormData){
+    let formObject: MeterManufacturer = {} as MeterManufacturer;
+    formObject.manufacturer = formData.editManufacturerName;
+    console.log(formObject)
+
+  };
+
   clearManufacturerData(){
     this.manufacturerData = {manufacturer: "", utilityType: "", sections: [{seriesName:"", modelsName:""}]};
-  }
+  };
 
   onCancel(){
     //Return to manufacturer selection div
@@ -46,7 +54,7 @@ export class EditManufacturerComponent implements OnInit {
     this.selectedManufacturerName.setValue("");
     this.canClickNext = false;
     this.clearManufacturerData();
-  }
+  };
 
   onClickNext(){
     //Move to edit div and populate with data from DB
@@ -55,7 +63,6 @@ export class EditManufacturerComponent implements OnInit {
     this.mainService.getMeterManufacturerData(this.utilityTypeSelection, this.selectedManufacturerName.value)
     .subscribe((data:object)=>{
       this.manufacturerData = data as MeterManufacturer;
-      console.log(this.manufacturerData)
       this.setupManufacturerEditForm();
     });
   };
@@ -87,9 +94,9 @@ export class EditManufacturerComponent implements OnInit {
     this.editPageService.visibleTile$.next('Home');
   };
 
-  onSubmit(data:NgForm){
-    console.log(data)
-    this.validateForm()
+  onSubmit(formData:EditManufacturerFormData){
+    this.buildFormObject(formData);
+    this.validateForm();
   };
 
   onUtilityType(data:{value:string}){
