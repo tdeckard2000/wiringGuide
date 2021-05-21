@@ -31,6 +31,7 @@ export class EditManufacturerComponent implements OnInit {
   formIsValid = false;
   manufacturerNames = [""];
   manufacturerData: MeterManufacturer = {manufacturer: "", utilityType: "", sections: [{seriesName:"", modelsName:""}]};
+  manufacturerDataModified = ""
   showEditDiv = false;
   showSeriesModelNameMissingText = false;
   utilityTypeOptions = this.editPageService.utilityTypeOptions;
@@ -38,10 +39,37 @@ export class EditManufacturerComponent implements OnInit {
   selectedManufacturerName = new FormControl();
 
   buildFormObject(formData: EditManufacturerFormData){
-    let formObject: MeterManufacturer = {} as MeterManufacturer;
-    formObject.manufacturer = formData.editManufacturerName;
-    console.log(formObject)
-
+    //Get form data ready for database
+    //update manufacturer name
+    this.manufacturerData.manufacturer = formData.editManufacturerName;
+    //update utility type (checking validity)
+    if(this.editPageService.utilityTypeOptions.includes(formData.editUtilityType)){
+      this.manufacturerData.utilityType = formData.editUtilityType;
+    }else{
+      console.warn("invalid utility type selected");
+    };
+    //update each section with new Series/Model names
+    for(const section in formData.manufacturerSection){
+      //split identifier (ex: editModelsName.1) into name and number
+      let whatToUpdate = section.split(".")[0];
+      let indexToUpdate = parseInt(section.split(".")[1]);
+      if(whatToUpdate === "editModelsName"){
+        this.manufacturerData.sections[indexToUpdate].modelsName = formData.manufacturerSection[section];
+      }else if(whatToUpdate === 'editSeriesName'){
+        this.manufacturerData.sections[indexToUpdate].seriesName = formData.manufacturerSection[section];
+      };
+    };
+    //remove sections with no meters that have a 'deleted:true' field.
+    //no need to archive deleted sections that have no meters associated
+    for(let i = 0; i < this.manufacturerData.sections.length; i++){
+      let section = this.manufacturerData.sections[i];
+      if(section.deleted && section.deleted === true && (!section.meters || section.meters.length < 1)){
+        this.manufacturerData.sections.splice(i,1);
+        i--;
+      };
+    };
+    //
+    this.mainService.postUpdatedMeterManufacturer(this.manufacturerData);
   };
 
   clearManufacturerData(){
@@ -63,6 +91,7 @@ export class EditManufacturerComponent implements OnInit {
     this.mainService.getMeterManufacturerData(this.utilityTypeSelection, this.selectedManufacturerName.value)
     .subscribe((data:object)=>{
       this.manufacturerData = data as MeterManufacturer;
+      // this.manufacturerDataReference = data as MeterManufacturer;
       this.setupManufacturerEditForm();
     });
   };
@@ -86,6 +115,7 @@ export class EditManufacturerComponent implements OnInit {
     //Add a new section with empty Series and Model names
     this.manufacturerData.sections.push({seriesName:"", modelsName:""});
     this.formIsValid = false;
+    this.showSeriesModelNameMissingText = true;
     this.validateForm();
   };
 
@@ -132,16 +162,23 @@ export class EditManufacturerComponent implements OnInit {
     let manufacturerName = this.formData.form.value.editManufacturerName;
     let utilityType = this.formData.form.value.editUtilityType;
     let manufacturerSection = this.formData.form.value.manufacturerSection;
-    let sectionValues = Object.values(manufacturerSection);
+    let sectionValues = manufacturerSection? Object.values(manufacturerSection) : [];
 
     //Ensure each section contains at least model OR series name
     for(let i=0; i<sectionValues.length; i+=2){
       let seriesName = sectionValues[i] as string;
       let modelsName = sectionValues[i+1] as string;
-      if(seriesName.length < 1 && modelsName.length <1){
+      if(seriesName.length < 1 && modelsName.length < 1){
         this.showSeriesModelNameMissingText = true;
         return this.formIsValid = false;
+      }else{
+        this.showSeriesModelNameMissingText = false;
       }
+    }
+
+    if(sectionValues.length < 1){
+      console.log(sectionValues)
+      this.showSeriesModelNameMissingText = false;
     }
 
     //Ensure Manufacturer Name exists
@@ -154,7 +191,6 @@ export class EditManufacturerComponent implements OnInit {
       return this.formIsValid = false;
     }
 
-    this.showSeriesModelNameMissingText = false;
     return this.formIsValid = true;
   };
 

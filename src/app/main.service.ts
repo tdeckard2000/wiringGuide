@@ -71,7 +71,7 @@ export class MainService {
     });
   };
 
-  saveNewMeterManufacturer(manufacturerName: string, utilityTypeSelected: string, newSectionsArray: Array<NewSectionsArrayObject>){
+  postNewMeterManufacturer(manufacturerName: string, utilityTypeSelected: string, newSectionsArray: Array<NewSectionsArrayObject>){
     //Create object for DB
     let manufacturerObject = {
       manufacturer: manufacturerName,
@@ -94,6 +94,10 @@ export class MainService {
 
     return this.http.post('http://localhost:3000/api/newMeterManufacturer', manufacturerObject, this.httpOptions
     );
+  }
+
+  postUpdatedMeterManufacturer(meterManufacturerData:MeterManufacturer){
+    console.log(meterManufacturerData);
   }
 
 }
