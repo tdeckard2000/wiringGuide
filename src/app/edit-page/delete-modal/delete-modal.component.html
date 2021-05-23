@@ -1,0 +1,28 @@
+<div class="modalBody angularTheme">
+  <div class="modalContent">
+    <!-- title -->
+    <h2 mat-dialog-title>Are you sure?</h2>
+    <mat-dialog-content class="dialogContent">Deleting "{{data.manufacturer}}" will delete the following meters:</mat-dialog-content>
+
+    <!-- list of meters that will also be removed -->
+    <div class="meterListDiv">
+      <div *ngFor="let section of data.sections">
+        <p class="metersInList" *ngFor="let meter of section.meters; let i = index">{{meter.meterName}}</p>
+        <!-- if no meters to display -->
+        <p class="dialogContent" *ngIf="!section.meters || section.meters.length < 1 ">No meters.</p>
+      </div>
+      <!-- if no sections -->
+      <p class="dialogContent" *ngIf="!data.sections">No meters.</p>
+      </div>
+
+    <!-- loading animation and text -->
+    <mat-spinner *ngIf="" class="loadingSpinner" [diameter]="50"></mat-spinner>
+    <mat-dialog-content class="dialogContent" *ngIf="">There was an error deleting. Try again.</mat-dialog-content>
+    <mat-dialog-content class="dialogContent" *ngIf="">Deleted successfully <span>✔</span></mat-dialog-content>
+    <div class="flexBox">
+      <button [disabled]="false" [ngStyle]="{'opacity': false ? .5 : 1}" class="buttonCancel" mat-dialog-close>Cancel</button>
+      <button [disabled]="false" [ngStyle]="{'opacity': false ? .5 : 1}" class="buttonDelete" mat-dialog-close>Delete</button>
+      <button *ngIf="" [disabled]="false" [ngStyle]="{'opacity': false ? .5 : 1}" class="buttonClose" mat-dialog-close>Done</button>
+    </div>
+  </div>
+</div>

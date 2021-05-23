@@ -1,3 +1,4 @@
+import { InterpolationConfig } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { MainService } from '../main.service';
@@ -6,10 +7,15 @@ export interface EditManufacturerFormData{
   editManufacturerName: string,
   editUtilityType: string,
   manufacturerSection: {
-  // "editModelsName.0": string,
-  // "editSeriesName.0": string,
   [key: string]: string
   };
+};
+
+export interface SavingModalData{
+  showLoadingAnimation: boolean,
+  showSuccessText: boolean,
+  showErrorText: boolean,
+  errorPreview: string
 };
 
 @Injectable({

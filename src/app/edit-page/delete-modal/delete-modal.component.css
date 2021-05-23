@@ -1,0 +1,99 @@
+.buttonCancel{
+  background-color: #777;
+  border: 2px solid;
+  border-radius: 6px;
+  color: white;
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 20px;
+  padding: .375rem .75rem;
+  text-align: center;
+  width: 128px;
+}
+
+.buttonCancel:focus{
+  background-color: #666;
+  border: 2px solid rgb(163, 163, 163);
+}
+
+.buttonCancel:hover{
+  cursor: pointer;
+}
+
+.buttonDelete{
+  background-color: #d05c5c;
+  border: 2px solid;
+  border-radius: 6px;
+  color: white;
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 20px;
+  padding: .375rem .75rem;
+  text-align: center;
+  width: 128px;
+}
+
+.buttonDelete:focus{
+  background-color: #af4e4e;
+  border: 2px solid rgb(163, 163, 163);
+}
+
+.buttonDelete:hover{
+  cursor: pointer;
+}
+
+.dialogContent{
+  margin-top: 10px;
+  text-align: center;
+}
+
+.dialogContent span{
+  color: #70af70;
+  font-size: 23px;
+}
+
+.flexBox{
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: absolute;
+  width: 100%;
+}
+
+.loadingSpinner{
+  margin: auto;
+  margin-top: 35px;
+}
+
+.meterListDiv{
+  border: 1px solid gray;
+  border-radius: 6px;
+  height: 100px;
+  margin: auto;
+  margin-top: 20px;
+  overflow: auto;
+  width: 300px;
+}
+
+.metersInList{
+  margin: 8px;
+  text-align: center;
+}
+
+.modalBody{
+  background-color: white;
+  border-radius: 3px;
+  font-family: sans-serif;
+  margin: -20px;
+  padding: 20px;
+}
+
+.modalContent{
+  max-width: 100%;
+  min-height: 260px;
+  position: relative;
+  width: 450px;
+}

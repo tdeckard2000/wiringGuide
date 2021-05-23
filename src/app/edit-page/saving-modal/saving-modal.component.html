@@ -1,0 +1,12 @@
+<div class="modalBody angularTheme">
+  <div class="modalContent">
+    <h2 mat-dialog-title>Saving</h2>
+    <mat-spinner *ngIf="data.showLoadingAnimation" class="loadingSpinner" [diameter]="50"></mat-spinner>
+    <mat-dialog-content class="dialogContent" *ngIf="data.showSuccessText">Saved successfully <span>✔</span></mat-dialog-content>
+    <mat-dialog-content class="dialogContent" *ngIf="data.showErrorText">There was an error saving. Try again.</mat-dialog-content>
+    <p *ngIf="data.showErrorText" class="errorPreview">Preview of Error: {{data.errorPreview | json}}</p>
+    <div class="flexBox">
+      <button [disabled]="data.showLoadingAnimation" [ngStyle]="{'opacity': data.showLoadingAnimation ? .5 : 1}" class="buttonClose" mat-dialog-close>Close</button>
+    </div>
+  </div>
+</div>

@@ -1,11 +1,13 @@
 import { Component, OnInit, ViewChild, AfterViewChecked } from '@angular/core';
-import { EditPageService } from '../edit-page.service';
+import { EditPageService, SavingModalData } from '../edit-page.service';
 import { FormControl, NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { MainService, MeterManufacturer } from '../../main.service';
 import { EditManufacturerFormData } from '../edit-page.service';
-// import { MeterManufacturer } from '../..'
+import { MatDialog } from '@angular/material/dialog';
+import { SavingModalComponent } from '../saving-modal/saving-modal.component';
+import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
 
 @Component({
   selector: 'app-edit-manufacturer',
@@ -15,7 +17,7 @@ import { EditManufacturerFormData } from '../edit-page.service';
 
 export class EditManufacturerComponent implements OnInit {
 
-  constructor(private editPageService: EditPageService, private mainService: MainService) { }
+  constructor(private editPageService: EditPageService, private mainService: MainService, public dialog: MatDialog) { }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
@@ -30,13 +32,14 @@ export class EditManufacturerComponent implements OnInit {
   filteredDropdownOptions: Observable<string[]> | undefined;
   formIsValid = false;
   manufacturerNames = [""];
-  manufacturerData: MeterManufacturer = {manufacturer: "", utilityType: "", sections: [{seriesName:"", modelsName:""}]};
+  manufacturerData: MeterManufacturer = {_id: "", manufacturer: "", utilityType: "", sections: [{seriesName:"", modelsName:""}]};
   manufacturerDataModified = ""
+  savingModalData: SavingModalData = {showLoadingAnimation: true, showSuccessText: false, showErrorText: false, errorPreview: "error info"};
+  selectedManufacturerName = new FormControl();
   showEditDiv = false;
   showSeriesModelNameMissingText = false;
   utilityTypeOptions = this.editPageService.utilityTypeOptions;
   utilityTypeSelection = "";
-  selectedManufacturerName = new FormControl();
 
   buildFormObject(formData: EditManufacturerFormData){
     //Get form data ready for database
@@ -68,12 +71,12 @@ export class EditManufacturerComponent implements OnInit {
         i--;
       };
     };
-    //
-    this.mainService.postUpdatedMeterManufacturer(this.manufacturerData);
+    //send final object to DB
+    this.sendToDB();
   };
 
   clearManufacturerData(){
-    this.manufacturerData = {manufacturer: "", utilityType: "", sections: [{seriesName:"", modelsName:""}]};
+    this.manufacturerData = {_id: "", manufacturer: "", utilityType: "", sections: [{seriesName:"", modelsName:""}]};
   };
 
   onCancel(){
@@ -95,6 +98,14 @@ export class EditManufacturerComponent implements OnInit {
       this.setupManufacturerEditForm();
     });
   };
+
+  onDeleteManufacturer(){
+    //open the "are you sure" modal & pass data to modal
+    this.dialog.open(DeleteModalComponent, {
+      data: this.manufacturerData,
+      disableClose: true
+    });
+  }
 
   onDeleteSection(data:any){
     //Determine which element should be deleted
@@ -119,20 +130,58 @@ export class EditManufacturerComponent implements OnInit {
     this.validateForm();
   };
 
+  openSaveModal(){
+    //open the "saving" modal & pass data to modal
+    this.dialog.open(SavingModalComponent, {
+      data: this.savingModalData,
+      disableClose: true
+    });
+  };
+
   onReturnHome(){
     //go back to home tile
     this.editPageService.visibleTile$.next('Home');
   };
 
   onSubmit(formData:EditManufacturerFormData){
+    //reset save modal values
+    this.savingModalData = {
+      showLoadingAnimation: true,
+      showErrorText: false,
+      showSuccessText: false,
+      errorPreview: ""
+    };
+    //open modal to show save progress
+    this.openSaveModal();
+    //prep object for DB
     this.buildFormObject(formData);
-    this.validateForm();
+    //disable save button
+    this.formIsValid = false;
   };
 
   onUtilityType(data:{value:string}){
     //track selected utility type
     this.utilityTypeSelection = data.value;
     this.setManufacturerList();
+  };
+
+  sendToDB(){
+    this.mainService.postUpdatedMeterManufacturer(this.manufacturerData).subscribe((data: any)=>{
+      //if save is successful
+      if(data.result && data.result.nModified > 0){
+        //show "success" on modal
+        setTimeout(()=>{
+          this.savingModalData.showLoadingAnimation = false;
+          this.savingModalData.showSuccessText = true;
+        }, 3000)
+      }else{
+        this.savingModalData.showLoadingAnimation = false;
+        //show "error" on modal
+        this.savingModalData.showErrorText = true;
+        //display error data in modal
+        this.savingModalData.errorPreview = data;
+      };
+    });
   };
 
   setupManufacturerEditForm(){
@@ -177,7 +226,6 @@ export class EditManufacturerComponent implements OnInit {
     }
 
     if(sectionValues.length < 1){
-      console.log(sectionValues)
       this.showSeriesModelNameMissingText = false;
     }
 
