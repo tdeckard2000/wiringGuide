@@ -11,16 +11,17 @@ export interface EditManufacturerFormData{
   };
 };
 
-export interface SavingModalData{
+export interface ModalData{
   showLoadingAnimation: boolean,
   showSuccessText: boolean,
   showErrorText: boolean,
-  errorPreview: string
+  errorPreview: string,
 };
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class EditPageService {
   constructor(private mainService: MainService) { }
 

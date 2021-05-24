@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewChecked } from '@angular/core';
-import { EditPageService, SavingModalData } from '../edit-page.service';
+import { EditPageService, ModalData } from '../edit-page.service';
 import { FormControl, NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -34,7 +34,7 @@ export class EditManufacturerComponent implements OnInit {
   manufacturerNames = [""];
   manufacturerData: MeterManufacturer = {_id: "", manufacturer: "", utilityType: "", sections: [{seriesName:"", modelsName:""}]};
   manufacturerDataModified = ""
-  savingModalData: SavingModalData = {showLoadingAnimation: true, showSuccessText: false, showErrorText: false, errorPreview: "error info"};
+  ModalData: ModalData = {showLoadingAnimation: true, showSuccessText: false, showErrorText: false, errorPreview: "error info"};
   selectedManufacturerName = new FormControl();
   showEditDiv = false;
   showSeriesModelNameMissingText = false;
@@ -94,18 +94,38 @@ export class EditManufacturerComponent implements OnInit {
     this.mainService.getMeterManufacturerData(this.utilityTypeSelection, this.selectedManufacturerName.value)
     .subscribe((data:object)=>{
       this.manufacturerData = data as MeterManufacturer;
-      // this.manufacturerDataReference = data as MeterManufacturer;
       this.setupManufacturerEditForm();
     });
   };
 
   onDeleteManufacturer(){
+    //prepare modal
+    this.ModalData.showLoadingAnimation = false;
     //open the "are you sure" modal & pass data to modal
-    this.dialog.open(DeleteModalComponent, {
-      data: this.manufacturerData,
+    const ref = this.dialog.open(DeleteModalComponent, {
+      data: {manufacturerData: this.manufacturerData, modalData: this.ModalData},
       disableClose: true
     });
-  }
+    //when user clicks 'delete' on modal
+    const confirmDelete = ref.componentInstance.onConfirmDelete.subscribe(()=>{
+      this.ModalData.showLoadingAnimation = true;
+      this.mainService.deleteManufacturer(this.manufacturerData._id).subscribe((data:any)=>{
+        if(data.result && data.result.nModified > 0){
+          //show "success" on modal
+          setTimeout(()=>{
+            this.ModalData.showLoadingAnimation = false;
+            this.ModalData.showSuccessText = true;
+          }, 3000)
+        }else{
+          this.ModalData.showLoadingAnimation = false;
+          //show "error" on modal
+          this.ModalData.showErrorText = true;
+          //display error data in modal
+          this.ModalData.errorPreview = data;
+        };
+      });
+    });
+  };
 
   onDeleteSection(data:any){
     //Determine which element should be deleted
@@ -133,7 +153,7 @@ export class EditManufacturerComponent implements OnInit {
   openSaveModal(){
     //open the "saving" modal & pass data to modal
     this.dialog.open(SavingModalComponent, {
-      data: this.savingModalData,
+      data: this.ModalData,
       disableClose: true
     });
   };
@@ -145,7 +165,7 @@ export class EditManufacturerComponent implements OnInit {
 
   onSubmit(formData:EditManufacturerFormData){
     //reset save modal values
-    this.savingModalData = {
+    this.ModalData = {
       showLoadingAnimation: true,
       showErrorText: false,
       showSuccessText: false,
@@ -171,15 +191,15 @@ export class EditManufacturerComponent implements OnInit {
       if(data.result && data.result.nModified > 0){
         //show "success" on modal
         setTimeout(()=>{
-          this.savingModalData.showLoadingAnimation = false;
-          this.savingModalData.showSuccessText = true;
+          this.ModalData.showLoadingAnimation = false;
+          this.ModalData.showSuccessText = true;
         }, 3000)
       }else{
-        this.savingModalData.showLoadingAnimation = false;
+        this.ModalData.showLoadingAnimation = false;
         //show "error" on modal
-        this.savingModalData.showErrorText = true;
+        this.ModalData.showErrorText = true;
         //display error data in modal
-        this.savingModalData.errorPreview = data;
+        this.ModalData.errorPreview = data;
       };
     });
   };

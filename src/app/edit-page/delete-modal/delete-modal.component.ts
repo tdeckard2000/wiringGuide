@@ -1,6 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, EventEmitter } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MeterManufacturer } from 'src/app/main.service';
+import { ModalData } from '../edit-page.service';
 
 @Component({
   selector: 'app-delete-modal',
@@ -9,9 +10,15 @@ import { MeterManufacturer } from 'src/app/main.service';
 })
 export class DeleteModalComponent implements OnInit {
 
-  constructor(@Inject (MAT_DIALOG_DATA) public data:MeterManufacturer) { }
+  constructor(@Inject (MAT_DIALOG_DATA) public data:{manufacturerData: MeterManufacturer, modalData: ModalData}) { }
+
+  onConfirmDelete = new EventEmitter();
+
+  onDeleteClick(){
+    this.onConfirmDelete.emit();
+  };
 
   ngOnInit(): void {
   }
 
-}
+};
