@@ -54,6 +54,11 @@
   font-size: 23px;
 }
 
+.errorPreview{
+  max-height: 60px;
+  overflow: auto;
+}
+
 .flexBox{
   bottom: 0;
   display: flex;

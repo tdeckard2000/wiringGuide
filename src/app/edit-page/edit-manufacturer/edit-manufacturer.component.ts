@@ -33,11 +33,10 @@ export class EditManufacturerComponent implements OnInit {
   formIsValid = false;
   manufacturerNames = [""];
   manufacturerData: MeterManufacturer = {_id: "", manufacturer: "", utilityType: "", sections: [{seriesName:"", modelsName:""}]};
-  manufacturerDataModified = ""
   ModalData: ModalData = {showLoadingAnimation: true, showSuccessText: false, showErrorText: false, errorPreview: "error info"};
   selectedManufacturerName = new FormControl();
   showEditDiv = false;
-  showSeriesModelNameMissingText = false;
+  showSeriesModelNameMissingTextError = false;
   utilityTypeOptions = this.editPageService.utilityTypeOptions;
   utilityTypeSelection = "";
 
@@ -64,11 +63,13 @@ export class EditManufacturerComponent implements OnInit {
     };
     //remove sections with no meters that have a 'deleted:true' field.
     //no need to archive deleted sections that have no meters associated
-    for(let i = 0; i < this.manufacturerData.sections.length; i++){
-      let section = this.manufacturerData.sections[i];
-      if(section.deleted && section.deleted === true && (!section.meters || section.meters.length < 1)){
-        this.manufacturerData.sections.splice(i,1);
-        i--;
+    if(this.manufacturerData.sections){
+      for(let i = 0; i < this.manufacturerData.sections.length; i++){
+        let section = this.manufacturerData.sections[i];
+        if(section.deleted && section.deleted === true && (!section.meters || section.meters.length < 1)){
+          this.manufacturerData.sections.splice(i,1);
+          i--;
+        };
       };
     };
     //send final object to DB
@@ -101,13 +102,16 @@ export class EditManufacturerComponent implements OnInit {
   onDeleteManufacturer(){
     //prepare modal
     this.ModalData.showLoadingAnimation = false;
+    this.ModalData.errorPreview = "";
+    this.ModalData.showErrorText = false;
+    this.ModalData.showSuccessText = false;
     //open the "are you sure" modal & pass data to modal
     const ref = this.dialog.open(DeleteModalComponent, {
       data: {manufacturerData: this.manufacturerData, modalData: this.ModalData},
       disableClose: true
     });
     //when user clicks 'delete' on modal
-    const confirmDelete = ref.componentInstance.onConfirmDelete.subscribe(()=>{
+    ref.componentInstance.onConfirmDelete.subscribe(()=>{
       this.ModalData.showLoadingAnimation = true;
       this.mainService.deleteManufacturer(this.manufacturerData._id).subscribe((data:any)=>{
         if(data.result && data.result.nModified > 0){
@@ -124,6 +128,11 @@ export class EditManufacturerComponent implements OnInit {
           this.ModalData.errorPreview = data;
         };
       });
+    });
+    //when user clicks 'done' on modal (after successful delete)
+    ref.componentInstance.onDone.subscribe(()=>{
+      this.selectedManufacturerName.setValue("");
+      this.showEditDiv = false;
     });
   };
 
@@ -146,7 +155,7 @@ export class EditManufacturerComponent implements OnInit {
     //Add a new section with empty Series and Model names
     this.manufacturerData.sections.push({seriesName:"", modelsName:""});
     this.formIsValid = false;
-    this.showSeriesModelNameMissingText = true;
+    this.showSeriesModelNameMissingTextError = true;
     this.validateForm();
   };
 
@@ -238,15 +247,15 @@ export class EditManufacturerComponent implements OnInit {
       let seriesName = sectionValues[i] as string;
       let modelsName = sectionValues[i+1] as string;
       if(seriesName.length < 1 && modelsName.length < 1){
-        this.showSeriesModelNameMissingText = true;
+        this.showSeriesModelNameMissingTextError = true;
         return this.formIsValid = false;
       }else{
-        this.showSeriesModelNameMissingText = false;
+        this.showSeriesModelNameMissingTextError = false;
       }
     }
 
     if(sectionValues.length < 1){
-      this.showSeriesModelNameMissingText = false;
+      this.showSeriesModelNameMissingTextError = false;
     }
 
     //Ensure Manufacturer Name exists

@@ -13,9 +13,14 @@ export class DeleteModalComponent implements OnInit {
   constructor(@Inject (MAT_DIALOG_DATA) public data:{manufacturerData: MeterManufacturer, modalData: ModalData}) { }
 
   onConfirmDelete = new EventEmitter();
+  onDone = new EventEmitter();
 
   onDeleteClick(){
     this.onConfirmDelete.emit();
+  };
+
+  onDoneClick(){
+    this.onDone.emit();
   };
 
   ngOnInit(): void {

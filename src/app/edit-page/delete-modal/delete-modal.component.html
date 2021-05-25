@@ -2,12 +2,12 @@
   <div class="modalContent">
     <!-- title -->
     <h2 mat-dialog-title>Are you sure?</h2>
-    <mat-dialog-content [ngStyle]="{'opacity': data.modalData.showLoadingAnimation ? .5 : 1}" class="dialogContent">
+    <mat-dialog-content [ngStyle]="{'opacity': (data.modalData.showLoadingAnimation || data.modalData.showSuccessText || data.modalData.showErrorText) ? .5 : 1}" class="dialogContent">
       Deleting "{{data.manufacturerData.manufacturer}}" will delete the following meters:
     </mat-dialog-content>
 
     <!-- list of meters that will also be removed -->
-    <div *ngIf="!data.modalData.showLoadingAnimation" class="meterListDiv">
+    <div *ngIf="!data.modalData.showLoadingAnimation && !data.modalData.showErrorText && !data.modalData.showSuccessText" class="meterListDiv">
       <div *ngFor="let section of data.manufacturerData.sections; let i = index">
         <p class="metersInList" *ngFor="let meter of section.meters">{{meter.meterName}}</p>
         <!-- if no meters to display -->
@@ -19,12 +19,17 @@
 
     <!-- loading animation and text -->
     <mat-spinner *ngIf="data.modalData.showLoadingAnimation" class="loadingSpinner" [diameter]="50"></mat-spinner>
-    <mat-dialog-content class="dialogContent" *ngIf="">There was an error deleting. Try again.</mat-dialog-content>
-    <mat-dialog-content class="dialogContent" *ngIf="">Deleted successfully <span>✔</span></mat-dialog-content>
+    <!-- successfully deleted text -->
+    <mat-dialog-content *ngIf="data.modalData.showSuccessText" class="dialogContent">Deleted successfully <span>✔</span></mat-dialog-content>
+    <!-- error deleting text -->
+    <mat-dialog-content *ngIf="data.modalData.showErrorText" class="dialogContent">There was an error deleting. Try again.</mat-dialog-content>
+    <p *ngIf="data.modalData.showErrorText" class="errorPreview">{{data.modalData.errorPreview | json}}</p>
+
     <div class="flexBox">
       <button [disabled]="false" [ngStyle]="{'opacity': false ? .5 : 1}" class="buttonCancel" mat-dialog-close>Cancel</button>
-      <button (click)="onDeleteClick()" [disabled]="data.modalData.showLoadingAnimation" [ngStyle]="{'opacity': data.modalData.showLoadingAnimation ? .5 : 1}" class="buttonDelete">Delete</button>
-      <button *ngIf="" [disabled]="false" [ngStyle]="{'opacity': false ? .5 : 1}" class="buttonClose" mat-dialog-close>Done</button>
+      <button *ngIf="!data.modalData.showSuccessText" (click)="onDeleteClick()" [disabled]="data.modalData.showLoadingAnimation"
+      [ngStyle]="{'opacity': data.modalData.showLoadingAnimation ? .5 : 1}" class="buttonDelete">Delete</button>
+      <button *ngIf="data.modalData.showSuccessText" class="buttonCancel"  (click)="onDoneClick()" mat-dialog-close>Done</button>
     </div>
   </div>
 </div>

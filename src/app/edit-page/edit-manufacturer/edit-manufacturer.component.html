@@ -83,10 +83,10 @@
         </button>
       </div>
     </div>
-    <p *ngIf="showSeriesModelNameMissingText" class="helperText">*Both fields cannot be empty.</p>
+    <p *ngIf="showSeriesModelNameMissingTextError" class="helperText">*Both fields cannot be empty.</p>
     <!-- New Section Button -->
     <span class="flexRow">
-      <button type="button" [disabled]="showSeriesModelNameMissingText" (click)="onNewSection()" class="button buttonAdd">
+      <button type="button" [disabled]="showSeriesModelNameMissingTextError" (click)="onNewSection()" class="button buttonAdd">
         <img src="./assets/icons/plusBlack.svg" alt=""> Add Section
       </button>
     <!-- Delete Manufacturer Button -->
@@ -97,7 +97,7 @@
 
     <!-- Button Back & Save -->
     <div class="flexRow spaceBetween">
-      <button (click)="onCancel()" class="button">Cancel</button>
+      <button (click)="onCancel()" class="button">Back</button>
       <button type="submit" [disabled]="!formIsValid" [ngStyle]="{'opacity': (!formIsValid? .5 : 1)}" class="button">Save</button>
     </div>
   </form>
