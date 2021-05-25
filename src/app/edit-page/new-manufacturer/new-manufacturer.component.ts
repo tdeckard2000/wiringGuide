@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { EditPageService } from '../edit-page.service';
+import { EditPageService, ModalData } from '../edit-page.service';
 import { MainService } from '../../main.service';
+import { MatDialog } from '@angular/material/dialog';
+import { SavingModalComponent } from '../saving-modal/saving-modal.component';
 
 @Component({
   selector: 'app-new-manufacturer',
@@ -12,13 +14,15 @@ export class NewManufacturerComponent implements OnInit {
 
   constructor(overlayContainer: OverlayContainer,
     private editPageService: EditPageService,
-    private mainService: MainService) {
+    private mainService: MainService,
+    public dialog: MatDialog) {
     overlayContainer.getContainerElement().classList.add('angularTheme');
   };
 
   canAddNewSection = true;
   canSave = false;
   manufacturerName = "";
+  modalData: ModalData = {showLoadingAnimation: true, showSuccessText: false, showErrorText: false, errorPreview: "error info"};
   newSectionsCount = [];
   newSectionValues: [{seriesName:string, modelsName:string }] = [{seriesName: "", modelsName: ""}];
   utilityTypeSelected = "";
@@ -47,9 +51,23 @@ export class NewManufacturerComponent implements OnInit {
   };
 
   onSave(){
+    this.modalData.showErrorText = false;
+    this.modalData.showSuccessText = false;
+    this.modalData.showLoadingAnimation = true;
+    this.openSaveModal();
     this.mainService.postNewMeterManufacturer(this.manufacturerName, this.utilityTypeSelected, this.newSectionValues)
     .subscribe((data:any)=>{
-      //Add user feedback here
+      console.log(data)
+      if(data.insertedCount && data.insertedCount > 0){
+        setTimeout(()=>{
+          this.modalData.showLoadingAnimation = false;
+          this.modalData.showSuccessText = true;
+        }, 3000);
+      }else{
+        this.modalData.showLoadingAnimation = false;
+        this.modalData.showErrorText = true;
+        this.modalData.errorPreview = data;
+      }
     });
   };
 
@@ -78,6 +96,14 @@ export class NewManufacturerComponent implements OnInit {
       this.canAddNewSection = this.hasSeriesOrModelName();
       this.canClickSave();
     };
+
+  openSaveModal(){
+    //open the "saving" modal & pass data to modal
+    this.dialog.open(SavingModalComponent, {
+      data: this.modalData,
+      disableClose: true
+    });
+  };
 
   //Check if Series or Model Name is Given for Each Section
   hasSeriesOrModelName(){

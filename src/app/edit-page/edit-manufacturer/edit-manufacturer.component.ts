@@ -92,6 +92,7 @@ export class EditManufacturerComponent implements OnInit {
     //Move to edit div and populate with data from DB
     this.showEditDiv = true;
     this.clearManufacturerData();
+    this.showSeriesModelNameMissingTextError = false;
     this.mainService.getMeterManufacturerData(this.utilityTypeSelection, this.selectedManufacturerName.value)
     .subscribe((data:object)=>{
       this.manufacturerData = data as MeterManufacturer;
@@ -156,7 +157,9 @@ export class EditManufacturerComponent implements OnInit {
     this.manufacturerData.sections.push({seriesName:"", modelsName:""});
     this.formIsValid = false;
     this.showSeriesModelNameMissingTextError = true;
-    this.validateForm();
+    setTimeout(()=>{
+      this.validateForm();
+    }, 0);
   };
 
   openSaveModal(){
