@@ -4,7 +4,7 @@ import { EditPageService } from '../edit-page.service';
 @Component({
   selector: 'app-edit-meter',
   templateUrl: './edit-meter.component.html',
-  styleUrls: ['./edit-meter.component.css', '../edit-page-body/edit-page-body.component.css']
+  styleUrls: ['./edit-meter.component.css', '../edit-page.component.css']
 })
 export class EditMeterComponent implements OnInit {
 

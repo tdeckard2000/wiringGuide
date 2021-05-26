@@ -12,7 +12,7 @@ import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
 @Component({
   selector: 'app-edit-manufacturer',
   templateUrl: './edit-manufacturer.component.html',
-  styleUrls: ['./edit-manufacturer.component.css', '../edit-page-body/edit-page-body.component.css', '../edit-page.component.css']
+  styleUrls: ['./edit-manufacturer.component.css', '../edit-page.component.css']
 })
 
 export class EditManufacturerComponent implements OnInit {

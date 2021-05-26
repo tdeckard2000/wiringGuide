@@ -26,10 +26,10 @@
     <p *ngIf="data.modalData.showErrorText" class="errorPreview">{{data.modalData.errorPreview | json}}</p>
 
     <div class="flexBox">
-      <button [disabled]="false" [ngStyle]="{'opacity': false ? .5 : 1}" class="buttonCancel" mat-dialog-close>Cancel</button>
+      <button [disabled]="false" [ngStyle]="{'opacity': false ? .5 : 1}" class="buttonClose" mat-dialog-close>Cancel</button>
       <button *ngIf="!data.modalData.showSuccessText" (click)="onDeleteClick()" [disabled]="data.modalData.showLoadingAnimation"
       [ngStyle]="{'opacity': data.modalData.showLoadingAnimation ? .5 : 1}" class="buttonDelete">Delete</button>
-      <button *ngIf="data.modalData.showSuccessText" class="buttonCancel"  (click)="onDoneClick()" mat-dialog-close>Done</button>
+      <button *ngIf="data.modalData.showSuccessText" class="buttonClose"  (click)="onDoneClick()" mat-dialog-close>Done</button>
     </div>
   </div>
 </div>

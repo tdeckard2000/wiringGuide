@@ -1,3 +1,7 @@
+.alignRight{
+  align-self: flex-end;
+}
+
 .body{
   background: linear-gradient(to right,#054E82 0%,#0badcf 100%);
   height: 100%;
@@ -6,6 +10,131 @@
   position: fixed;
   top: 0;
   width: 100vw;
+}
+
+.button{
+  background-color: #777;
+  border: 2px solid;
+  border-radius: 6px;
+  color: white;
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 20px;
+  padding: .375rem .75rem;
+  text-align: center;
+  width: 85px;
+}
+
+.button:hover{
+  cursor: pointer;
+}
+
+.button:focus{
+  background-color: #666;
+  border: 2px solid rgb(163, 163, 163);
+}
+
+.buttonAdd{
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  font-size: .9rem;
+  width: 125px;
+}
+
+.buttonAdd:focus{
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #3f51b5;
+  color: #3f51b5;
+}
+
+.buttonAdd:focus img{
+  filter: invert(34%) sepia(87%) saturate(527%) hue-rotate(193deg) brightness(84%) contrast(97%);
+}
+
+.buttonAdd img{
+  margin-bottom: -5px;
+  margin-left: -6px;
+  position: relative;
+  width: 20px;
+}
+
+.buttonRemove{
+  background-color: white;
+  border: 1px solid rgb(255, 108, 108);
+  color: rgb(255, 108, 108);
+  display: inline-block;
+  font-size: .9rem;
+  margin-left: 25px;
+  width: 125px;
+}
+
+.buttonRemove:focus{
+  background-color: rgb(255, 255, 255);
+  border: 1px solid red;
+  color: red;
+}
+
+.buttonRemove:focus img{
+  filter: invert(23%) sepia(72%) saturate(5730%) hue-rotate(353deg) brightness(101%) contrast(130%);
+}
+
+.buttonRemove img{
+  filter: invert(59%) sepia(100%) saturate(2525%) hue-rotate(322deg) brightness(113%) contrast(108%);
+  margin-bottom: -5px;
+  margin-left: -6px;
+  position: relative;
+  transform: rotate(45deg);
+  width: 20px;
+}
+
+.divBody{
+  margin: 30px;
+}
+
+.divContainer{
+  background-color: rgba(255, 255, 255);
+  border-radius: 5px;
+  box-shadow: 4px 4px 5px rgba(000, 000, 000, .08);
+  height: fit-content;
+  margin: auto;
+  margin-top: 35px;
+  max-width: 700px;
+  overflow: auto;
+  width: 80vw;
+}
+
+.flexColumn{
+  display: flex;
+  flex-direction: column;
+}
+
+.flexRow{
+  display: flex;
+  flex-direction: row;
+}
+
+.helperText{
+  font-family: sans-serif;
+  font-size: .8rem;
+  margin-top: -12px;
+  position: absolute;
+}
+
+.radioButtons{
+  margin: 20px 20px;
+  width: 50%;
+}
+
+.spaceBetween{
+  justify-content: space-between;
+}
+
+.tileTitle{
+  font-family: sans-serif;
+  font-weight: 100;
+  margin-bottom: 35px;
 }
 
 .trashIcon{
@@ -22,7 +151,74 @@
   pointer-events: none;
 }
 
-/* .underlineDirty.ng-dirty{
-  border-bottom: 2px solid #65c8da;
-  margin-bottom: -2px;
-} */
+/*****************************
+          Modal Styles
+******************************/
+.buttonClose{
+  background-color: #777;
+  border: 2px solid;
+  border-radius: 6px;
+  color: white;
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 20px;
+  padding: .375rem .75rem;
+  text-align: center;
+  width: 128px;
+}
+
+.buttonClose:focus{
+  background-color: #666;
+  border: 2px solid rgb(163, 163, 163);
+}
+
+.buttonClose:hover{
+  cursor: pointer;
+}
+
+.buttonDelete{
+  background-color: #d05c5c;
+  border: 2px solid;
+  border-radius: 6px;
+  color: white;
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 20px;
+  padding: .375rem .75rem;
+  text-align: center;
+  width: 128px;
+}
+
+.buttonDelete:focus{
+  background-color: #af4e4e;
+  border: 2px solid rgb(163, 163, 163);
+}
+
+.buttonDelete:hover{
+  cursor: pointer;
+}
+
+.dialogContent span{
+  color: #70af70;
+  font-size: 23px;
+}
+
+.errorPreview{
+  max-height: 60px;
+  overflow: auto;
+}
+
+.loadingSpinner{
+  margin: auto;
+  margin-top: 35px;
+}
+
+.modalBody{
+  background-color: white;
+  border-radius: 3px;
+  font-family: sans-serif;
+  margin: -20px;
+  padding: 20px;
+}

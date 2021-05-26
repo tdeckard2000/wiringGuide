@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'app-saving-modal',
   templateUrl: './saving-modal.component.html',
-  styleUrls: ['./saving-modal.component.css']
+  styleUrls: ['./saving-modal.component.css', '../edit-page.component.css']
 })
 export class SavingModalComponent implements OnInit {
 

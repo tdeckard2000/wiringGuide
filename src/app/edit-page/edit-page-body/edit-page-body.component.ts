@@ -5,7 +5,7 @@ import { EditPageService } from '../edit-page.service';
 @Component({
   selector: 'app-edit-page-body',
   templateUrl: './edit-page-body.component.html',
-  styleUrls: ['./edit-page-body.component.css', '../edit-page-body/edit-page-body.component.css']
+  styleUrls: ['../edit-page.component.css']
 })
 export class EditPageBodyComponent implements OnInit {
   constructor(overlayContainer: OverlayContainer, private editPageService: EditPageService) {

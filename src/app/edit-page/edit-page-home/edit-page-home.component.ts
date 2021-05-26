@@ -4,7 +4,7 @@ import { EditPageService } from '../edit-page.service';
 @Component({
   selector: 'app-edit-page-home',
   templateUrl: './edit-page-home.component.html',
-  styleUrls: ['./edit-page-home.component.css', '../edit-page-body/edit-page-body.component.css']
+  styleUrls: ['./edit-page-home.component.css', '../edit-page.component.css']
 })
 export class EditPageHomeComponent implements OnInit {
 

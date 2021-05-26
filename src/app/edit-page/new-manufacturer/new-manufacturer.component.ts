@@ -8,7 +8,7 @@ import { SavingModalComponent } from '../saving-modal/saving-modal.component';
 @Component({
   selector: 'app-new-manufacturer',
   templateUrl: './new-manufacturer.component.html',
-  styleUrls: ['./new-manufacturer.component.css', '../edit-page-body/edit-page-body.component.css']
+  styleUrls: ['./new-manufacturer.component.css', '../edit-page.component.css']
 })
 export class NewManufacturerComponent implements OnInit {
 

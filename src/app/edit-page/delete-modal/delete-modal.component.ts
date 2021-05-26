@@ -6,7 +6,7 @@ import { ModalData } from '../edit-page.service';
 @Component({
   selector: 'app-delete-modal',
   templateUrl: './delete-modal.component.html',
-  styleUrls: ['./delete-modal.component.css']
+  styleUrls: ['./delete-modal.component.css', '../edit-page.component.css']
 })
 export class DeleteModalComponent implements OnInit {
 
