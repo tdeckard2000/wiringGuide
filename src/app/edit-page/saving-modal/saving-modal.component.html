@@ -6,7 +6,7 @@
     <mat-dialog-content class="dialogContent" *ngIf="data.showErrorText">There was an error saving. Try again.</mat-dialog-content>
     <p *ngIf="data.showErrorText" class="errorPreview">Preview of Error: {{data.errorPreview | json}}</p>
     <div class="flexBox">
-      <button [disabled]="data.showLoadingAnimation" [ngStyle]="{'opacity': data.showLoadingAnimation ? .5 : 1}" class="buttonClose" mat-dialog-close>Close</button>
+      <button (click)="onDoneClick()" [disabled]="data.showLoadingAnimation" [ngStyle]="{'opacity': data.showLoadingAnimation ? .5 : 1}" class="buttonClose" mat-dialog-close>Close</button>
     </div>
   </div>
 </div>

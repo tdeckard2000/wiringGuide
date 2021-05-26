@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { EditPageService, ModalData } from '../edit-page.service';
 import { MainService } from '../../main.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SavingModalComponent } from '../saving-modal/saving-modal.component';
 
 @Component({
@@ -57,7 +57,6 @@ export class NewManufacturerComponent implements OnInit {
     this.openSaveModal();
     this.mainService.postNewMeterManufacturer(this.manufacturerName, this.utilityTypeSelected, this.newSectionValues)
     .subscribe((data:any)=>{
-      console.log(data)
       if(data.insertedCount && data.insertedCount > 0){
         setTimeout(()=>{
           this.modalData.showLoadingAnimation = false;
@@ -99,9 +98,12 @@ export class NewManufacturerComponent implements OnInit {
 
   openSaveModal(){
     //open the "saving" modal & pass data to modal
-    this.dialog.open(SavingModalComponent, {
+    let ref = this.dialog.open(SavingModalComponent, {
       data: this.modalData,
       disableClose: true
+    });
+    ref.componentInstance.clickedDone.subscribe(()=>{
+      this.onReturnHome();
     });
   };
 

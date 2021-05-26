@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, EventEmitter, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -15,6 +15,11 @@ export class SavingModalComponent implements OnInit {
     errorPreview: string
   }) { }
 
+  clickedDone = new EventEmitter;
+
+  onDoneClick(){
+    this.clickedDone.emit();
+  };
 
   ngOnInit(): void {
 
