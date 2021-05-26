@@ -31,6 +31,9 @@ import { EditManufacturerComponent } from './edit-page/edit-manufacturer/edit-ma
 import { HelpDropdownComponent } from './edit-page/help-dropdown/help-dropdown.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SavingModalComponent } from './edit-page/saving-modal/saving-modal.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { DeleteModalComponent } from './edit-page/delete-modal/delete-modal.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     EditMeterComponent,
     EditManufacturerComponent,
     HelpDropdownComponent,
+    SavingModalComponent,
+    DeleteModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +71,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     MatInputModule,
     MatAutocompleteModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     {provide: MAT_RADIO_DEFAULT_OPTIONS, useValue: {color: 'primary'}}

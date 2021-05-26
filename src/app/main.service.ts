@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { catchError, retry, toArray } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export interface MeterManufacturer{
+  _id: string
   manufacturer: string,
   utilityType: string,
   sections: [{
     seriesName: string,
     modelsName: string,
-    meters?:Array<object>
+    meters?:[{
+      meterName?:string
+    }],
     deleted?: boolean
   }];
 };
@@ -49,6 +51,12 @@ export class MainService {
 // ************************************
 //          Server Requests
 // ************************************
+
+  deleteManufacturer(manufacturerId:string){
+    //Set manufacturer "deleted" field to "true" (object is not actually deleted)
+    const manufacturerIdObject = {manufacturerId : manufacturerId}
+    return this.http.patch('http://localhost:3000/api/deleteManufacturer', manufacturerIdObject, this.httpOptions);
+  };
 
   getAllMeters(){
     return this.http.get('http://localhost:3000/api/allmeters', {
@@ -92,12 +100,11 @@ export class MainService {
       });
     };
 
-    return this.http.post('http://localhost:3000/api/newMeterManufacturer', manufacturerObject, this.httpOptions
-    );
+    return this.http.post('http://localhost:3000/api/newMeterManufacturer', manufacturerObject, this.httpOptions);
   }
 
   postUpdatedMeterManufacturer(meterManufacturerData:MeterManufacturer){
-    console.log(meterManufacturerData);
+    return this.http.post('http://localhost:3000/api/updateMeterManufacturer', meterManufacturerData, this.httpOptions);
   }
 
 }

@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
 const { createScanner } = require('typescript');
+const { ObjectID } = require('bson');
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -25,7 +26,7 @@ client.connect(err => {
 
   app.get('/api/allMeters', async(req, res)=>{
     //returns all meter data
-    const result = await meterGuideData.find().toArray();
+    const result = await meterGuideData.find({deleted:{$ne: true}}).toArray();
     result.sort(sortMeterManufacturers);
     res.json(result);
   });
@@ -33,7 +34,7 @@ client.connect(err => {
   app.get('/api/meterManufacturers/:utilityType', async(req, res)=>{
     //return array of meter manufacturers under given utility type
     const utilityType = req.params.utilityType;
-    const result = await meterGuideData.find({"utilityType": utilityType}).project({_id:0, manufacturer:1}).toArray();
+    const result = await meterGuideData.find({"utilityType": utilityType, deleted:{$ne: true}}).project({_id:0, manufacturer:1}).toArray();
     //convert array of objects to array of strings
     const arrayOfStrings = result.map(x => x.manufacturer);
     arrayOfStrings.sort();
@@ -54,16 +55,44 @@ client.connect(err => {
   });
 
   app.post('/api/newMeterManufacturer', async(req, res)=>{
-    //adds a new manufacturer document to collection
+    //add a new manufacturer document to collection
     const data = req.body;
     const result = await meterGuideData.insertOne(data);
     res.json(result);
   });
 
+  app.post('/api/updateMeterManufacturer', async(req, res)=>{
+    //replace existing manufacturer document with new one
+    const data = req.body;
+    const docId = data._id;
+    //remove _id field from object before replacing
+    delete data._id;
+
+    meterGuideData.replaceOne({_id: ObjectID(docId)}, data, (err, result)=>{
+      if(err){
+        console.warn("error saving: ", err);
+        res.json(err);
+      }else{
+        res.json(result);
+      };
+    });
+  });
+
+  app.patch('/api/deleteManufacturer', async(req, res)=>{
+    //set "deleted:true" and adds filed if missing
+    const docId = req.body.manufacturerId;
+    meterGuideData.updateOne({_id: ObjectID(docId)}, {$set: {deleted: true}}, (err, result)=>{
+      if(err){
+        console.warn('error updating' + err)
+      };
+      res.json(result)
+    });
+  });
+
   app.all("*", (req, res)=>{
     console.warn("Invalid API request");
     res.send();
-  })
+  });
 
   if(err){console.warn(err)}else{console.warn('Connected to DB')};
 });
