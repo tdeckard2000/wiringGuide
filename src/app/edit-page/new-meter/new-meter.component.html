@@ -1,11 +1,39 @@
 <div class="divBody">
   <h3 class="tileTitle">Add a Meter</h3>
 
+<!-- #########################################################
+                     Select Manufacturer
+######################################################### -->
+
+  <!-- Select Utility Type of Manufacturer -->
+  <mat-form-field class="dropdownOptions">
+    <mat-label>Utility Type</mat-label>
+    <mat-select (selectionChange)="onUtilityType($event)">
+      <mat-option *ngFor="let utilityTypeOption of utilityTypeOptions;" value={{utilityTypeOption}}>{{utilityTypeOption}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Select Existing Manufacturer -->
+  <form onsubmit="onSubmit()">
+    <mat-form-field>
+      <mat-label>Manufacturer Name</mat-label>
+      <input type="text" placeholder="" aria-label="Number"
+             matInput [formControl]="selectedManufacturerName" [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredDropdownOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+
+
   <!-- Show/Hide Reference Image -->
   <app-help-dropdown></app-help-dropdown>
 
-  <!-- Button Back -->
-  <div class="flexColumn">
+  <!-- Button Back & Next -->
+  <div class="flexRow spaceBetween">
     <button (click)="onReturnHome()" class="button">Back</button>
+    <button (click)="onClickSave()" [disabled]="!canClickSave" [ngStyle]="{'opacity': (!canClickSave? .5 : 1)}" class="button">Save</button>
   </div>
 </div>
