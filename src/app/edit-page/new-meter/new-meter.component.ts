@@ -1,24 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditPageService } from '../edit-page.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { MainService } from 'src/app/main.service';
 import { map, startWith } from 'rxjs/operators';
-
-interface NewMeterForm {
-  manufacturerUtilityType: string,
-  manufacturerName: string,
-  seriesName: string,
-  modelsName: string,
-  meterName: string,
-  signalType: string,
-  wiringProtocol: string,
-  compatibleWithTR201: boolean,
-  compatibleWithTR4: boolean,
-  compatibleWithRR4: boolean,
-  notes?: string
-}
 
 @Component({
   selector: 'app-new-meter',
@@ -36,10 +22,21 @@ export class NewMeterComponent implements OnInit {
 
   canClickSave = false;
   filteredDropdownOptions: Observable<string[]> | undefined;
-  manufacturerNames = [""];
-  selectedManufacturerName = new FormControl
+  manufacturerNames: Array<string> = [""];
+  newMeterForm: FormGroup = {} as FormGroup;
+  sectionNameDropdownOptions: Array<string> = ["test", '45','cat'];
   utilityTypeOptions = this.editPageService.utilityTypeOptions;
   utilityTypeSelection = "";
+
+  getArrayOfManufacturers(){
+    this.mainService.getArrayOfManufacturersByUtility(this.utilityTypeSelection)
+    .subscribe((data:object)=>{
+      this.manufacturerNames = data as Array<string>;
+      this.populateManufacturerDropdownList();
+    });
+    //clear input field
+    this.newMeterForm.patchValue({'manufacturerName': ""});
+  };
 
   onClickSave(){
 
@@ -51,29 +48,51 @@ export class NewMeterComponent implements OnInit {
 
   onUtilityType(data:{value: string}){
     this.utilityTypeSelection = data.value;
-    this.setManufacturerList();
+    this.getArrayOfManufacturers();
   };
 
-  setManufacturerList(){
-    //define array for manufacturer drop down list
-    this.mainService.getArrayOfManufacturersByUtility(this.utilityTypeSelection)
-    .subscribe((data:object)=>{
-      this.manufacturerNames = data as Array<string>;
-      this.updateManufacturerDropdownList();
-    });
-    //clear input field
-    this.selectedManufacturerName.setValue("");
-  };
-
-  updateManufacturerDropdownList(){
-    //update manufacturer dropdown list with new options
-    this.filteredDropdownOptions = this.selectedManufacturerName.valueChanges.pipe(
+  populateManufacturerDropdownList(){
+    this.filteredDropdownOptions = this.newMeterForm.get("manufacturerName")?.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
     );
   };
 
+  updateSectionNameDropdownOptions(){
+    const utilityType = this.newMeterForm.get('manufacturerUtilityType')?.value;
+    const manufacturerName = this.newMeterForm.get('manufacturerName')?.value;
+    let arrayOfOptions:Array<string> = [];
+    this.mainService.getArrayOfSectionNamesByUtilityAndManufacturer(utilityType, manufacturerName).subscribe((data)=>{
+      if(data.sections !== null){
+        data.sections.forEach((section)=>{
+          let modelsName = section.modelsName;
+          let seriesName = section.seriesName;
+          arrayOfOptions.push(modelsName + ' / ' + seriesName);
+        });
+        this.sectionNameDropdownOptions = Array.from(arrayOfOptions);
+      };
+    });
+  };
+
   ngOnInit(): void {
+    this.newMeterForm = new FormGroup({
+      'manufacturerUtilityType': new FormControl(null, Validators.required),
+      'manufacturerName': new FormControl(null, Validators.required),
+      'sectionData': new FormGroup({
+        'seriesAndModelName': new FormControl(null),
+        'nonLabeledSection': new FormControl(null)
+      }),
+      'meterData': new FormGroup({
+        'meterName': new FormControl(null, Validators.required),
+        'signalType': new FormControl(null, Validators.required),
+        'wiringProtocol': new FormControl(null, Validators.required),
+        'compatibleTR201': new FormControl(null),
+        'compatibleTR4': new FormControl(null),
+        'compatibleRR4': new FormControl(null),
+        'publicNotes': new FormControl(null),
+        'internalNotes': new FormControl(null)
+      })
+    });
   }
 
 }

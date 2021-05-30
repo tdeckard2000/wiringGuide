@@ -34,7 +34,7 @@ client.connect(err => {
   app.get('/api/meterManufacturers/:utilityType', async(req, res)=>{
     //return array of meter manufacturers under given utility type
     const utilityType = req.params.utilityType;
-    const result = await meterGuideData.find({"utilityType": utilityType, deleted:{$ne: true}}).project({_id:0, manufacturer:1}).toArray();
+    const result = await meterGuideData.find({"utilityType": utilityType, deleted:{$ne: true}}).project({_id: 0, manufacturer:1}).toArray();
     //convert array of objects to array of strings
     const arrayOfStrings = result.map(x => x.manufacturer);
     arrayOfStrings.sort();
@@ -52,6 +52,18 @@ client.connect(err => {
 
     const result = await meterGuideData.find({utilityType: utilityType, manufacturer: manufacturerName}).toArray();
     res.json(result[0])
+  });
+
+  app.get('/api/sectionData/:utilityType/:manufacturerName', async(req, res)=>{
+    const utilityType = req.params.utilityType;
+    const manufacturerName = req.params.manufacturerName;
+    const result = await meterGuideData.find({
+      utilityType: utilityType,
+      manufacturer: manufacturerName,
+      deleted:{$ne: true}})
+    .project({_id: 0, 'sections.seriesName': 1, 'sections.modelsName': 1}).toArray();
+
+    res.json(result[0]);
   });
 
   app.post('/api/newMeterManufacturer', async(req, res)=>{

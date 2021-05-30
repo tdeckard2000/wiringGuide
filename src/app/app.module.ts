@@ -32,7 +32,7 @@ import { HelpDropdownComponent } from './edit-page/help-dropdown/help-dropdown.c
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SavingModalComponent } from './edit-page/saving-modal/saving-modal.component';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DeleteModalComponent } from './edit-page/delete-modal/delete-modal.component';
 
 @NgModule({

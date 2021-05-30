@@ -2,31 +2,54 @@
   <h3 class="tileTitle">Add a Meter</h3>
 
 <!-- #########################################################
-                     Select Manufacturer
+                     Select Manufacturer & Section
 ######################################################### -->
 
-  <!-- Select Utility Type of Manufacturer -->
+<form [formGroup]="newMeterForm" onsubmit="onSubmit()">
+
   <mat-form-field class="dropdownOptions">
     <mat-label>Utility Type</mat-label>
-    <mat-select (selectionChange)="onUtilityType($event)">
+    <mat-select formControlName="manufacturerUtilityType" (selectionChange)="onUtilityType($event)">
       <mat-option *ngFor="let utilityTypeOption of utilityTypeOptions;" value={{utilityTypeOption}}>{{utilityTypeOption}}</mat-option>
     </mat-select>
   </mat-form-field>
 
-  <!-- Select Existing Manufacturer -->
-  <form onsubmit="onSubmit()">
-    <mat-form-field>
-      <mat-label>Manufacturer Name</mat-label>
-      <input type="text" placeholder="" aria-label="Number"
-             matInput [formControl]="selectedManufacturerName" [matAutocomplete]="auto">
-      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredDropdownOptions | async" [value]="option">
-          {{option}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-  </form>
+  <mat-form-field>
+    <mat-label>Manufacturer Name</mat-label>
+    <input matInput formControlName="manufacturerName" type="text" placeholder="" aria-label="Number"
+           [matAutocomplete]="auto" (change)="updateSectionNameDropdownOptions()">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredDropdownOptions | async" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
 
+  <div formGroupName="sectionData">
+
+    <mat-form-field>
+      <mat-label>Series Name / Model Name</mat-label>
+      <mat-select formControlName="seriesAndModelName">
+        <mat-option *ngFor="let sectionOption of sectionNameDropdownOptions;" value={{sectionOption}}>{{sectionOption}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+  <div formGroupName="meterData">
+
+  </div>
+
+</form>
+
+
+  <!-- #########################################################
+                        Enter Meter Data
+  ######################################################### -->
+
+  <!-- #########################################################
+                        Bottom Section
+  ######################################################### -->
 
   <!-- Show/Hide Reference Image -->
   <app-help-dropdown></app-help-dropdown>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MatTabBody } from '@angular/material/tabs';
 
 export interface MeterManufacturer{
   _id: string
@@ -19,6 +20,15 @@ export interface MeterManufacturer{
 interface NewSectionsArrayObject{
   seriesName:string,
   modelsName:string
+}
+
+interface SectionNamesArray{
+  sections:[
+    {
+      'seriesName'?: string,
+      'modelsName'?: string
+    }
+  ]
 }
 
 @Injectable({
@@ -67,6 +77,13 @@ export class MainService {
 
   getArrayOfManufacturersByUtility(utilityType:string){
     return this.http.get('http://localhost:3000/api/meterManufacturers/' + utilityType, {
+      observe: 'body',
+      responseType: 'json'
+    });
+  };
+
+  getArrayOfSectionNamesByUtilityAndManufacturer(utilityType: string, manufacturerName: string){
+    return this.http.get<SectionNamesArray>('http://localhost:3000/api/sectionData/' + utilityType + '/' + manufacturerName, {
       observe: 'body',
       responseType: 'json'
     });
