@@ -24,7 +24,7 @@ export class NewMeterComponent implements OnInit {
   filteredDropdownOptions: Observable<string[]> | undefined;
   manufacturerNames: Array<string> = [""];
   newMeterForm: FormGroup = {} as FormGroup;
-  sectionNameDropdownOptions: Array<string> = ["test", '45','cat'];
+  sectionNameDropdownOptions: Array<string> = [];
   utilityTypeOptions = this.editPageService.utilityTypeOptions;
   utilityTypeSelection = "";
 
@@ -61,16 +61,16 @@ export class NewMeterComponent implements OnInit {
   updateSectionNameDropdownOptions(){
     const utilityType = this.newMeterForm.get('manufacturerUtilityType')?.value;
     const manufacturerName = this.newMeterForm.get('manufacturerName')?.value;
-    let arrayOfOptions:Array<string> = [];
+    let arrayOfOptions:Array<string> = ["NA"];
     this.mainService.getArrayOfSectionNamesByUtilityAndManufacturer(utilityType, manufacturerName).subscribe((data)=>{
-      if(data.sections !== null){
+      if(data.sections !== undefined){
         data.sections.forEach((section)=>{
           let modelsName = section.modelsName;
           let seriesName = section.seriesName;
-          arrayOfOptions.push(modelsName + ' / ' + seriesName);
+          arrayOfOptions.push(seriesName + ' / ' + modelsName);
         });
-        this.sectionNameDropdownOptions = Array.from(arrayOfOptions);
       };
+      this.sectionNameDropdownOptions = Array.from(arrayOfOptions);
     });
   };
 
@@ -80,7 +80,6 @@ export class NewMeterComponent implements OnInit {
       'manufacturerName': new FormControl(null, Validators.required),
       'sectionData': new FormGroup({
         'seriesAndModelName': new FormControl(null),
-        'nonLabeledSection': new FormControl(null)
       }),
       'meterData': new FormGroup({
         'meterName': new FormControl(null, Validators.required),

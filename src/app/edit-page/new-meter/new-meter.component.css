@@ -1,0 +1,22 @@
+h5{
+  color: #777;
+  font-family: sans-serif;
+  font-weight: 100;
+}
+
+.noteText{
+  bottom: 15px;
+  font-family: sans-serif;
+  font-weight: 100;
+  font-size: .7rem;
+  margin-top: 0px;
+  position: relative;
+}
+
+.sectionDropdown{
+  width: 400px;
+}
+
+.utilityTypeDropdown{
+  padding-right: 40px;
+}

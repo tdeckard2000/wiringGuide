@@ -7,18 +7,20 @@
 
 <form [formGroup]="newMeterForm" onsubmit="onSubmit()">
 
-  <mat-form-field class="dropdownOptions">
+  <h5>Where to save the meter...</h5>
+
+  <mat-form-field class="utilityTypeDropdown">
     <mat-label>Utility Type</mat-label>
     <mat-select formControlName="manufacturerUtilityType" (selectionChange)="onUtilityType($event)">
       <mat-option *ngFor="let utilityTypeOption of utilityTypeOptions;" value={{utilityTypeOption}}>{{utilityTypeOption}}</mat-option>
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field class="manufacturerNameDropdown">
     <mat-label>Manufacturer Name</mat-label>
     <input matInput formControlName="manufacturerName" type="text" placeholder="" aria-label="Number"
-           [matAutocomplete]="auto" (change)="updateSectionNameDropdownOptions()">
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+           [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="updateSectionNameDropdownOptions()">
       <mat-option *ngFor="let option of filteredDropdownOptions | async" [value]="option">
         {{option}}
       </mat-option>
@@ -27,14 +29,18 @@
 
   <div formGroupName="sectionData">
 
-    <mat-form-field>
+    <mat-form-field class="sectionDropdown">
       <mat-label>Series Name / Model Name</mat-label>
       <mat-select formControlName="seriesAndModelName">
         <mat-option *ngFor="let sectionOption of sectionNameDropdownOptions;" value={{sectionOption}}>{{sectionOption}}</mat-option>
       </mat-select>
     </mat-form-field>
 
+    <p *ngIf="newMeterForm.get('sectionData.seriesAndModelName')?.value == 'NA'" class="noteText">*This meter will have no series or model name.</p>
+
   </div>
+
+  <h5>Meter information...</h5>
 
   <div formGroupName="meterData">
 
