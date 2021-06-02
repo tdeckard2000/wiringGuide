@@ -60,6 +60,8 @@ export class NewMeterComponent implements OnInit {
       modelsName = formData.sectionData.seriesAndModelName.split(' / ')[1];
     };
 
+    console.log(formData.meterData.publicNotes + formData.meterData.internalNotes)
+
     const newMeterData: NewMeterForm = {
       manufacturerName: formData.manufacturerName,
       utilityType: formData.manufacturerUtilityType,
@@ -72,8 +74,8 @@ export class NewMeterComponent implements OnInit {
       compatibleTR4: formData.meterData.compatibleTR4 ? true : false,
       compatibleTR4X: formData.meterData.compatibleTR4X ? true : false,
       compatibleRR4: formData.meterData.compatibleRR4 ? true : false,
-      publicNotes: formData.meterData.publicNotes || "",
-      internalNotes: formData.meterData.internalNotes || ""
+      publicNote: formData.meterData.publicNote || "",
+      internalNote: formData.meterData.internalNote || ""
     };
 
     console.log(newMeterData)
@@ -122,8 +124,8 @@ export class NewMeterComponent implements OnInit {
         'compatibleTR4': new FormControl(null),
         'compatibleTR4X': new FormControl(null),
         'compatibleRR4': new FormControl(null),
-        'publicNotes': new FormControl(null),
-        'internalNotes': new FormControl(null)
+        'publicNote': new FormControl(null),
+        'internalNote': new FormControl(null)
       })
     });
 

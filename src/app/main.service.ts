@@ -29,8 +29,8 @@ export interface NewMeterForm{
   compatibleTR4: boolean,
   compatibleTR4X: boolean,
   compatibleRR4: boolean,
-  publicNotes: string,
-  internalNotes: string
+  publicNote: string,
+  internalNote: string
 };
 
 interface NewSectionsArrayObject{
