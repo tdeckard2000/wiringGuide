@@ -13,7 +13,7 @@ import { map, startWith } from 'rxjs/operators';
 })
 export class NewMeterComponent implements OnInit {
 
-  constructor(private editPageService: EditPageService, public mainService: MainService, public dialog: MatDialog) { }
+  constructor(public editPageService: EditPageService, public mainService: MainService, public dialog: MatDialog) { }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
@@ -46,21 +46,10 @@ export class NewMeterComponent implements OnInit {
     this.editPageService.visibleTile$.next('Home');
   };
 
-  onUtilityType(data:{value: string}){
-    this.utilityTypeSelection = data.value;
-    this.getArrayOfManufacturers();
-  };
-
-  populateManufacturerDropdownList(){
-    this.filteredDropdownOptions = this.newMeterForm.get("manufacturerName")?.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );
-  };
-
-  updateSectionNameDropdownOptions(){
+  onUpdateSectionNameDropdownOptions(){
     const utilityType = this.newMeterForm.get('manufacturerUtilityType')?.value;
     const manufacturerName = this.newMeterForm.get('manufacturerName')?.value;
+    this.newMeterForm.get('sectionData.seriesAndModelName')?.patchValue("");
     let arrayOfOptions:Array<string> = ["NA"];
     this.mainService.getArrayOfSectionNamesByUtilityAndManufacturer(utilityType, manufacturerName).subscribe((data)=>{
       if(data.sections !== undefined){
@@ -74,23 +63,44 @@ export class NewMeterComponent implements OnInit {
     });
   };
 
+  onUtilityType(data:{value: string}){
+    this.utilityTypeSelection = data.value;
+    this.getArrayOfManufacturers();
+  };
+
+  populateManufacturerDropdownList(){
+    this.filteredDropdownOptions = this.newMeterForm.get("manufacturerName")?.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
+  };
+
   ngOnInit(): void {
     this.newMeterForm = new FormGroup({
       'manufacturerUtilityType': new FormControl(null, Validators.required),
       'manufacturerName': new FormControl(null, Validators.required),
       'sectionData': new FormGroup({
-        'seriesAndModelName': new FormControl(null),
+        'seriesAndModelName': new FormControl(null, Validators.required),
       }),
       'meterData': new FormGroup({
         'meterName': new FormControl(null, Validators.required),
-        'signalType': new FormControl(null, Validators.required),
         'wiringProtocol': new FormControl(null, Validators.required),
         'compatibleTR201': new FormControl(null),
         'compatibleTR4': new FormControl(null),
+        'compatibleTR4X': new FormControl(null),
         'compatibleRR4': new FormControl(null),
         'publicNotes': new FormControl(null),
         'internalNotes': new FormControl(null)
       })
+    });
+
+    this.newMeterForm.statusChanges.subscribe((formStatus)=>{
+      if(formStatus === "VALID"){
+        this.canClickSave = true;
+      }else{
+        this.canClickSave = false;
+      };
+
     });
   }
 

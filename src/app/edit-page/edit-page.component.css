@@ -151,6 +151,10 @@
   pointer-events: none;
 }
 
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background{
+  background-color: rgb(49, 113, 196) !important;
+}
+
 /*****************************
           Modal Styles
 ******************************/

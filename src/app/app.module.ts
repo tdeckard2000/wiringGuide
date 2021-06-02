@@ -34,6 +34,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SavingModalComponent } from './edit-page/saving-modal/saving-modal.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DeleteModalComponent } from './edit-page/delete-modal/delete-modal.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { DeleteModalComponent } from './edit-page/delete-modal/delete-modal.comp
     MatInputModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatCheckboxModule
   ],
   providers: [
     {provide: MAT_RADIO_DEFAULT_OPTIONS, useValue: {color: 'primary'}}

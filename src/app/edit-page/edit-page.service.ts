@@ -42,4 +42,14 @@ export class EditPageService {
 
   public visibleTile$ = new BehaviorSubject("Home");
 
+  public wiringProtocols = [
+    "Amco",
+    "Elster",
+    "Integrated",
+    "Pulse",
+    "Neptune",
+    "Sensus",
+    "GWF"
+  ];
+
 }

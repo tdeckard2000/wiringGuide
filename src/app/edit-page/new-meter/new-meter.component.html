@@ -7,7 +7,7 @@
 
 <form [formGroup]="newMeterForm" onsubmit="onSubmit()">
 
-  <h5>Where to save the meter...</h5>
+  <h5>Where To Display Meter</h5>
 
   <mat-form-field class="utilityTypeDropdown">
     <mat-label>Utility Type</mat-label>
@@ -20,7 +20,7 @@
     <mat-label>Manufacturer Name</mat-label>
     <input matInput formControlName="manufacturerName" type="text" placeholder="" aria-label="Number"
            [matAutocomplete]="auto">
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="updateSectionNameDropdownOptions()">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onUpdateSectionNameDropdownOptions()">
       <mat-option *ngFor="let option of filteredDropdownOptions | async" [value]="option">
         {{option}}
       </mat-option>
@@ -36,22 +36,61 @@
       </mat-select>
     </mat-form-field>
 
-    <p *ngIf="newMeterForm.get('sectionData.seriesAndModelName')?.value == 'NA'" class="noteText">*This meter will have no series or model name.</p>
+    <p *ngIf="newMeterForm.get('sectionData.seriesAndModelName')?.value == 'NA'" class="noteText">*This meter will not have a series or model name.</p>
 
   </div>
 
-  <h5>Meter information...</h5>
+  <!-- #########################################################
+                        Enter Meter Data
+  ######################################################### -->
+
+  <h5>Meter Information</h5>
 
   <div formGroupName="meterData">
+
+    <mat-form-field class="meterNameInput">
+      <mat-label>Meter Name</mat-label>
+      <input matInput formControlName="meterName">
+    </mat-form-field>
+
+    <mat-form-field class="protocolDropdown">
+      <mat-label>Protocol</mat-label>
+      <mat-select formControlName="wiringProtocol">
+        <mat-option *ngFor="let protocol of this.editPageService.wiringProtocols;" value={{protocol}}>{{protocol}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <h6>Compatibility</h6>
+    <div class="compatibilityCheckboxes">
+      <mat-checkbox formControlName="compatibleTR201" class="checkbox">TR201</mat-checkbox>
+      <mat-checkbox formControlName="compatibleTR4" class="checkbox" >TR4 </mat-checkbox>
+      <mat-checkbox formControlName="compatibleTR4X" class="checkbox" >TR4X</mat-checkbox>
+      <mat-checkbox formControlName="compatibleRR4" class="checkbox" >RR4</mat-checkbox>
+    </div>
+
+    <mat-form-field class="textArea">
+      <mat-label>Public Note</mat-label>
+      <textarea matInput
+                cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize"
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="5"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="textArea">
+      <mat-label>Internal Note (not visible to customers)</mat-label>
+      <textarea matInput
+                cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize"
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="5"></textarea>
+    </mat-form-field>
 
   </div>
 
 </form>
 
 
-  <!-- #########################################################
-                        Enter Meter Data
-  ######################################################### -->
 
   <!-- #########################################################
                         Bottom Section
