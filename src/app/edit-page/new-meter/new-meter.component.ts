@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditPageService } from '../edit-page.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
-import { MainService } from 'src/app/main.service';
+import { MainService, NewMeterForm } from 'src/app/main.service';
 import { map, startWith } from 'rxjs/operators';
 
 @Component({
@@ -38,12 +38,45 @@ export class NewMeterComponent implements OnInit {
     this.newMeterForm.patchValue({'manufacturerName': ""});
   };
 
-  onClickSave(){
-
-  };
-
   onReturnHome(){
     this.editPageService.visibleTile$.next('Home');
+  };
+
+  onSubmit(){
+    const formData = this.newMeterForm.value;
+    let seriesName = "";
+    let modelsName = "";
+    const wiringProtocol = formData.meterData.wiringProtocol;
+    let signalType = "Encoded";
+
+    if(wiringProtocol.toLowerCase() === "pulse"){
+      signalType = "Pulse";
+    }else if(wiringProtocol.toLowerCase() === "integrated"){
+      signalType = "Integrated"
+    };
+
+    if(formData.sectionData.seriesAndModelName.toLowerCase() !== "na"){
+      seriesName = formData.sectionData.seriesAndModelName.split(' / ')[0];
+      modelsName = formData.sectionData.seriesAndModelName.split(' / ')[1];
+    };
+
+    const newMeterData: NewMeterForm = {
+      manufacturerName: formData.manufacturerName,
+      utilityType: formData.manufacturerUtilityType,
+      seriesName: seriesName,
+      modelsName: modelsName,
+      meterName: formData.meterData.meterName,
+      wiringProtocol: wiringProtocol,
+      signalType: signalType,
+      compatibleTR201: formData.meterData.compatibleTR201 ? true : false,
+      compatibleTR4: formData.meterData.compatibleTR4 ? true : false,
+      compatibleTR4X: formData.meterData.compatibleTR4X ? true : false,
+      compatibleRR4: formData.meterData.compatibleRR4 ? true : false,
+      publicNotes: formData.meterData.publicNotes || "",
+      internalNotes: formData.meterData.internalNotes || ""
+    };
+
+    console.log(newMeterData)
   };
 
   onUpdateSectionNameDropdownOptions(){

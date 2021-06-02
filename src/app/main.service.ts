@@ -17,6 +17,22 @@ export interface MeterManufacturer{
   }];
 };
 
+export interface NewMeterForm{
+  manufacturerName: string,
+  utilityType: string,
+  seriesName: string,
+  modelsName: string,
+  meterName: string,
+  wiringProtocol: string,
+  signalType: string,
+  compatibleTR201: boolean,
+  compatibleTR4: boolean,
+  compatibleTR4X: boolean,
+  compatibleRR4: boolean,
+  publicNotes: string,
+  internalNotes: string
+};
+
 interface NewSectionsArrayObject{
   seriesName:string,
   modelsName:string

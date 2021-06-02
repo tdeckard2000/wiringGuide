@@ -5,7 +5,7 @@
                      Select Manufacturer & Section
 ######################################################### -->
 
-<form [formGroup]="newMeterForm" onsubmit="onSubmit()">
+<form [formGroup]="newMeterForm" (ngSubmit)="onSubmit()">
 
   <h5>Where To Display Meter</h5>
 
@@ -19,7 +19,7 @@
   <mat-form-field class="manufacturerNameDropdown">
     <mat-label>Manufacturer Name</mat-label>
     <input matInput formControlName="manufacturerName" type="text" placeholder="" aria-label="Number"
-           [matAutocomplete]="auto">
+          [matAutocomplete]="auto">
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onUpdateSectionNameDropdownOptions()">
       <mat-option *ngFor="let option of filteredDropdownOptions | async" [value]="option">
         {{option}}
@@ -88,10 +88,6 @@
 
   </div>
 
-</form>
-
-
-
   <!-- #########################################################
                         Bottom Section
   ######################################################### -->
@@ -101,7 +97,9 @@
 
   <!-- Button Back & Next -->
   <div class="flexRow spaceBetween">
-    <button (click)="onReturnHome()" class="button">Back</button>
-    <button (click)="onClickSave()" [disabled]="!canClickSave" [ngStyle]="{'opacity': (!canClickSave? .5 : 1)}" class="button">Save</button>
+    <button type="button" (click)="onReturnHome()" class="button">Back</button>
+    <button [disabled]="!canClickSave" [ngStyle]="{'opacity': (!canClickSave? .5 : 1)}" class="button">Save</button>
   </div>
+</form>
+
 </div>
