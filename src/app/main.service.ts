@@ -112,6 +112,10 @@ export class MainService {
     });
   };
 
+  postNewMeter(newMeterData: NewMeterForm){
+    return this.http.post('http://localhost:3000/api/newMeter', newMeterData, this.httpOptions);
+  };
+
   postNewMeterManufacturer(manufacturerName: string, utilityTypeSelected: string, newSectionsArray: Array<NewSectionsArrayObject>){
     //Create object for DB
     let manufacturerObject = {
@@ -134,10 +138,10 @@ export class MainService {
     };
 
     return this.http.post('http://localhost:3000/api/newMeterManufacturer', manufacturerObject, this.httpOptions);
-  }
+  };
 
   postUpdatedMeterManufacturer(meterManufacturerData:MeterManufacturer){
     return this.http.post('http://localhost:3000/api/updateMeterManufacturer', meterManufacturerData, this.httpOptions);
-  }
+  };
 
 }

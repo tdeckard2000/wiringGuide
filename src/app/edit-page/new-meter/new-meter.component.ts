@@ -60,8 +60,6 @@ export class NewMeterComponent implements OnInit {
       modelsName = formData.sectionData.seriesAndModelName.split(' / ')[1];
     };
 
-    console.log(formData.meterData.publicNotes + formData.meterData.internalNotes)
-
     const newMeterData: NewMeterForm = {
       manufacturerName: formData.manufacturerName,
       utilityType: formData.manufacturerUtilityType,
@@ -78,7 +76,9 @@ export class NewMeterComponent implements OnInit {
       internalNote: formData.meterData.internalNote || ""
     };
 
-    console.log(newMeterData)
+    this.mainService.postNewMeter(newMeterData).subscribe((data)=>{
+      console.log(data);
+    });
   };
 
   onUpdateSectionNameDropdownOptions(){

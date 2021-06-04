@@ -66,6 +66,43 @@ client.connect(err => {
     res.json(result[0]);
   });
 
+  app.post('/api/newMeter', async(req, res)=>{
+    const data = req.body;
+
+    const meterData = {
+      meterName: data.meterName,
+      wiringProtocol: data.wiringProtocol,
+      signalType: data.signalType,
+      compatibleWith: {
+        TR201: data.compatibleTR201,
+        TR4: data.compatibleTR4,
+        TR4X: data.compatibleTR4X,
+        RR4: data.compatibleRR4
+      },
+      publicNotes: data.publicNote,
+      internalNotes: data.internalNote
+    };
+
+    const result = await meterGuideData.findOneAndUpdate(
+      {
+        manufacturer:data.manufacturerName,
+        utilityType: data.utilityType,
+        sections: {
+          $elemMatch: {
+            seriesName: data.seriesName,
+            modelsName: data.modelsName
+          }
+        }
+      },
+
+      {$push: { 'sections.$.meters': meterData }}
+    );
+
+    console.log(data)
+    console.log(result)
+    res.json(result);
+  });
+
   app.post('/api/newMeterManufacturer', async(req, res)=>{
     //add a new manufacturer document to collection
     const data = req.body;
@@ -103,7 +140,7 @@ client.connect(err => {
 
   app.all("*", (req, res)=>{
     console.warn("Invalid API request");
-    res.send();
+    res.send({'error':'wrong route'});
   });
 
   if(err){console.warn(err)}else{console.warn('Connected to DB')};
