@@ -68,6 +68,7 @@ client.connect(err => {
 
   app.post('/api/newMeter', async(req, res)=>{
     const data = req.body;
+    console.log(data)
 
     const meterData = {
       meterName: data.meterName,
@@ -83,7 +84,7 @@ client.connect(err => {
       internalNotes: data.internalNote
     };
 
-    const result = await meterGuideData.findOneAndUpdate(
+    const result = await meterGuideData.updateOne(
       {
         manufacturer:data.manufacturerName,
         utilityType: data.utilityType,
@@ -98,8 +99,6 @@ client.connect(err => {
       {$push: { 'sections.$.meters': meterData }}
     );
 
-    console.log(data)
-    console.log(result)
     res.json(result);
   });
 

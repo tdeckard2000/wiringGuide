@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { EditPageService } from '../edit-page.service';
+import { EditPageService, ModalData } from '../edit-page.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { MainService, NewMeterForm } from 'src/app/main.service';
 import { map, startWith } from 'rxjs/operators';
+import { SavingModalComponent } from '../saving-modal/saving-modal.component';
 
 @Component({
   selector: 'app-new-meter',
@@ -23,6 +24,7 @@ export class NewMeterComponent implements OnInit {
   canClickSave = false;
   filteredDropdownOptions: Observable<string[]> | undefined;
   manufacturerNames: Array<string> = [""];
+  modalData: ModalData = {showLoadingAnimation: true, showSuccessText: false, showErrorText: false, errorPreview: "error info"};
   newMeterForm: FormGroup = {} as FormGroup;
   sectionNameDropdownOptions: Array<string> = [];
   utilityTypeOptions = this.editPageService.utilityTypeOptions;
@@ -76,8 +78,22 @@ export class NewMeterComponent implements OnInit {
       internalNote: formData.meterData.internalNote || ""
     };
 
-    this.mainService.postNewMeter(newMeterData).subscribe((data)=>{
-      console.log(data);
+
+    this.modalData.showErrorText = false;
+    this.modalData.showSuccessText = false;
+    this.modalData.showLoadingAnimation = true;
+    this.openSaveModal();
+    this.mainService.postNewMeter(newMeterData).subscribe((data: any)=>{
+      if(data.nModified && data.nModified > 0){
+        setTimeout(()=>{
+          this.modalData.showLoadingAnimation = false;
+          this.modalData.showSuccessText = true;
+        }, 1000);
+      }else{
+        this.modalData.showLoadingAnimation = false;
+        this.modalData.showErrorText = true;
+        this.modalData.errorPreview = data;
+      };
     });
   };
 
@@ -89,9 +105,11 @@ export class NewMeterComponent implements OnInit {
     this.mainService.getArrayOfSectionNamesByUtilityAndManufacturer(utilityType, manufacturerName).subscribe((data)=>{
       if(data.sections !== undefined){
         data.sections.forEach((section)=>{
-          let modelsName = section.modelsName;
-          let seriesName = section.seriesName;
-          arrayOfOptions.push(seriesName + ' / ' + modelsName);
+          if(section.modelsName !== "" || section.seriesName !== ""){
+            let modelsName = section.modelsName;
+            let seriesName = section.seriesName;
+            arrayOfOptions.push(seriesName + ' / ' + modelsName);
+          };
         });
       };
       this.sectionNameDropdownOptions = Array.from(arrayOfOptions);
@@ -101,6 +119,16 @@ export class NewMeterComponent implements OnInit {
   onUtilityType(data:{value: string}){
     this.utilityTypeSelection = data.value;
     this.getArrayOfManufacturers();
+  };
+
+  openSaveModal(){
+    let ref = this.dialog.open(SavingModalComponent, {
+      data: this.modalData,
+      disableClose: true
+    });
+    ref.componentInstance.clickedDone.subscribe(()=>{
+      this.onReturnHome();
+    });
   };
 
   populateManufacturerDropdownList(){

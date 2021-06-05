@@ -120,7 +120,7 @@ export class EditManufacturerComponent implements OnInit {
           setTimeout(()=>{
             this.ModalData.showLoadingAnimation = false;
             this.ModalData.showSuccessText = true;
-          }, 3000)
+          }, 1000)
         }else{
           this.ModalData.showLoadingAnimation = false;
           //show "error" on modal

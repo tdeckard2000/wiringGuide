@@ -55,18 +55,23 @@ export class NewManufacturerComponent implements OnInit {
     this.modalData.showSuccessText = false;
     this.modalData.showLoadingAnimation = true;
     this.openSaveModal();
+
+    if(this.newSectionValues.some(section => section.modelsName !== '' || section.seriesName !== '')){
+      this.newSectionValues.push({seriesName: '', modelsName: ''});
+    };
+
     this.mainService.postNewMeterManufacturer(this.manufacturerName, this.utilityTypeSelected, this.newSectionValues)
     .subscribe((data:any)=>{
       if(data.insertedCount && data.insertedCount > 0){
         setTimeout(()=>{
           this.modalData.showLoadingAnimation = false;
           this.modalData.showSuccessText = true;
-        }, 3000);
+        }, 1000);
       }else{
         this.modalData.showLoadingAnimation = false;
         this.modalData.showErrorText = true;
         this.modalData.errorPreview = data;
-      }
+      };
     });
   };
 
@@ -74,7 +79,9 @@ export class NewManufacturerComponent implements OnInit {
     this.newSectionsCount.length ++;
     this.canAddNewSection = false;
     this.canSave = false;
+    console.log(this.newSectionsCount)
     this.newSectionValues[this.newSectionsCount.length - 1] = ({"seriesName":"", "modelsName":""});
+    console.log(this.newSectionValues)
   };
 
   onRemoveSection(){
@@ -85,7 +92,8 @@ export class NewManufacturerComponent implements OnInit {
   };
 
   //Store Series and Model Names Together (Add a Meter Manufacturer)
-  onSeriesName(seriesName:string, modelsName:string, index:number){
+  onSectionsName(seriesName:string, modelsName:string, index:number){
+    console.log(index)
     this.newSectionValues[index] =
       {
         "seriesName": seriesName,
