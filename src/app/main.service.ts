@@ -42,7 +42,8 @@ interface SectionNamesArray{
   sections:[
     {
       'seriesName'?: string,
-      'modelsName'?: string
+      'modelsName'?: string,
+      'deleted'?: boolean
     }
   ]
 }

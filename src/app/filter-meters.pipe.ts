@@ -24,9 +24,11 @@ export class FilterMetersPipe implements PipeTransform {
         //Check Series Name
         if(meter.sections){
           meter.sections.forEach((section:any)=>{
-            let seriesName = section.seriesName.toLowerCase();
-            if(seriesName.includes(searchBarText)){
-              keepMeter = true;
+            if(section.seriesName){
+              let seriesName = section.seriesName.toLowerCase();
+              if(seriesName.includes(searchBarText)){
+                keepMeter = true;
+              };
             };
           });
         };
@@ -34,9 +36,11 @@ export class FilterMetersPipe implements PipeTransform {
         //Check Series Model
         if(meter.sections){
           meter.sections.forEach((section:any)=>{
-            let modelsName = section.modelsName.toLowerCase();
-            if(modelsName.includes(searchBarText)){
-              keepMeter = true;
+            if(section.modelsName){
+              let modelsName = section.modelsName.toLowerCase();
+              if(modelsName.includes(searchBarText)){
+                keepMeter = true;
+              };
             };
           });
         };

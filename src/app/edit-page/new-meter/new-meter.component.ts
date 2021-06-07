@@ -103,9 +103,11 @@ export class NewMeterComponent implements OnInit {
     this.newMeterForm.get('sectionData.seriesAndModelName')?.patchValue("");
     let arrayOfOptions:Array<string> = ["NA"];
     this.mainService.getArrayOfSectionNamesByUtilityAndManufacturer(utilityType, manufacturerName).subscribe((data)=>{
+      console.log(data)
       if(data.sections !== undefined){
         data.sections.forEach((section)=>{
-          if(section.modelsName !== null || section.seriesName !== null){
+          console.log(section)
+          if((section.modelsName !== null || section.seriesName !== null) && !section.deleted){
             let modelsName = section.modelsName;
             let seriesName = section.seriesName;
             arrayOfOptions.push(seriesName + ' / ' + modelsName);

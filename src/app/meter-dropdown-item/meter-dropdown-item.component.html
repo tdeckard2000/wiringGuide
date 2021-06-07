@@ -1,60 +1,59 @@
 <div class="itemClusterDiv">
-    <!-- Water Meters Section -->
-        <div class="itemContainer" *ngFor="let item of (meterData | filterMeters:searchBarText); index as i">
-            <mat-accordion>
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header class="itemDropdownHeader">
-                        <mat-panel-title (click)="onMeterItemClick(i)">
-                            <!-- Meter Manufacturer Name -->
-                            <h3 class="itemHeader">{{item.manufacturer}}</h3>
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <!-- Dropdown Body -->
-                    <div class="itemBody">
-                        <div *ngFor="let section of item.sections">
-                            <!-- Series Name (optional)-->
-                            <p *ngIf="section.seriesName" class="textSeriesName">series: {{ section.seriesName }}</p>
-                            <!-- Series Models Names (optional) -->
-                            <div class="flexBox textSeriesModel">
-                                <p *ngIf="section.modelsName" class="textMeterModel">{{ section.modelsName }}</p>
-                                <span class="compatibilityTableHeader">
-                                        <span>TR201</span>
-                                        <span>TR4</span>
-                                        <span>RR4</span>
-                                </span>
-                            </div>
-                            <div *ngIf="section.meters && section.meters.length > 0">
-                                <!-- List of Meters in FlexBox -->
-                                <div *ngFor="let meter of section.meters">
-                                    <div class="flexBox" (click)="openWiringModal(meter)">
-                                        <!-- Name of Meter -->
-                                        <span class="textMeterName">{{ meter.meterName }}&nbsp;</span>
-                                        <!-- Meter Signal Type -->
-                                        <span class="textSignalType">{{ meter.signalType | titlecase }}</span>
-                                        <!-- Meter Compatibility Table` -->
-                                        <div class="compatibilityTable">
-                                            <span class="compatibilityTableLabel">TR201&nbsp;</span>
-                                            <span *ngIf="meter.compatibleWith.TR201" class="compatibilityTableCheckMarks checkMark">✔</span>
-                                            <span *ngIf="!meter.compatibleWith.TR201" class="compatibilityTableCheckMarks dash">-</span>
-                                            <span class="compatibilityTableLabel">TR4&nbsp;</span>
-                                            <span *ngIf="meter.compatibleWith.TR4" class="compatibilityTableCheckMarks checkMark">✔</span>
-                                            <span *ngIf="!meter.compatibleWith.TR4" class="compatibilityTableCheckMarks dash">-</span>
-                                            <span class="compatibilityTableLabel">RR4&nbsp;</span>
-                                            <span *ngIf="meter.compatibleWith.RR4" class="compatibilityTableCheckMarks checkMark">✔</span>
-                                            <span *ngIf="!meter.compatibleWith.RR4" class="compatibilityTableCheckMarks dash">-</span>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="textSelectMeterNote">
-                            <img class="iconInformation" src="assets/icons/help.svg" alt="">
-                            Select a meter for more information.</p>
+  <!-- Water Meters Section -->
+  <div class="itemContainer" *ngFor="let item of (meterData | filterMeters:searchBarText); index as i">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="itemDropdownHeader">
+          <mat-panel-title (click)="onMeterItemClick(i)">
+              <!-- Meter Manufacturer Name -->
+              <h3 class="itemHeader">{{item.manufacturer}}</h3>
+          </mat-panel-title>
+          </mat-expansion-panel-header>
+          <!-- Dropdown Body -->
+          <div class="itemBody">
+            <div *ngFor="let section of item.sections">
+              <div *ngIf="section.meters && section.meters.length > 0 && !section.deleted">
+                <!-- Series Name (optional)-->
+                <p *ngIf="section.seriesName" class="textSeriesName">{{ section.seriesName }} ..........</p>
+                <!-- Series Models Names (optional) -->
+                <div class="flexBox textSeriesModel">
+                    <p *ngIf="section.modelsName" class="textMeterModel">{{ section.modelsName }}</p>
+                    <span class="compatibilityTableHeader">
+                            <span>TR201</span>
+                            <span>TR4</span>
+                            <span>RR4</span>
+                    </span>
+                </div>
+                <!-- List of Meters in FlexBox -->
+                <div *ngFor="let meter of section.meters">
+                  <div class="flexBox" (click)="openWiringModal(meter)">
+                    <!-- Name of Meter -->
+                    <span class="textMeterName">{{ meter.meterName }}&nbsp;</span>
+                    <!-- Meter Signal Type -->
+                    <span class="textSignalType">{{ meter.signalType | titlecase }}</span>
+                    <!-- Meter Compatibility Table` -->
+                    <div class="compatibilityTable">
+                      <span class="compatibilityTableLabel">TR201&nbsp;</span>
+                      <span *ngIf="meter.compatibleWith.TR201" class="compatibilityTableCheckMarks checkMark">✔</span>
+                      <span *ngIf="!meter.compatibleWith.TR201" class="compatibilityTableCheckMarks dash">-</span>
+                      <span class="compatibilityTableLabel">TR4&nbsp;</span>
+                      <span *ngIf="meter.compatibleWith.TR4" class="compatibilityTableCheckMarks checkMark">✔</span>
+                      <span *ngIf="!meter.compatibleWith.TR4" class="compatibilityTableCheckMarks dash">-</span>
+                      <span class="compatibilityTableLabel">RR4&nbsp;</span>
+                      <span *ngIf="meter.compatibleWith.RR4" class="compatibilityTableCheckMarks checkMark">✔</span>
+                      <span *ngIf="!meter.compatibleWith.RR4" class="compatibilityTableCheckMarks dash">-</span>
                     </div>
-                </mat-expansion-panel>
-            </mat-accordion>
-            <hr [ngStyle]="{'opacity': (dropdownOpen[i] !== true) ? '1' : '0'}" class="underlineDivider">
-            <!-- <hr *ngIf="dropdownOpen[i] !== true" class="underlineDivider"> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          <p class="textSelectMeterNote">
+              <img class="iconInformation" src="assets/icons/help.svg" alt="">
+              Select a meter for more information.</p>
         </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <hr [ngStyle]="{'opacity': (dropdownOpen[i] !== true) ? '1' : '0'}" class="underlineDivider">
+    <!-- <hr *ngIf="dropdownOpen[i] !== true" class="underlineDivider"> -->
+  </div>
 </div>

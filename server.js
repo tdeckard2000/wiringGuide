@@ -61,7 +61,7 @@ client.connect(err => {
       utilityType: utilityType,
       manufacturer: manufacturerName,
       deleted:{$ne: true}})
-    .project({_id: 0, 'sections.seriesName': 1, 'sections.modelsName': 1}).toArray();
+    .project({_id: 0, 'sections.seriesName': 1, 'sections.modelsName': 1, 'sections.deleted': 1}).toArray();
 
     res.json(result[0]);
   });
