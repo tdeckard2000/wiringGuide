@@ -68,7 +68,6 @@ client.connect(err => {
 
   app.post('/api/newMeter', async(req, res)=>{
     const data = req.body;
-    console.log(data)
 
     const meterData = {
       meterName: data.meterName,

@@ -14,13 +14,16 @@ export class DeleteModalComponent implements OnInit {
 
   onConfirmDelete = new EventEmitter();
   onDone = new EventEmitter();
+  canClickCancel = true;
 
   onDeleteClick(){
     this.onConfirmDelete.emit();
+    this.canClickCancel = false;
   };
 
   onDoneClick(){
     this.onDone.emit();
+    this.canClickCancel = false;
   };
 
   ngOnInit(): void {

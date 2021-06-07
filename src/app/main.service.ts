@@ -33,9 +33,9 @@ export interface NewMeterForm{
   internalNote: string
 };
 
-interface NewSectionsArrayObject{
-  seriesName:string,
-  modelsName:string
+export interface NewSectionsArrayObject{
+  seriesName:string | null,
+  modelsName:string | null
 }
 
 interface SectionNamesArray{

@@ -46,8 +46,8 @@ export class NewMeterComponent implements OnInit {
 
   onSubmit(){
     const formData = this.newMeterForm.value;
-    let seriesName = "";
-    let modelsName = "";
+    let seriesName = null;
+    let modelsName = null;
     const wiringProtocol = formData.meterData.wiringProtocol;
     let signalType = "Encoded";
 
@@ -105,7 +105,7 @@ export class NewMeterComponent implements OnInit {
     this.mainService.getArrayOfSectionNamesByUtilityAndManufacturer(utilityType, manufacturerName).subscribe((data)=>{
       if(data.sections !== undefined){
         data.sections.forEach((section)=>{
-          if(section.modelsName !== "" || section.seriesName !== ""){
+          if(section.modelsName !== null || section.seriesName !== null){
             let modelsName = section.modelsName;
             let seriesName = section.seriesName;
             arrayOfOptions.push(seriesName + ' / ' + modelsName);

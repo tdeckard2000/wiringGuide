@@ -4,6 +4,7 @@ import { EditPageService, ModalData } from '../edit-page.service';
 import { MainService } from '../../main.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SavingModalComponent } from '../saving-modal/saving-modal.component';
+import { NewSectionsArrayObject } from 'src/app/main.service';
 
 @Component({
   selector: 'app-new-manufacturer',
@@ -24,7 +25,7 @@ export class NewManufacturerComponent implements OnInit {
   manufacturerName = "";
   modalData: ModalData = {showLoadingAnimation: true, showSuccessText: false, showErrorText: false, errorPreview: "error info"};
   newSectionsCount = [];
-  newSectionValues: [{seriesName:string, modelsName:string }] = [{seriesName: "", modelsName: ""}];
+  newSectionValues: Array<NewSectionsArrayObject> = [{seriesName: null, modelsName: null}];
   utilityTypeSelected = "";
   utilityTypeOptions = this.editPageService.utilityTypeOptions;
 
@@ -56,8 +57,9 @@ export class NewManufacturerComponent implements OnInit {
     this.modalData.showLoadingAnimation = true;
     this.openSaveModal();
 
-    if(this.newSectionValues.some(section => section.modelsName !== '' || section.seriesName !== '')){
-      this.newSectionValues.push({seriesName: '', modelsName: ''});
+    // Ensure all manufacturers have an empty series name and models name section
+    if(this.newSectionValues.some(section => section.modelsName !== null && section.seriesName !== null)){
+      this.newSectionValues.push({seriesName: null, modelsName: null});
     };
 
     this.mainService.postNewMeterManufacturer(this.manufacturerName, this.utilityTypeSelected, this.newSectionValues)
@@ -79,9 +81,7 @@ export class NewManufacturerComponent implements OnInit {
     this.newSectionsCount.length ++;
     this.canAddNewSection = false;
     this.canSave = false;
-    console.log(this.newSectionsCount)
     this.newSectionValues[this.newSectionsCount.length - 1] = ({"seriesName":"", "modelsName":""});
-    console.log(this.newSectionValues)
   };
 
   onRemoveSection(){
@@ -93,7 +93,6 @@ export class NewManufacturerComponent implements OnInit {
 
   //Store Series and Model Names Together (Add a Meter Manufacturer)
   onSectionsName(seriesName:string, modelsName:string, index:number){
-    console.log(index)
     this.newSectionValues[index] =
       {
         "seriesName": seriesName,
@@ -122,7 +121,7 @@ export class NewManufacturerComponent implements OnInit {
       if(this.newSectionsCount.length < 1){
         return true
       }
-      if(section.seriesName.length < 1 && section.modelsName.length < 1){
+      if((section.seriesName !== null && section.seriesName.length < 1) && (section.modelsName !== null && section.modelsName.length < 1)){
         return false;
       }
     };
