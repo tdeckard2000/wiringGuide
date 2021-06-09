@@ -128,7 +128,7 @@ export class NewMeterComponent implements OnInit {
       disableClose: true
     });
     ref.componentInstance.clickedDone.subscribe(()=>{
-      this.onReturnHome();
+      this.newMeterForm.get('meterData')?.reset();
     });
   };
 
