@@ -1,11 +1,112 @@
 <div class="divBody">
   <h3 class="tileTitle">Edit/Delete a Meter</h3>
+<!-- #########################################################
+                        Select Meter
+######################################################### -->
+
+
+<div *ngIf="!showEditDiv">
+  <form [formGroup]="findMeterForm" (ngSubmit)="onNext()" class="findMeterForm">
+
+    <mat-form-field class="utilityTypeDropdown">
+      <mat-label>Utility Type</mat-label>
+      <mat-select formControlName="utilityType" (selectionChange)="onUtilityType($event)">
+        <mat-option *ngFor="let utilityTypeOption of utilityTypeOptions;" value={{utilityTypeOption}}>{{utilityTypeOption}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="manufacturerNameDropdown">
+      <mat-label>Manufacturer Name</mat-label>
+      <input matInput formControlName="manufacturer" type="text" placeholder="" aria-label="Number"
+      [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onUpdateSectionNameDropdownOptions()">
+        <mat-option *ngFor="let option of filteredDropdownOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field class="sectionDropdown">
+      <mat-label>Series Name / Model Name</mat-label>
+      <mat-select formControlName="seriesAndModelName">
+        <mat-option *ngFor="let sectionOption of sectionNameDropdownOptions;" value={{sectionOption}}>{{sectionOption}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <p *ngIf="findMeterForm.get('seriesAndModelName')?.value == 'NA'" class="noteText">*Does not have series or model name.</p>
+
+    <!-- Show/Hide Reference Image -->
+    <app-help-dropdown></app-help-dropdown>
+
+    <!-- Button Back -->
+    <div class="flexColumn">
+      <button (click)="onReturnHome()" class="button">Back</button>
+    </div>
+  </form>
+</div>
+
+
+<!-- #########################################################
+                        Edit Meter
+######################################################### -->
+
+<div *ngIf="showEditDiv" class="divBody">
+  <h3 class="tileTitle">Edit/Delete a Meter</h3>
+
+  <form [formGroup]="editMeterForm" (ngSubmit)="onSubmit()">
+  <div formGroupName="meterData">
+
+    <mat-form-field class="meterNameInput">
+      <mat-label>Meter Name</mat-label>
+      <input matInput formControlName="meterName">
+    </mat-form-field>
+
+    <mat-form-field class="protocolDropdown">
+      <mat-label>Protocol</mat-label>
+      <mat-select formControlName="wiringProtocol">
+        <mat-option *ngFor="let protocol of this.editPageService.wiringProtocols;" value={{protocol}}>{{protocol}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <h6>Compatibility</h6>
+    <div class="compatibilityCheckboxes">
+      <mat-checkbox formControlName="compatibleTR201" class="checkbox">TR201</mat-checkbox>
+      <mat-checkbox formControlName="compatibleTR4" class="checkbox" >TR4 </mat-checkbox>
+      <mat-checkbox formControlName="compatibleTR4X" class="checkbox" >TR4X</mat-checkbox>
+      <mat-checkbox formControlName="compatibleRR4" class="checkbox" >RR4</mat-checkbox>
+    </div>
+
+    <mat-form-field class="textArea">
+      <mat-label>Public Note</mat-label>
+      <textarea matInput
+                formControlName = "publicNote"
+                cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize"
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="5"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="textArea">
+      <mat-label>Internal Note (not visible to customers)</mat-label>
+      <textarea matInput
+                formControlName = "internalNote"
+                cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize"
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="5"></textarea>
+    </mat-form-field>
+  </div>
+</form>
+
+  <!-- #########################################################
+                        Bottom Section
+  ######################################################### -->
 
   <!-- Show/Hide Reference Image -->
   <app-help-dropdown></app-help-dropdown>
 
-  <!-- Button Back -->
-  <div class="flexColumn">
-    <button (click)="onReturnHome()" class="button">Back</button>
+  <!-- Button Back & Next -->
+  <div class="flexRow spaceBetween">
+    <button type="button" (click)="onReturnHome()" class="button">Back</button>
+    <button [disabled]="!canClickSave" [ngStyle]="{'opacity': (!canClickSave? .5 : 1)}" class="button">Save</button>
   </div>
-</div>

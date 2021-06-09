@@ -106,7 +106,6 @@ export class NewMeterComponent implements OnInit {
       console.log(data)
       if(data.sections !== undefined){
         data.sections.forEach((section)=>{
-          console.log(section)
           if((section.modelsName !== null || section.seriesName !== null) && !section.deleted){
             let modelsName = section.modelsName;
             let seriesName = section.seriesName;

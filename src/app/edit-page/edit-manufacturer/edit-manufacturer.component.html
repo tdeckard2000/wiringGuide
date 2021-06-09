@@ -65,10 +65,6 @@
     <div *ngFor="let section of manufacturerData.sections; index as i" ngModelGroup="manufacturerSection">
       <!-- Don't populate sections with "deleted = true" or section with null models/series names-->
       <div *ngIf="!section.deleted && (section.seriesName !== null || section.modelsName !== null)">
-      <!-- <div *ngIf="showThisSection(section) === true"> -->
-      <!-- <div [ngStyle]="{'display' : (!section.deleted && (section.seriesName !== '' || section.modelsName !== '') || (!section.deleted && i == manufacturerData.sections.length - 1)) ? 'initial' : 'none'}"> -->
-      <!-- <div *ngIf="(!section.deleted && (section.seriesName !== '' && section.modelsName !== '')) || !isUntitledSection"> -->
-
         <!-- Series Name -->
         <mat-form-field>
           <mat-label>Series</mat-label>
