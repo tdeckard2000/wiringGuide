@@ -31,6 +31,35 @@ client.connect(err => {
     res.json(result);
   });
 
+  app.get('/api/metersFromSection/:data', async(req, res)=>{
+    const data = JSON.parse(req.params.data);
+    const utilityType = data.utilityType;
+    const manufacturer = data.manufacturer;
+    const seriesName = data.seriesName;
+    const modelsName = data.modelsName;
+
+    const result = await meterGuideData.findOne({
+      'utilityType': utilityType,
+      'manufacturer': manufacturer,
+      'deleted': {$ne: true}
+    });
+
+    sectionsArray = result.sections;
+    const section = sectionsArray.find((section)=>{
+      if(section.seriesName === seriesName && section.modelsName === modelsName){
+        return true;
+      }else{
+        return false;
+      };
+    });
+
+    if(section && section.meters){
+      res.json(section.meters);
+    }else{
+      res.json({error: 'No Meters'})
+    };
+  });
+
   app.get('/api/meterManufacturers/:utilityType', async(req, res)=>{
     //return array of meter manufacturers under given utility type
     const utilityType = req.params.utilityType;

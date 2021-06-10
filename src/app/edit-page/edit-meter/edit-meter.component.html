@@ -6,41 +6,50 @@
 
 
 <div *ngIf="!showEditDiv">
-  <form [formGroup]="findMeterForm" (ngSubmit)="onNext()" class="findMeterForm">
+  <form [formGroup]="findMeterForm" (ngSubmit)="onClickNext()">
+    <div class="findMeterForm">
+      <mat-form-field class="utilityTypeDropdown">
+        <mat-label>Utility Type</mat-label>
+        <mat-select formControlName="utilityType" (selectionChange)="onUtilityType($event)">
+          <mat-option *ngFor="let utilityTypeOption of utilityTypeOptions;" value={{utilityTypeOption}}>{{utilityTypeOption}}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-    <mat-form-field class="utilityTypeDropdown">
-      <mat-label>Utility Type</mat-label>
-      <mat-select formControlName="utilityType" (selectionChange)="onUtilityType($event)">
-        <mat-option *ngFor="let utilityTypeOption of utilityTypeOptions;" value={{utilityTypeOption}}>{{utilityTypeOption}}</mat-option>
-      </mat-select>
-    </mat-form-field>
+      <mat-form-field class="manufacturerNameDropdown">
+        <mat-label>Manufacturer Name</mat-label>
+        <input matInput formControlName="manufacturer" type="text" placeholder="" aria-label="Number"
+        [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onUpdateSectionNameDropdownOptions()">
+          <mat-option *ngFor="let option of filteredDropdownOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
 
-    <mat-form-field class="manufacturerNameDropdown">
-      <mat-label>Manufacturer Name</mat-label>
-      <input matInput formControlName="manufacturer" type="text" placeholder="" aria-label="Number"
-      [matAutocomplete]="auto">
-      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onUpdateSectionNameDropdownOptions()">
-        <mat-option *ngFor="let option of filteredDropdownOptions | async" [value]="option">
-          {{option}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
+      <mat-form-field class="sectionDropdown">
+        <mat-label>Series Name / Model Name</mat-label>
+        <mat-select formControlName="seriesAndModelName" (selectionChange)="onUpdateMeterDropdownOptions()">
+          <mat-option *ngFor="let sectionOption of sectionNameDropdownOptions;" value={{sectionOption}}>{{sectionOption}}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-    <mat-form-field class="sectionDropdown">
-      <mat-label>Series Name / Model Name</mat-label>
-      <mat-select formControlName="seriesAndModelName">
-        <mat-option *ngFor="let sectionOption of sectionNameDropdownOptions;" value={{sectionOption}}>{{sectionOption}}</mat-option>
-      </mat-select>
-    </mat-form-field>
+      <p *ngIf="findMeterForm.get('seriesAndModelName')?.value == 'NA'" class="noteText">*Does not have series or model name.</p>
 
-    <p *ngIf="findMeterForm.get('seriesAndModelName')?.value == 'NA'" class="noteText">*Does not have series or model name.</p>
+      <mat-form-field class="sectionDropdown">
+        <mat-label>Meter</mat-label>
+        <mat-select formControlName="meter">
+          <mat-option *ngFor="let meterOption of meterDropdownOptions;" value={{meterOption}}>{{meterOption}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
 
     <!-- Show/Hide Reference Image -->
     <app-help-dropdown></app-help-dropdown>
 
     <!-- Button Back -->
-    <div class="flexColumn">
+    <div class="flexRow spaceBetween">
       <button (click)="onReturnHome()" class="button">Back</button>
+      <button [disabled]="!canClickNext" [ngStyle]="{'opacity': (!canClickNext? .5 : 1)}" class="button">Next</button>
     </div>
   </form>
 </div>

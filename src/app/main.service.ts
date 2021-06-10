@@ -99,6 +99,22 @@ export class MainService {
     });
   };
 
+  getArrayOfMetersWithinSection(utilityType:string, manufacturer:string, seriesName:string|null, modelsName:string|null){
+    const data = {
+      utilityType: utilityType,
+      manufacturer: manufacturer,
+      seriesName: seriesName,
+      modelsName: modelsName
+    };
+
+    console.log(data)
+    const dataString = JSON.stringify(data);
+    return this.http.get('http://localhost:3000/api/metersFromSection/' + dataString, {
+      observe: 'body',
+      responseType: 'json'
+    });
+  };
+
   getArrayOfSectionNamesByUtilityAndManufacturer(utilityType: string, manufacturerName: string){
     return this.http.get<SectionNamesArray>('http://localhost:3000/api/sectionData/' + utilityType + '/' + manufacturerName, {
       observe: 'body',
