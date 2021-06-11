@@ -17,7 +17,7 @@
 
       <mat-form-field class="manufacturerNameDropdown">
         <mat-label>Manufacturer Name</mat-label>
-        <input matInput formControlName="manufacturer" type="text" placeholder="" aria-label="Number"
+        <input (click)="onClearManufacturerName()" matInput formControlName="manufacturer" type="text" placeholder="" aria-label="Number"
         [matAutocomplete]="auto">
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onUpdateSectionNameDropdownOptions()">
           <mat-option *ngFor="let option of filteredDropdownOptions | async" [value]="option">
@@ -63,8 +63,6 @@
   <h3 class="tileTitle">Edit/Delete a Meter</h3>
 
   <form [formGroup]="editMeterForm" (ngSubmit)="onSubmit()">
-  <div formGroupName="meterData">
-
     <mat-form-field class="meterNameInput">
       <mat-label>Meter Name</mat-label>
       <input matInput formControlName="meterName">
@@ -104,7 +102,6 @@
                 cdkAutosizeMinRows="1"
                 cdkAutosizeMaxRows="5"></textarea>
     </mat-form-field>
-  </div>
 </form>
 
   <!-- #########################################################
@@ -116,6 +113,6 @@
 
   <!-- Button Back & Next -->
   <div class="flexRow spaceBetween">
-    <button type="button" (click)="onReturnHome()" class="button">Back</button>
+    <button type="button" (click)="onHideEditDiv()" class="button">Back</button>
     <button [disabled]="!canClickSave" [ngStyle]="{'opacity': (!canClickSave? .5 : 1)}" class="button">Save</button>
   </div>

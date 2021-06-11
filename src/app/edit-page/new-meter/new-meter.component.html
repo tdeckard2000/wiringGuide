@@ -18,7 +18,7 @@
 
   <mat-form-field class="manufacturerNameDropdown">
     <mat-label>Manufacturer Name</mat-label>
-    <input matInput formControlName="manufacturerName" type="text" placeholder="" aria-label="Number"
+    <input (click)="onClearManufacturerName()" matInput formControlName="manufacturerName" type="text" placeholder="" aria-label="Number"
           [matAutocomplete]="auto">
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onUpdateSectionNameDropdownOptions()">
       <mat-option *ngFor="let option of filteredDropdownOptions | async" [value]="option">

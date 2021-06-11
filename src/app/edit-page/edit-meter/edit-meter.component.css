@@ -1,5 +1,45 @@
+h6{
+  color: #777;
+  font-family: sans-serif;
+  font-weight: 100;
+  font-size: .95rem;
+  margin: 10px 0 20px 0;
+}
+
+.checkbox{
+  color: #777;
+  font-family: sans-serif;
+  font-weight: 100;
+  font-size: .9rem;
+  margin: 0 15px;
+}
+
+.compatibilityCheckboxes{
+  margin-bottom: 25px;
+}
+
 .findMeterForm{
   display: flex;
   flex-direction: column;
   width: 350px;
+}
+
+.meterNameInput{
+  padding-right: 15px;
+}
+
+.noteText{
+  bottom: 15px;
+  color: #777;
+  font-family: sans-serif;
+  font-weight: 100;
+  font-size: .7rem;
+  margin-top: 0px;
+  position: relative;
+}
+
+.textArea{
+  display: block;
+  margin-top: 25px;
+  width: 80%;
 }

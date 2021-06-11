@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EditPageService } from '../edit-page.service';
+import { EditPageService, MeterData } from '../edit-page.service';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { MainService } from 'src/app/main.service';
 import { map, startWith } from 'rxjs/operators';
@@ -25,7 +25,9 @@ export class EditMeterComponent implements OnInit {
   filteredDropdownOptions: Observable<string[]> | undefined;
   findMeterForm: FormGroup = {} as FormGroup;
   manufacturerNames: Array<string> = [];
+  meterBeingEditedObj: MeterData = {} as MeterData;
   meterDropdownOptions: Array<string> = [];
+  meterOptionsData: Array<MeterData> = [];
   sectionNameDropdownOptions: Array<string> = [];
   showEditDiv: boolean = false;
   utilityTypeOptions: Array<string> = this.editPageService.utilityTypeOptions;
@@ -34,7 +36,6 @@ export class EditMeterComponent implements OnInit {
   getArrayOfManufacturers(){
     this.mainService.getArrayOfManufacturersByUtility(this.utilityTypeSelection)
     .subscribe((data:object)=>{
-      console.log(data)
       this.manufacturerNames = data as Array<string>;
       this.populateManufacturerDropdownList();
     });
@@ -42,9 +43,19 @@ export class EditMeterComponent implements OnInit {
     this.findMeterForm.patchValue({'manufacturerName': ""});
   };
 
+  onClearManufacturerName(){
+    this.findMeterForm.get('manufacturer')?.setValue('');
+  };
+
   onClickNext(){
-    console.log(this.findMeterForm.value);
-  }
+    this.storeSelectedMeterObj();
+    this.populateEditForm();
+    this.showEditDiv = true;
+  };
+
+  onHideEditDiv(){
+    this.showEditDiv = false;
+  };
 
   onReturnHome(){
     this.editPageService.visibleTile$.next('Home');
@@ -68,6 +79,7 @@ export class EditMeterComponent implements OnInit {
     const utilityType = this.findMeterForm.get('utilityType')?.value;
     this.findMeterForm.get('meter')?.patchValue('');
     this.meterDropdownOptions = [];
+    this.meterOptionsData = [];
     let seriesName: string | null = "";
     let modelsName: string | null = "";
     if(selection === "NA"){
@@ -83,6 +95,8 @@ export class EditMeterComponent implements OnInit {
         console.warn(data.error);
         this.meterDropdownOptions.push('No Meters')
       }else{
+        this.meterOptionsData = data;
+        console.log(data)
         data.forEach((meter:any)=>{
           this.meterDropdownOptions.push(meter.meterName);
         });
@@ -111,11 +125,32 @@ export class EditMeterComponent implements OnInit {
     });
   };
 
+  populateEditForm(){
+    const meter = this.meterBeingEditedObj;
+    this.editMeterForm.setValue({
+      'meterName': meter.meterName,
+      'wiringProtocol': meter.wiringProtocol,
+      'compatibleTR201': meter.compatibleWith.TR201,
+      'compatibleTR4': meter.compatibleWith.TR4,
+      'compatibleTR4X': meter.compatibleWith.TR4X,
+      'compatibleRR4': meter.compatibleWith.RR4,
+      'publicNote': meter.publicNotes,
+      'internalNote': meter.internalNotes,
+    });
+  };
+
   populateManufacturerDropdownList(){
     this.filteredDropdownOptions = this.findMeterForm.get("manufacturer")?.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
     );
+  };
+
+  storeSelectedMeterObj(){
+    const filterResults = this.meterOptionsData.filter((m)=>{
+      return m.meterName === this.findMeterForm.get('meter')?.value;
+    });
+    this.meterBeingEditedObj = filterResults[0];
   };
 
   forbiddenNameValidator(control: FormControl):{[s:string]:boolean} | null{
@@ -147,7 +182,6 @@ export class EditMeterComponent implements OnInit {
     });
 
     this.findMeterForm.valueChanges.subscribe(()=>{
-      console.log(this.findMeterForm.valid)
       if(this.findMeterForm.valid){
         this.canClickNext = true;
       }else{

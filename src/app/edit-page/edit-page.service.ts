@@ -11,6 +11,20 @@ export interface EditManufacturerFormData{
   };
 };
 
+export interface MeterData{
+  meterName: string,
+  signalType: 'Encoded' | 'Pulse' | 'Integrated',
+  wiringProtocol: 'Amco' | 'Elster' | 'Neptune' | 'Sensus' | 'GWF' | 'Pulse' | 'Integrated',
+  compatibleWith: {
+    TR201: boolean,
+    TR4: boolean,
+    TR4X: boolean,
+    RR4: boolean
+  },
+  internalNotes: string,
+  publicNotes: string
+};
+
 export interface ModalData{
   showLoadingAnimation: boolean,
   showSuccessText: boolean,

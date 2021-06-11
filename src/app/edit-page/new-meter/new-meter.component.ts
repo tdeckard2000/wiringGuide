@@ -40,6 +40,10 @@ export class NewMeterComponent implements OnInit {
     this.newMeterForm.patchValue({'manufacturerName': ""});
   };
 
+  onClearManufacturerName(){
+    this.newMeterForm.get('manufacturerName')?.setValue('');
+  };
+
   onReturnHome(){
     this.editPageService.visibleTile$.next('Home');
   };
