@@ -36,7 +36,7 @@ export interface NewMeterForm{
 export interface NewSectionsArrayObject{
   seriesName:string | null,
   modelsName:string | null
-}
+};
 
 interface SectionNamesArray{
   sections:[
@@ -46,7 +46,25 @@ interface SectionNamesArray{
       'deleted'?: boolean
     }
   ]
-}
+};
+
+interface MeterLocation{
+  'utilityType': string,
+  'manufacturer': string,
+  'seriesAneModelsName': string,
+  'meterName': string
+};
+
+interface UpdatedMeterInfo{
+  'meterName': string,
+  'wiringProtocol': string,
+  'compatibleTR201': boolean,
+  'compatibleTR4': boolean,
+  'compatibleTR4X': boolean,
+  'compatibleRR4': boolean,
+  'publicNote': string,
+  'internalNote': string
+};
 
 @Injectable({
   providedIn: 'root',
@@ -155,6 +173,15 @@ export class MainService {
     };
 
     return this.http.post('http://localhost:3000/api/newMeterManufacturer', manufacturerObject, this.httpOptions);
+  };
+
+  postUpdatedMeter(meterLocation:MeterLocation, updatedMeterInfo:UpdatedMeterInfo){
+   const data = {
+     meterLocation: meterLocation,
+     updatedMeterInfo: updatedMeterInfo
+   };
+   console.log('here')
+    return this.http.patch('http://localhost:3000/api/updateMeter', data, this.httpOptions);
   };
 
   postUpdatedMeterManufacturer(meterManufacturerData:MeterManufacturer){

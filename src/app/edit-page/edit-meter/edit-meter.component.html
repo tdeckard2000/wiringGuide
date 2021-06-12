@@ -28,7 +28,7 @@
 
       <mat-form-field class="sectionDropdown">
         <mat-label>Series Name / Model Name</mat-label>
-        <mat-select formControlName="seriesAndModelName" (selectionChange)="onUpdateMeterDropdownOptions()">
+        <mat-select formControlName="seriesAndModelsName" (selectionChange)="onUpdateMeterDropdownOptions()">
           <mat-option *ngFor="let sectionOption of sectionNameDropdownOptions;" value={{sectionOption}}>{{sectionOption}}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -37,7 +37,7 @@
 
       <mat-form-field class="sectionDropdown">
         <mat-label>Meter</mat-label>
-        <mat-select formControlName="meter">
+        <mat-select formControlName="meterName">
           <mat-option *ngFor="let meterOption of meterDropdownOptions;" value={{meterOption}}>{{meterOption}}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -60,7 +60,6 @@
 ######################################################### -->
 
 <div *ngIf="showEditDiv" class="divBody">
-  <h3 class="tileTitle">Edit/Delete a Meter</h3>
 
   <form [formGroup]="editMeterForm" (ngSubmit)="onSubmit()">
     <mat-form-field class="meterNameInput">
@@ -102,17 +101,14 @@
                 cdkAutosizeMinRows="1"
                 cdkAutosizeMaxRows="5"></textarea>
     </mat-form-field>
-</form>
+    <!-- Show/Hide Reference Image -->
+    <app-help-dropdown></app-help-dropdown>
 
-  <!-- #########################################################
-                        Bottom Section
-  ######################################################### -->
+    <!-- Button Back & Next -->
+    <div class="flexRow spaceBetween">
+      <button type="button" (click)="onHideEditDiv()" class="button">Back</button>
+      <button [disabled]="!canClickSave" [ngStyle]="{'opacity': (!canClickSave? .5 : 1)}" class="button">Save</button>
+    </div>
 
-  <!-- Show/Hide Reference Image -->
-  <app-help-dropdown></app-help-dropdown>
-
-  <!-- Button Back & Next -->
-  <div class="flexRow spaceBetween">
-    <button type="button" (click)="onHideEditDiv()" class="button">Back</button>
-    <button [disabled]="!canClickSave" [ngStyle]="{'opacity': (!canClickSave? .5 : 1)}" class="button">Save</button>
-  </div>
+  </form>
+</div>

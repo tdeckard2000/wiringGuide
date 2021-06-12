@@ -165,6 +165,28 @@ client.connect(err => {
     });
   });
 
+  app.patch('/api/updateMeter', async(req, res)=>{
+    const meterLocation = req.body.meterLocation;
+    const updatedMeterInfo = req.body.updatedMeterInfo;
+    let modelsName = null;
+    let seriesName = null;
+    if(meterLocation.seriesAndModelsName !== 'NA'){
+      seriesName = meterLocation.seriesAndModelsName.split(' / ')[0];
+      modelsName = meterLocation.seriesAndModelsName.split(' / ')[1];
+    };
+
+    const result = await meterGuideData.updateOne(
+      {'manufacturer': meterLocation.manufacturer,'utilityType': meterLocation.utilityType},
+      { $set: {'sections.$[x].meters.$[y].meterName': 'WORKED'}},
+      { arrayFilters: [
+        {'x.seriesName': seriesName,'x.modelsName': modelsName},
+        {'y.meterName': meterLocation.meterName}
+        ]
+      }
+    );
+    console.log(result);
+  });
+
   app.all("*", (req, res)=>{
     console.warn("Invalid API request");
     res.send({'error':'wrong route'});

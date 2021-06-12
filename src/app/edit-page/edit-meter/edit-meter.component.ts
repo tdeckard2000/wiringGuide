@@ -50,6 +50,7 @@ export class EditMeterComponent implements OnInit {
   onClickNext(){
     this.storeSelectedMeterObj();
     this.populateEditForm();
+    this.canClickSave = false;
     this.showEditDiv = true;
   };
 
@@ -62,12 +63,16 @@ export class EditMeterComponent implements OnInit {
   };
 
   onSubmit(){
-    console.log(this.editMeterForm.value);
+    const updatedMeterInfo = this.editMeterForm.value;
+    const meterLocation = this.findMeterForm.value;
+    this.mainService.postUpdatedMeter(meterLocation, updatedMeterInfo).subscribe((data)=>{
+      console.log(data);
+    })
   };
 
   onUtilityType(data:{value: string}){
     this.findMeterForm.get('manufacturer')?.patchValue('');
-    this.findMeterForm.get('seriesAndModelName')?.patchValue('');
+    this.findMeterForm.get('seriesAndModelsName')?.patchValue('');
     this.findMeterForm.get('meter')?.patchValue('');
     this.utilityTypeSelection = data.value;
     this.getArrayOfManufacturers();
@@ -75,7 +80,7 @@ export class EditMeterComponent implements OnInit {
 
   onUpdateMeterDropdownOptions(){
     const manufacturer = this.findMeterForm.get('manufacturer')?.value;
-    const selection = this.findMeterForm.get('seriesAndModelName')?.value;
+    const selection = this.findMeterForm.get('seriesAndModelsName')?.value;
     const utilityType = this.findMeterForm.get('utilityType')?.value;
     this.findMeterForm.get('meter')?.patchValue('');
     this.meterDropdownOptions = [];
@@ -96,7 +101,6 @@ export class EditMeterComponent implements OnInit {
         this.meterDropdownOptions.push('No Meters')
       }else{
         this.meterOptionsData = data;
-        console.log(data)
         data.forEach((meter:any)=>{
           this.meterDropdownOptions.push(meter.meterName);
         });
@@ -107,7 +111,7 @@ export class EditMeterComponent implements OnInit {
   onUpdateSectionNameDropdownOptions(){
     const utilityType = this.findMeterForm.get('utilityType')?.value;
     const manufacturerName = this.findMeterForm.get('manufacturer')?.value;
-    this.findMeterForm.get('seriesAndModelName')?.patchValue("");
+    this.findMeterForm.get('seriesAndModelsName')?.patchValue("");
     this.findMeterForm.get('meter')?.patchValue('');
     let arrayOfOptions:Array<string> = ["NA"];
     this.mainService.getArrayOfSectionNamesByUtilityAndManufacturer(utilityType, manufacturerName).subscribe((data)=>{
@@ -148,7 +152,7 @@ export class EditMeterComponent implements OnInit {
 
   storeSelectedMeterObj(){
     const filterResults = this.meterOptionsData.filter((m)=>{
-      return m.meterName === this.findMeterForm.get('meter')?.value;
+      return m.meterName === this.findMeterForm.get('meterName')?.value;
     });
     this.meterBeingEditedObj = filterResults[0];
   };
@@ -167,8 +171,8 @@ export class EditMeterComponent implements OnInit {
     this.findMeterForm = new FormGroup({
       'utilityType': new FormControl(null, Validators.required),
       'manufacturer': new FormControl(null, Validators.required),
-      'seriesAndModelName': new FormControl(null, Validators.required),
-      'meter': new FormControl(null, [Validators.required, this.forbiddenNameValidator])
+      'seriesAndModelsName': new FormControl(null, Validators.required),
+      'meterName': new FormControl(null, [Validators.required, this.forbiddenNameValidator])
     });
     this.editMeterForm = new FormGroup({
         'meterName': new FormControl(null, Validators.required),
@@ -182,12 +186,11 @@ export class EditMeterComponent implements OnInit {
     });
 
     this.findMeterForm.valueChanges.subscribe(()=>{
-      if(this.findMeterForm.valid){
-        this.canClickNext = true;
-      }else{
-        this.canClickNext = false;
-      };
+      this.canClickNext = this.findMeterForm.valid? true : false;
     });
 
+    this.editMeterForm.valueChanges.subscribe(()=>{
+      this.canClickSave = this.editMeterForm.valid? true : false;
+    });
   }
 }
