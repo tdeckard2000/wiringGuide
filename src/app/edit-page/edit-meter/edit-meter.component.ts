@@ -57,6 +57,10 @@ export class EditMeterComponent implements OnInit {
     this.showEditDiv = true;
   };
 
+  onDeleteMeter(){
+
+  };
+
   onHideEditDiv(){
     this.showEditDiv = false;
   };

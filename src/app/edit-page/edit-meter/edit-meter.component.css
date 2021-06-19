@@ -6,6 +6,10 @@ h6{
   margin: 10px 0 20px 0;
 }
 
+button.buttonRemove{
+  margin-left: 0;
+}
+
 .checkbox{
   color: #777;
   font-family: sans-serif;
