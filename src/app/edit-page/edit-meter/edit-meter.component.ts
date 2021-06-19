@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { EditPageService, MeterData } from '../edit-page.service';
+import { EditPageService, MeterData, ModalData } from '../edit-page.service';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { MainService } from 'src/app/main.service';
 import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { SavingModalComponent } from '../saving-modal/saving-modal.component';
 
 @Component({
   selector: 'app-edit-meter',
@@ -12,7 +14,7 @@ import { Observable } from 'rxjs';
 })
 export class EditMeterComponent implements OnInit {
 
-  constructor(public editPageService: EditPageService, private mainService: MainService) { }
+  constructor(public editPageService: EditPageService, private mainService: MainService, public dialog: MatDialog) { }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
@@ -28,6 +30,7 @@ export class EditMeterComponent implements OnInit {
   meterBeingEditedObj: MeterData = {} as MeterData;
   meterDropdownOptions: Array<string> = [];
   meterOptionsData: Array<MeterData> = [];
+  modalData: ModalData = {showLoadingAnimation: true, showSuccessText: false, showErrorText: false, errorPreview: "error info"};
   sectionNameDropdownOptions: Array<string> = [];
   showEditDiv: boolean = false;
   utilityTypeOptions: Array<string> = this.editPageService.utilityTypeOptions;
@@ -58,15 +61,40 @@ export class EditMeterComponent implements OnInit {
     this.showEditDiv = false;
   };
 
+  openSaveModal(){
+    let ref = this.dialog.open(SavingModalComponent, {
+      data: this.modalData,
+      disableClose: true
+    });
+    ref.componentInstance.clickedDone.subscribe(()=>{
+      this.findMeterForm.reset();
+      this.showEditDiv = false;
+    });
+  };
+
   onReturnHome(){
     this.editPageService.visibleTile$.next('Home');
   };
 
   onSubmit(){
+    this.modalData.showErrorText = false;
+    this.modalData.showSuccessText = false;
+    this.modalData.showLoadingAnimation = true;
+    this.openSaveModal();
     const updatedMeterInfo = this.editMeterForm.value;
     const meterLocation = this.findMeterForm.value;
-    this.mainService.postUpdatedMeter(meterLocation, updatedMeterInfo).subscribe((data)=>{
+    this.mainService.postUpdatedMeter(meterLocation, updatedMeterInfo).subscribe((data: any)=>{
       console.log(data);
+      if(data.nModified && data.nModified > 0){
+        setTimeout(()=>{
+          this.modalData.showLoadingAnimation = false;
+          this.modalData.showSuccessText = true;
+        }, 1000);
+      }else{
+        this.modalData.showLoadingAnimation = false;
+        this.modalData.showErrorText = true;
+        this.modalData.errorPreview = data;
+      };
     })
   };
 
@@ -138,8 +166,8 @@ export class EditMeterComponent implements OnInit {
       'compatibleTR4': meter.compatibleWith.TR4,
       'compatibleTR4X': meter.compatibleWith.TR4X,
       'compatibleRR4': meter.compatibleWith.RR4,
-      'publicNote': meter.publicNotes,
-      'internalNote': meter.internalNotes,
+      'publicNotes': meter.publicNotes,
+      'internalNotes': meter.internalNotes,
     });
   };
 
@@ -181,8 +209,8 @@ export class EditMeterComponent implements OnInit {
         'compatibleTR4': new FormControl(null),
         'compatibleTR4X': new FormControl(null),
         'compatibleRR4': new FormControl(null),
-        'publicNote': new FormControl(null),
-        'internalNote': new FormControl(null)
+        'publicNotes': new FormControl(null),
+        'internalNotes': new FormControl(null)
     });
 
     this.findMeterForm.valueChanges.subscribe(()=>{

@@ -78,8 +78,8 @@ export class NewMeterComponent implements OnInit {
       compatibleTR4: formData.meterData.compatibleTR4 ? true : false,
       compatibleTR4X: formData.meterData.compatibleTR4X ? true : false,
       compatibleRR4: formData.meterData.compatibleRR4 ? true : false,
-      publicNote: formData.meterData.publicNote || "",
-      internalNote: formData.meterData.internalNote || ""
+      publicNotes: formData.meterData.publicNotes || "",
+      internalNotes: formData.meterData.internalNotes || ""
     };
 
 
@@ -157,8 +157,8 @@ export class NewMeterComponent implements OnInit {
         'compatibleTR4': new FormControl(null),
         'compatibleTR4X': new FormControl(null),
         'compatibleRR4': new FormControl(null),
-        'publicNote': new FormControl(null),
-        'internalNote': new FormControl(null)
+        'publicNotes': new FormControl(null),
+        'internalNotes': new FormControl(null)
       })
     });
 

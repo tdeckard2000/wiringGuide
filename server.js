@@ -108,8 +108,8 @@ client.connect(err => {
         TR4X: data.compatibleTR4X,
         RR4: data.compatibleRR4
       },
-      publicNotes: data.publicNote,
-      internalNotes: data.internalNote
+      publicNotes: data.publicNotes,
+      internalNotes: data.internalNotes
     };
 
     const result = await meterGuideData.updateOne(
@@ -168,23 +168,53 @@ client.connect(err => {
   app.patch('/api/updateMeter', async(req, res)=>{
     const meterLocation = req.body.meterLocation;
     const updatedMeterInfo = req.body.updatedMeterInfo;
+    let signalType = 'Encoded';
     let modelsName = null;
     let seriesName = null;
+
     if(meterLocation.seriesAndModelsName !== 'NA'){
       seriesName = meterLocation.seriesAndModelsName.split(' / ')[0];
       modelsName = meterLocation.seriesAndModelsName.split(' / ')[1];
     };
 
-    const result = await meterGuideData.updateOne(
+    if(updatedMeterInfo.wiringProtocol === 'Pulse'){
+      signalType = 'Pulse';
+    }else if(updatedMeterInfo.wiringProtocol === 'Integrated'){
+      signalType = 'Integrated';
+    };
+
+    meterGuideData.updateOne(
       {'manufacturer': meterLocation.manufacturer,'utilityType': meterLocation.utilityType},
-      { $set: {'sections.$[x].meters.$[y].meterName': 'WORKED'}},
+      { $set: {
+        'sections.$[x].meters.$[y].meterName': updatedMeterInfo.meterName,
+        'sections.$[x].meters.$[y].signalType': signalType,
+        'sections.$[x].meters.$[y].wiringProtocol': updatedMeterInfo.wiringProtocol,
+        'sections.$[x].meters.$[y].compatibleWith.TR201': updatedMeterInfo.compatibleTR201,
+        'sections.$[x].meters.$[y].compatibleWith.TR4': updatedMeterInfo.compatibleTR4,
+        'sections.$[x].meters.$[y].compatibleWith.RR4': updatedMeterInfo.compatibleRR4,
+        'sections.$[x].meters.$[y].compatibleWith.TR4X': updatedMeterInfo.compatibleTR4X,
+        'sections.$[x].meters.$[y].publicNotes': updatedMeterInfo.publicNotes,
+        'sections.$[x].meters.$[y].internalNotes': updatedMeterInfo.internalNotes
+        }
+      },
       { arrayFilters: [
-        {'x.seriesName': seriesName,'x.modelsName': modelsName},
-        {'y.meterName': meterLocation.meterName}
+          {
+            'x.seriesName': seriesName,
+            'x.modelsName': modelsName
+          },
+          {
+            'y.meterName': meterLocation.meterName,
+          }
         ]
+      },
+      (err, result)=>{
+        if(err){
+          console.warn("Error updating meter: " + err);
+        };
+
+        res.json(result);
       }
     );
-    console.log(result);
   });
 
   app.all("*", (req, res)=>{
