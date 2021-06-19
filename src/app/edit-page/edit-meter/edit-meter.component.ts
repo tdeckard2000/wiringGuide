@@ -6,6 +6,7 @@ import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { SavingModalComponent } from '../saving-modal/saving-modal.component';
+import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
 
 @Component({
   selector: 'app-edit-meter',
@@ -58,7 +59,18 @@ export class EditMeterComponent implements OnInit {
   };
 
   onDeleteMeter(){
-
+    this.modalData.showLoadingAnimation = false;
+    this.modalData.errorPreview = "";
+    this.modalData.showErrorText = false;
+    this.modalData.showSuccessText = false;
+    // const ref = this.dialog.open(DeleteModalComponent, {
+    //   data: {manufacturerData: this.manufacturerData, modalData: this.modalData},
+    //   disableClose: true
+    // });
+    const meterLocation = this.findMeterForm.value;
+    this.mainService.deleteMeter(meterLocation).subscribe((data)=>{
+      console.log(data);
+    });
   };
 
   onHideEditDiv(){
@@ -88,7 +100,6 @@ export class EditMeterComponent implements OnInit {
     const updatedMeterInfo = this.editMeterForm.value;
     const meterLocation = this.findMeterForm.value;
     this.mainService.postUpdatedMeter(meterLocation, updatedMeterInfo).subscribe((data: any)=>{
-      console.log(data);
       if(data.nModified && data.nModified > 0){
         setTimeout(()=>{
           this.modalData.showLoadingAnimation = false;

@@ -1,0 +1,24 @@
+<div class="modalBody angularTheme">
+  <div class="modalContent">
+    <!-- title -->
+    <h2 mat-dialog-title>Are you sure?</h2>
+    <mat-dialog-content [ngStyle]="{'opacity': (data.modalData.showLoadingAnimation || data.modalData.showSuccessText || data.modalData.showErrorText) ? .5 : 1}" class="dialogContent">
+      Deleting "METER NAME" will delete the following meters:
+    </mat-dialog-content>
+
+    <!-- loading animation and text -->
+    <mat-spinner *ngIf="data.modalData.showLoadingAnimation" class="loadingSpinner" [diameter]="50"></mat-spinner>
+    <!-- successfully deleted text -->
+    <mat-dialog-content *ngIf="data.modalData.showSuccessText" class="dialogContent">Deleted successfully <span>✔</span></mat-dialog-content>
+    <!-- error deleting text -->
+    <mat-dialog-content *ngIf="data.modalData.showErrorText" class="dialogContent">There was an error deleting. Try again.</mat-dialog-content>
+    <p *ngIf="data.modalData.showErrorText" class="errorPreview">{{data.modalData.errorPreview | json}}</p>
+
+    <div class="flexBox">
+      <button [disabled]="!canClickCancel" [ngStyle]="{'opacity': !canClickCancel ? .5 : 1}" class="buttonClose" mat-dialog-close>Cancel</button>
+      <button *ngIf="!data.modalData.showSuccessText" (click)="onDeleteClick()" [disabled]="data.modalData.showLoadingAnimation"
+      [ngStyle]="{'opacity': data.modalData.showLoadingAnimation ? .5 : 1}" class="buttonDelete">Delete</button>
+      <button *ngIf="data.modalData.showSuccessText" class="buttonClose"  (click)="onDoneClick()" mat-dialog-close>Done</button>
+    </div>
+  </div>
+</div>

@@ -33,7 +33,7 @@ export class EditManufacturerComponent implements OnInit {
   formIsValid = false;
   manufacturerNames = [""];
   manufacturerData: MeterManufacturer = {_id: "", manufacturer: "", utilityType: "", sections: [{seriesName:"", modelsName:""}]};
-  ModalData: ModalData = {showLoadingAnimation: true, showSuccessText: false, showErrorText: false, errorPreview: "error info"};
+  modalData: ModalData = {showLoadingAnimation: true, showSuccessText: false, showErrorText: false, errorPreview: "error info"};
   selectedManufacturerName = new FormControl();
   showEditDiv = false;
   showSeriesModelNameMissingTextError = false;
@@ -102,31 +102,31 @@ export class EditManufacturerComponent implements OnInit {
 
   onDeleteManufacturer(){
     //prepare modal
-    this.ModalData.showLoadingAnimation = false;
-    this.ModalData.errorPreview = "";
-    this.ModalData.showErrorText = false;
-    this.ModalData.showSuccessText = false;
+    this.modalData.showLoadingAnimation = false;
+    this.modalData.errorPreview = "";
+    this.modalData.showErrorText = false;
+    this.modalData.showSuccessText = false;
     //open the "are you sure" modal & pass data to modal
     const ref = this.dialog.open(DeleteModalComponent, {
-      data: {manufacturerData: this.manufacturerData, modalData: this.ModalData},
+      data: {manufacturerData: this.manufacturerData, modalData: this.modalData},
       disableClose: true
     });
     //when user clicks 'delete' on modal
     ref.componentInstance.onConfirmDelete.subscribe(()=>{
-      this.ModalData.showLoadingAnimation = true;
+      this.modalData.showLoadingAnimation = true;
       this.mainService.deleteManufacturer(this.manufacturerData._id).subscribe((data:any)=>{
         if(data.result && data.result.nModified > 0){
           //show "success" on modal
           setTimeout(()=>{
-            this.ModalData.showLoadingAnimation = false;
-            this.ModalData.showSuccessText = true;
+            this.modalData.showLoadingAnimation = false;
+            this.modalData.showSuccessText = true;
           }, 1000)
         }else{
-          this.ModalData.showLoadingAnimation = false;
+          this.modalData.showLoadingAnimation = false;
           //show "error" on modal
-          this.ModalData.showErrorText = true;
+          this.modalData.showErrorText = true;
           //display error data in modal
-          this.ModalData.errorPreview = data;
+          this.modalData.errorPreview = data;
         };
       });
     });
@@ -165,7 +165,7 @@ export class EditManufacturerComponent implements OnInit {
   openSaveModal(){
     //open the "saving" modal & pass data to modal
     this.dialog.open(SavingModalComponent, {
-      data: this.ModalData,
+      data: this.modalData,
       disableClose: true
     });
   };
@@ -177,7 +177,7 @@ export class EditManufacturerComponent implements OnInit {
 
   onSubmit(formData:EditManufacturerFormData){
     //reset save modal values
-    this.ModalData = {
+    this.modalData = {
       showLoadingAnimation: true,
       showErrorText: false,
       showSuccessText: false,
@@ -203,15 +203,15 @@ export class EditManufacturerComponent implements OnInit {
       if(data.result && data.result.nModified > 0){
         //show "success" on modal
         setTimeout(()=>{
-          this.ModalData.showLoadingAnimation = false;
-          this.ModalData.showSuccessText = true;
+          this.modalData.showLoadingAnimation = false;
+          this.modalData.showSuccessText = true;
         }, 3000)
       }else{
-        this.ModalData.showLoadingAnimation = false;
+        this.modalData.showLoadingAnimation = false;
         //show "error" on modal
-        this.ModalData.showErrorText = true;
+        this.modalData.showErrorText = true;
         //display error data in modal
-        this.ModalData.errorPreview = data;
+        this.modalData.errorPreview = data;
       };
     });
   };
