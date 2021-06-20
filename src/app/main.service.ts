@@ -103,6 +103,18 @@ export class MainService {
     return this.http.patch('http://localhost:3000/api/deleteManufacturer', manufacturerIdObject, this.httpOptions);
   };
 
+  deleteMeter(meterLocation: MeterLocation){
+    //Remove meter data from DB
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      body: meterLocation
+    };
+
+    return this.http.delete('http://localhost:3000/api/deleteMeter', options)
+  }
+
   getAllMeters(){
     return this.http.get('http://localhost:3000/api/allmeters', {
       observe: 'body',
@@ -125,7 +137,6 @@ export class MainService {
       modelsName: modelsName
     };
 
-    console.log(data)
     const dataString = JSON.stringify(data);
     return this.http.get('http://localhost:3000/api/metersFromSection/' + dataString, {
       observe: 'body',
@@ -180,7 +191,6 @@ export class MainService {
      meterLocation: meterLocation,
      updatedMeterInfo: updatedMeterInfo
    };
-   console.log('here')
     return this.http.patch('http://localhost:3000/api/updateMeter', data, this.httpOptions);
   };
 

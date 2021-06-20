@@ -3,7 +3,7 @@
     <!-- title -->
     <h2 mat-dialog-title>Are you sure?</h2>
     <mat-dialog-content [ngStyle]="{'opacity': (data.modalData.showLoadingAnimation || data.modalData.showSuccessText || data.modalData.showErrorText) ? .5 : 1}" class="dialogContent">
-      Deleting "METER NAME" will delete the following meters:
+      This will delete the meter '{{data.meterName}}'. This can not be undone.
     </mat-dialog-content>
 
     <!-- loading animation and text -->

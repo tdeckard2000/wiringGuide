@@ -24,6 +24,28 @@ client.connect(err => {
 //             API Routes
 // ************************************
 
+  app.delete('/api/deleteMeter', async(req, res)=>{
+    const manufacturer = req.body.manufacturer;
+    const meterName = req.body.meterName;
+    const seriesName = req.body.seriesAndModelsName.split(' / ')[0];
+    const modelsName = req.body.seriesAndModelsName.split(' / ')[1];
+    const utilityType = req.body.utilityType;
+
+    meterGuideData.updateOne({manufacturer: manufacturer, utilityType: utilityType},
+      { $pull: {'sections.$[x].meters': {meterName: meterName}}},
+      { arrayFilters: [
+          {
+            'x.seriesName': seriesName,
+            'x.modelsName': modelsName
+          }
+        ]
+      },
+      (err, result)=>{
+        res.json(result);
+      }
+    );
+  });
+
   app.get('/api/allMeters', async(req, res)=>{
     //returns all meter data
     const result = await meterGuideData.find({deleted:{$ne: true}}).toArray();

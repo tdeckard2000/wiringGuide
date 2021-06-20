@@ -6,7 +6,7 @@ import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { SavingModalComponent } from '../saving-modal/saving-modal.component';
-import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
+import { DeleteModalSimpleComponent } from '../delete-modal-simple/delete-modal-simple.component';
 
 @Component({
   selector: 'app-edit-meter',
@@ -63,13 +63,29 @@ export class EditMeterComponent implements OnInit {
     this.modalData.errorPreview = "";
     this.modalData.showErrorText = false;
     this.modalData.showSuccessText = false;
-    // const ref = this.dialog.open(DeleteModalComponent, {
-    //   data: {manufacturerData: this.manufacturerData, modalData: this.modalData},
-    //   disableClose: true
-    // });
     const meterLocation = this.findMeterForm.value;
-    this.mainService.deleteMeter(meterLocation).subscribe((data)=>{
-      console.log(data);
+    const ref = this.dialog.open(DeleteModalSimpleComponent, {
+      data: {meterName: this.meterBeingEditedObj.meterName, modalData: this.modalData},
+      disableClose: true
+    });
+    ref.componentInstance.onConfirmDelete.subscribe(()=>{
+      this.modalData.showLoadingAnimation = true;
+      this.mainService.deleteMeter(meterLocation).subscribe((data:any)=>{
+        if(data.result && data.result.nModified > 0){
+          setTimeout(()=>{
+            this.modalData.showLoadingAnimation = false;
+            this.modalData.showSuccessText = true;
+          }, 1000)
+        }else{
+          this.modalData.showLoadingAnimation = false;
+          this.modalData.showErrorText = true;
+          this.modalData.errorPreview = data;
+        };
+      });
+    });
+    ref.componentInstance.onDone.subscribe(()=>{
+      this.showEditDiv = false;
+      this.onReturnHome();
     });
   };
 

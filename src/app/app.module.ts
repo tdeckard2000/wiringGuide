@@ -35,6 +35,7 @@ import { SavingModalComponent } from './edit-page/saving-modal/saving-modal.comp
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DeleteModalComponent } from './edit-page/delete-modal/delete-modal.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { DeleteModalSimpleComponent } from './edit-page/delete-modal-simple/delete-modal-simple.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     HelpDropdownComponent,
     SavingModalComponent,
     DeleteModalComponent,
+    DeleteModalSimpleComponent,
   ],
   imports: [
     BrowserModule,

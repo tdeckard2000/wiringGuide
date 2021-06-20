@@ -5,11 +5,11 @@ import { ModalData } from '../edit-page.service';
 @Component({
   selector: 'app-delete-modal-simple',
   templateUrl: './delete-modal-simple.component.html',
-  styleUrls: ['./delete-modal-simple.component.css']
+  styleUrls: ['./delete-modal-simple.component.css', '../delete-modal/delete-modal.component.css', '../edit-page.component.css']
 })
 export class DeleteModalSimpleComponent implements OnInit {
 
-  constructor(@Inject (MAT_DIALOG_DATA) public data:{modalData: ModalData}) { }
+  constructor(@Inject (MAT_DIALOG_DATA) public data:{modalData: ModalData, meterName:string}) { }
 
   onConfirmDelete = new EventEmitter();
   onDone = new EventEmitter();
@@ -18,6 +18,7 @@ export class DeleteModalSimpleComponent implements OnInit {
   onDeleteClick(){
     this.onConfirmDelete.emit();
     this.canClickCancel = false;
+    console.log(this.data)
   };
 
   onDoneClick(){
