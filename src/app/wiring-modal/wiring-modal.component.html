@@ -6,14 +6,14 @@
 
     <!-- Human Readable Summary of Meter -->
     <div class="meterSummary">
-      <p *ngIf="meterData.signalType === 'pulse'">This is a pulse-output meter</p>
-      <p *ngIf="meterData.signalType === 'encoded'">
+      <p *ngIf="meterData.signalType === 'Pulse'">This is a pulse-output meter.</p>
+      <p *ngIf="meterData.signalType === 'Encoded'">
         This is an encoded meter. It uses the {{ meterData.wiringProtocol | titlecase }} protocol.</p>
       <p *ngIf="!meterData.compatibleWith.TR201 && !meterData.compatibleWith.TR4 && !meterData.compatibleWith.RR4">
-        This meter is not currently compatible with NextCentury</p>
-      <p *ngIf="meterData.signalType === 'integrated' && (meterData.compatibleWith.TR201 || meterData.compatibleWith.TR4 ||
+        This meter is not currently compatible with NextCentury.</p>
+      <p *ngIf="meterData.signalType === 'Integrated' && (meterData.compatibleWith.TR201 || meterData.compatibleWith.TR4 ||
       meterData.compatibleWith.RR4)">
-        This meter has an integrated NextCentury Transceiver</p>
+        This meter has an integrated NextCentury Transceiver.</p>
     </div>
 
     <!-- NextCentury Compatibility List/Images-->
@@ -37,10 +37,10 @@
 
     <hr>
 
-    <div *ngIf="meterData.notes" class="meterNotes">
-      <!-- <h4>More Information</h4> -->
-      <img class="infoSVG" src="assets/icons/help.svg" alt="">
-      <p>{{ meterData.notes }}</p>
+    <div *ngIf="meterData.publicNotes" class="meterNotes">
+      <h4>More Information</h4>
+      <!-- <img class="infoSVG" src="assets/icons/help.svg" alt=""> -->
+      <p>{{ meterData.publicNotes }}</p>
     </div>
     <div class="flexBox">
       <button class="buttonClose" mat-dialog-close>Close</button>

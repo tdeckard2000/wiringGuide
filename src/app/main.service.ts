@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatTabBody } from '@angular/material/tabs';
+import { StringMap } from '@angular/compiler/src/compiler_facade_interface';
 
 export interface MeterManufacturer{
   _id: string
@@ -11,10 +12,34 @@ export interface MeterManufacturer{
     seriesName: string,
     modelsName: string,
     meters?:[{
-      meterName?:string
+      meterName: string,
+      wiringProtocol: string,
+      signalType: 'Encoded' | 'Integrated' | 'Pulse',
+      compatibleWith: {
+        TR201: boolean,
+        TR4: boolean,
+        TR4X: boolean,
+        RR4: boolean
+      },
+      publicNotes: string,
+      internalNotes: string
     }],
     deleted?: boolean
   }];
+};
+
+export interface MeterData{
+  meterName: string,
+  wiringProtocol: string,
+  signalType: 'Encoded' | 'Integrated' | 'Pulse',
+  compatibleWith: {
+    TR201: boolean,
+    TR4: boolean,
+    TR4X: boolean,
+    RR4: boolean
+  },
+  publicNotes: string,
+  internalNotes: string
 };
 
 export interface NewMeterForm{
