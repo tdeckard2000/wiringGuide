@@ -2,9 +2,9 @@
   <!-- Water Meters Section -->
   <div class="itemContainer" *ngFor="let item of (meterData | filterMeters:searchBarText); index as i">
     <mat-accordion>
-      <mat-expansion-panel>
+      <mat-expansion-panel [expanded]="(dropdownOpen[i])" (click)="onMeterItemClick(i)">
         <mat-expansion-panel-header class="itemDropdownHeader">
-          <mat-panel-title (click)="onMeterItemClick(i)">
+          <mat-panel-title>
               <!-- Meter Manufacturer Name -->
               <h3 class="itemHeader">{{item.manufacturer}}</h3>
           </mat-panel-title>
@@ -53,7 +53,7 @@
         </div>
       </mat-expansion-panel>
     </mat-accordion>
-    <hr [ngStyle]="{'opacity': (dropdownOpen[i] !== true) ? '1' : '0'}" class="underlineDivider">
+    <hr [ngStyle]="{'opacity': (dropdownOpen[i] === true) ? '0' : '.4'}" class="underlineDivider">
     <!-- <hr *ngIf="dropdownOpen[i] !== true" class="underlineDivider"> -->
   </div>
 </div>

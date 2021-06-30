@@ -148,26 +148,27 @@
     height: 1px;
     margin-left: 23px;
     margin-top: 5px;
+    opacity: .4;
     width: 85%;
 }
 
 /* Media Queries */
 
 /* ~iPhone X and smaller */
-@media screen and (max-width: 500px){ 
-    
+@media screen and (max-width: 500px){
+
     /* Minimize compatibility Chart */
     .compatibilityTable{
         text-align: start;
     }
-    
+
     .compatibilityTableCheckMarks{
         padding-right: 10px;
         width: fit-content;
     }
 
     .compatibilityTableHeader{
-        display: none;    
+        display: none;
     }
 
     .compatibilityTableLabel{
