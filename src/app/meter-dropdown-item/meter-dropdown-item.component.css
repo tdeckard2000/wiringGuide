@@ -46,6 +46,18 @@
   flex-wrap: wrap;
 }
 
+.meterRow{
+  margin: 0;
+  padding: 8px 5px;
+}
+
+.meterRow:hover{
+  background-color: #b1cfdc;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 8px 5px;
+}
+
 .iconInformation{
   height: 15px;
   margin-bottom: -3px;
@@ -103,10 +115,10 @@
 }
 
 /* Highlight Meter Name on Hover */
-.textMeterName:hover{
+/* .textMeterName:hover{
   cursor: pointer;
   color: rgb(92, 159, 232);
-}
+} */
 
 /* Highlight Meter Compatibility Check Mark on Hover */
 .textMeterName:hover ~ .compatibilityTable .checkMark{

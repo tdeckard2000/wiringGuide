@@ -2,8 +2,8 @@
   <!-- Water Meters Section -->
   <div class="itemContainer" *ngFor="let item of (meterData | filterMeters:searchBarText); index as i">
     <mat-accordion>
-      <mat-expansion-panel [expanded]="(dropdownOpen[i])" (click)="onMeterItemClick(i)">
-        <mat-expansion-panel-header class="itemDropdownHeader">
+      <mat-expansion-panel [expanded]="(dropdownOpen[i])">
+        <mat-expansion-panel-header class="itemDropdownHeader" (click)="onMeterItemClick(i)">
           <mat-panel-title>
               <!-- Meter Manufacturer Name -->
               <h3 class="itemHeader">{{item.manufacturer}}</h3>
@@ -26,7 +26,7 @@
                 </div>
                 <!-- List of Meters in FlexBox -->
                 <div *ngFor="let meter of section.meters">
-                  <div class="flexBox" (click)="openWiringModal(meter)">
+                  <div class="flexBox meterRow" (click)="openWiringModal(meter)">
                     <!-- Name of Meter -->
                     <span class="textMeterName">{{ meter.meterName }}&nbsp;</span>
                     <!-- Meter Signal Type -->
