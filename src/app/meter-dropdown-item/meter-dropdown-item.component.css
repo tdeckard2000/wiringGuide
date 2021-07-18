@@ -1,3 +1,7 @@
+.checkMark{
+  font-size: 15px;
+}
+
 .container{
   display: flex;
   align-items: flex-end;
@@ -37,6 +41,10 @@
   display: none;
   font-size: .7rem;
   width: 55px;
+}
+
+.dash{
+  font-size: 15px;
 }
 
 .flexBox{
@@ -121,13 +129,13 @@
 } */
 
 /* Highlight Meter Compatibility Check Mark on Hover */
-.textMeterName:hover ~ .compatibilityTable .checkMark{
+.meterRow:hover .checkMark{
   cursor: pointer;
   color: #7ed321;
 }
 
 /* Highlight Meter Compatibility Dash on Hover */
-.textMeterName:hover ~ .compatibilityTable .dash{
+.meterRow:hover .dash{
   cursor: pointer;
   color: black
 }
@@ -174,7 +182,7 @@
       text-align: start;
   }
 
-  .compatibilityTableCheckMarks{
+  .checkMark{
     color: #7ed321;
     padding-right: 10px;
     width: fit-content;
@@ -187,6 +195,12 @@
   .compatibilityTableLabel{
     display: inline-block;
     text-align: left;
+    width: fit-content;
+  }
+
+  .dash{
+    color: black;
+    padding-right: 10px;
     width: fit-content;
   }
 
