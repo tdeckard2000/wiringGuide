@@ -36,6 +36,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DeleteModalComponent } from './edit-page/delete-modal/delete-modal.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DeleteModalSimpleComponent } from './edit-page/delete-modal-simple/delete-modal-simple.component';
+import { HighlightPipe } from './pipes/highlight.pipe';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { DeleteModalSimpleComponent } from './edit-page/delete-modal-simple/dele
     SavingModalComponent,
     DeleteModalComponent,
     DeleteModalSimpleComponent,
+    HighlightPipe
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { MainService } from '../main.service';
 import { MatDialog } from '@angular/material/dialog';
 import { WiringModalComponent } from '../wiring-modal/wiring-modal.component'
 import { Observable } from 'rxjs';
+// import { HighlightPipe } from '../pipes/highlight.pipe';
 
 @Component({
   selector: 'app-meter-dropdown-item',
