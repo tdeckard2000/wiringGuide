@@ -66,6 +66,16 @@
   padding: 8px 5px;
 }
 
+::ng-deep .highlight-text{
+  /* background-color: #fff8a4; */
+  background-color: #daf4fb;
+  color: #24829a;
+  border: solid #c1e5ec;
+  border-radius: 2px;
+  border-width: 1px 0;
+  font-weight: 400;
+}
+
 .iconInformation{
   height: 15px;
   margin-bottom: -3px;
