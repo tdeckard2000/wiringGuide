@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64.497482mm"
+   height="60.754971mm"
+   viewBox="0 0 64.497482 60.75497"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="SensusCropped.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <defs
+     id="defs2">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath5989">
+      <rect
+         id="rect5991"
+         width="68.030991"
+         height="60.754971"
+         x="59.741211"
+         y="69.569336"
+         style="opacity:0.55100002;stroke-width:0.3305853" />
+    </clipPath>
+    <path
+       id="path-1"
+       d="M6.18027759,1.4285811 C8.88302108,1.4285811 11.0740276,3.6195876 11.0740276,6.3223311 C11.0740276,9.02507459 8.88302108,11.2160811 6.18027759,11.2160811 C3.47753409,11.2160811 1.28652759,9.02507459 1.28652759,6.3223311 C1.28652759,3.6195876 3.47753409,1.4285811 6.18027759,1.4285811 Z M6.18027759,2.33904621 C3.98037009,2.33904621 2.1969927,4.1224236 2.1969927,6.3223311 C2.1969927,8.52223859 3.98037009,10.305616 6.18027759,10.305616 C8.38018508,10.305616 10.1635625,8.52223859 10.1635625,6.3223311 C10.1635625,4.1224236 8.38018508,2.33904621 6.18027759,2.33904621 Z M7.33788537,4.74854353 C7.51566474,4.57076416 7.80390206,4.57076416 7.98168143,4.74854353 C8.1594608,4.92632291 8.1594608,5.21456022 7.98168143,5.39233959 L7.98168143,5.39233959 L6.93752759,6.4355811 L7.98168143,7.47993888 C8.13723838,7.63549583 8.156683,7.87562215 8.04001528,8.05232144 L7.98168143,8.12373494 C7.80390206,8.30151431 7.51566474,8.30151431 7.33788537,8.12373494 L7.33788537,8.12373494 L6.29352759,7.0795811 L5.25028608,8.12373494 C5.09472913,8.27929189 4.85460282,8.29873651 4.67790353,8.1820688 L4.60649002,8.12373494 C4.42871065,7.94595557 4.42871065,7.65771826 4.60649002,7.47993888 L4.60649002,7.47993888 L5.64952759,6.4355811 L4.60649002,5.39233959 C4.45093307,5.23678264 4.43148845,4.99665633 4.54815617,4.81995704 L4.60649002,4.74854353 C4.78426939,4.57076416 5.07250671,4.57076416 5.25028608,4.74854353 L5.25028608,4.74854353 L6.29352759,5.7915811 Z" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.6666636"
+     inkscape:cx="56.63494"
+     inkscape:cy="126.70458"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1025"
+     inkscape:window-x="1280"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-60.7334,-69.569336)">
+    <g
+       id="Product-Artwork-3"
+       transform="matrix(0.26458333,0,0,0.26458333,60.702977,60.410785)"
+       style="opacity:1;fill:none;fill-rule:evenodd;stroke:none;stroke-width:1">
+      <g
+         transform="translate(-92,-244)"
+         id="RR-Wiring-Guide-2">
+        <g
+           transform="translate(92,244)"
+           id="Reader/Mounting-Plate-0">
+          <g
+             id="Mounting-Plate-Basic-6">
+            <g
+               id="Mounting-Plate-A-1">
+              <path
+                 id="Combined-Shape-5"
+                 d="m 223.64501,0.11493056 c 11.17825,0 20.24,9.06175664 20.24,20.24000044 V 277.08535 c 0,11.17824 -9.06175,20.24 -20.24,20.24 l -47.69505,-8e-5 c -0.40283,-0.85407 -2.06134,-1.49402 -4.0461,-1.49402 -1.98475,0 -3.64326,0.63995 -4.04609,1.49402 H 69.473052 c -0.402833,-0.85407 -2.061342,-1.49402 -4.046096,-1.49402 -1.984755,0 -3.643263,0.63995 -4.046097,1.49402 l -41.025873,8e-5 c -11.1782435,0 -20.24000014,-9.06176 -20.24000014,-20.24 V 20.354931 c 0,-11.1782438 9.06175664,-20.24000044 20.24000014,-20.24000044 z"
+                 inkscape:connector-curvature="0"
+                 style="fill:#e5e5e5" />
+              <rect
+                 rx="14.03"
+                 height="287.32639"
+                 width="233.88124"
+                 y="5.0569444"
+                 x="5.0593781"
+                 id="Inner-5"
+                 style="fill:#fdfdfd" />
+            </g>
+            <g
+               transform="translate(98.887842,287.32639)"
+               id="Tamper-Pin-Open-4">
+              <path
+                 id="Rectangle-7"
+                 d="m 38.63525,0 h 5.519321 c 1.270099,0 2.299717,1.0291232 2.299717,2.2986111 V 10.113889 H 36.335532 V 2.2986111 C 36.335532,1.0291232 37.365151,0 38.63525,0 Z"
+                 inkscape:connector-curvature="0"
+                 style="fill:#ffffff" />
+              <path
+                 id="path10225"
+                 d="m 44.154571,0 c 1.270099,0 2.299717,1.0291232 2.299717,2.2986111 V 10.113889 H 36.335532 V 2.2986111 C 36.335532,1.0291232 37.365151,0 38.63525,0 Z m 0,0.91944444 H 38.63525 c -0.74474,0 -1.351676,0.58972586 -1.378879,1.32746206 l -9.52e-4,0.051705 v 6.8958333 h 8.278983 V 2.2986111 c 0,-0.7443815 -0.59001,-1.35102517 -1.328101,-1.37821538 z"
+                 inkscape:connector-curvature="0"
+                 style="fill:#e5e5e5;fill-rule:nonzero" />
+              <path
+                 id="path10227"
+                 d="M 2.2997173,0 H 8.0490104 C 9.3191091,0 10.348728,1.0291232 10.348728,2.2986111 V 10.113889 H 0 V 2.2986111 C 0,1.0291232 1.0296185,0 2.2997173,0 Z"
+                 inkscape:connector-curvature="0"
+                 style="fill:#ffffff" />
+              <path
+                 id="path10229"
+                 d="M 8.0490104,0 C 9.3191091,0 10.348728,1.0291232 10.348728,2.2986111 V 10.113889 H 0 V 2.2986111 C 0,1.0291232 1.0296185,0 2.2997173,0 Z m 0,0.91944444 H 2.2997173 c -0.7447398,0 -1.35167537,0.58972586 -1.37887867,1.32746206 L 0.9198869,2.2986111 V 9.1944444 H 9.4288407 V 2.2986111 c 0,-0.7443815 -0.5900097,-1.35102517 -1.3281009,-1.37821538 z"
+                 inkscape:connector-curvature="0"
+                 style="fill:#e5e5e5;fill-rule:nonzero" />
+              <path
+                 id="path10231"
+                 d="m 36.335532,0 h 8.508954 c 0.88907,0 1.609802,0.72038627 1.609802,1.6090278 V 3.2180556 H 36.335532 Z"
+                 inkscape:connector-curvature="0"
+                 style="fill:#e5e5e5" />
+              <path
+                 id="path10233"
+                 d="M 1.6098021,0 H 10.348728 V 3.2180556 H 0 V 1.6090278 C 0,0.72038627 0.72073294,0 1.6098021,0 Z"
+                 inkscape:connector-curvature="0"
+                 style="fill:#e5e5e5" />
+              <polygon
+                 points="36.335532,0 36.335532,10.113889 10.348728,10.113889 10.348728,0 "
+                 id="polygon10235"
+                 style="fill:#ffffff" />
+              <polygon
+                 points="30.356268,2.7583333 30.356268,22.75625 16.557964,22.75625 16.557964,2.7583333 "
+                 id="polygon10237"
+                 style="fill:#ffffff" />
+              <path
+                 id="path10239"
+                 d="M 30.356268,2.7583333 V 22.75625 H 16.557964 V 2.7583333 Z M 29.896324,3.2180556 H 17.017908 V 22.296528 h 12.878416 z"
+                 inkscape:connector-curvature="0"
+                 style="fill:#e5e5e5;fill-rule:nonzero" />
+              <polygon
+                 points="37.140434,3.1034028 9.7737983,3.1034028 9.7737983,2.6434028 37.140434,2.6434028 "
+                 id="Line-5-6"
+                 style="fill:#e5e5e5;fill-rule:nonzero" />
+              <path
+                 id="path10242"
+                 d="m 12.648445,16.55 h 20.927427 c 1.270099,0 2.299717,1.029123 2.299717,2.298611 v 7.815278 H 10.348728 v -7.815278 c 0,-1.269488 1.029618,-2.298611 2.299717,-2.298611 z"
+                 inkscape:connector-curvature="0"
+                 style="fill:#ffffff" />
+              <path
+                 id="path10244"
+                 d="m 33.575872,16.55 c 1.270099,0 2.299717,1.029123 2.299717,2.298611 v 7.815278 H 10.348728 v -7.815278 c 0,-1.269488 1.029618,-2.298611 2.299717,-2.298611 z m 0,0.919444 H 12.648445 c -0.74474,0 -1.351675,0.589726 -1.378879,1.327463 l -9.51e-4,0.0517 v 6.895833 h 23.687087 v -6.895833 c 0,-0.744381 -0.590009,-1.351025 -1.328101,-1.378215 z"
+                 inkscape:connector-curvature="0"
+                 style="fill:#e5e5e5;fill-rule:nonzero" />
+              <polygon
+                 points="35.875589,16.55 35.875589,19.768056 10.348728,19.768056 10.348728,16.55 "
+                 id="polygon10246"
+                 style="fill:#e5e5e5" />
+            </g>
+          </g>
+          <g
+             transform="translate(10,37)"
+             id="Exposed-Plate-5">
+            <g
+               id="Mounting-Plate-Elements-6">
+              <g
+                 id="Outer-Circle-9">
+                <ellipse
+                   ry="112.17222"
+                   rx="112.2262"
+                   cy="112.17222"
+                   cx="112.2262"
+                   id="Oval-9-3"
+                   style="opacity:0.31516077;fill:#9a9494" />
+                <ellipse
+                   ry="102.97743"
+                   rx="103.02726"
+                   cy="112.05729"
+                   cx="112.11121"
+                   id="ellipse10251"
+                   style="fill:#f8f8f8;stroke:#979797;stroke-width:1.14999998" />
+              </g>
+              <g
+                 transform="translate(23.687088,82.75)"
+                 id="Wire-Ingress-7"
+                 style="stroke:#979797;stroke-width:1.38">
+                <path
+                   id="path10254"
+                   d="m 42.199727,0.69 v 70.376568 l -25.637641,0.41514 C 9.5363498,64.330639 4.8606454,54.888591 2.5155339,43.166609 0.15872801,31.386173 0.13745777,17.227058 2.4387178,0.68999999 v 0 z"
+                   inkscape:connector-curvature="0" />
+                <path
+                   id="path10256"
+                   transform="matrix(-1,0,0,1,311.3748,0)"
+                   d="m 176.42195,0.69 v 70.376568 l -25.63764,0.41514 c -7.02574,-7.151069 -11.70144,-16.593117 -14.04656,-28.315099 -2.3568,-11.780436 -2.37807,-25.939551 -0.0768,-42.47660898 v 0 z"
+                   inkscape:connector-curvature="0" />
+              </g>
+              <g
+                 transform="translate(91.528746,19.768056)"
+                 id="Mounting-Screw-Hole-4">
+                <rect
+                   rx="10.802917"
+                   height="21.605833"
+                   width="39.554909"
+                   y="0.92000002"
+                   x="0.92000002"
+                   id="Outer-5"
+                   style="fill:#f9f9f9;stroke:#b4b3b3;stroke-width:1.84000003" />
+                <rect
+                   rx="5.0566669"
+                   height="10.113334"
+                   width="25.296776"
+                   y="6.6662502"
+                   x="8.0490665"
+                   id="rect10260"
+                   style="fill:#ffffff;stroke:#cacaca;stroke-width:0.92000002" />
+              </g>
+              <g
+                 transform="translate(91.528746,183.88889)"
+                 id="g10267">
+                <rect
+                   rx="10.802917"
+                   height="21.605833"
+                   width="39.554909"
+                   y="0.92000002"
+                   x="0.92000002"
+                   id="rect10263"
+                   style="fill:#f9f9f9;stroke:#b4b3b3;stroke-width:1.84000003" />
+                <rect
+                   rx="5.0566669"
+                   height="10.113334"
+                   width="25.296776"
+                   y="6.6662502"
+                   x="8.0490665"
+                   id="rect10265"
+                   style="fill:#ffffff;stroke:#cacaca;stroke-width:0.92000002" />
+              </g>
+              <g
+                 transform="translate(8.504293,30.277346)"
+                 id="Mounting-Snap-Areas-2"
+                 style="fill:#ffffff">
+                <g
+                   transform="translate(26.446748,141.93924)"
+                   id="Group-5"
+                   style="stroke:#d3d3d3;stroke-width:0.92000002">
+                  <g
+                     transform="matrix(0.69465837,0.7193398,0.7193398,-0.69465837,-3.1437392,7.4061854)"
+                     id="Snap-Area-BL-4">
+                    <rect
+                       rx="1.15"
+                       height="3.6772223"
+                       width="17.477737"
+                       y="6.436389"
+                       x="0.46000001"
+                       id="rect10269" />
+                  </g>
+                </g>
+                <g
+                   transform="translate(161.67478,141.08411)"
+                   id="g10276"
+                   style="stroke:#d3d3d3;stroke-width:0.92000002">
+                  <g
+                     transform="matrix(0.69465837,-0.7193398,-0.7193398,-0.69465837,8.7613345,20.640411)"
+                     id="Snap-Area-BR-7">
+                    <rect
+                       rx="1.15"
+                       height="3.6772223"
+                       width="17.477737"
+                       y="6.436389"
+                       x="0.46000001"
+                       id="rect10273" />
+                  </g>
+                </g>
+                <g
+                   transform="translate(161.44481,4.201821)"
+                   id="g10281"
+                   style="stroke:#d3d3d3;stroke-width:0.92000002">
+                  <g
+                     transform="rotate(46,9.198869,8.275)"
+                     id="Snap-Area-TR-4">
+                    <rect
+                       rx="1.15"
+                       height="3.6772223"
+                       width="17.477737"
+                       y="6.436389"
+                       x="0.46000001"
+                       id="rect10278" />
+                  </g>
+                </g>
+                <g
+                   transform="translate(26.216777,5.056944)"
+                   id="g10286"
+                   style="stroke:#d3d3d3;stroke-width:0.92000002">
+                  <g
+                     transform="rotate(-46,9.198869,8.275)"
+                     id="Snap-Area-TL-4">
+                    <rect
+                       rx="1.15"
+                       height="3.6772223"
+                       width="17.477737"
+                       y="6.436389"
+                       x="0.46000001"
+                       id="rect10283" />
+                  </g>
+                </g>
+                <g
+                   transform="translate(0.065893,69.252515)"
+                   id="g10291"
+                   style="stroke:#bcbaba;stroke-width:1.14999998">
+                  <g
+                     id="Mounting-Big-Snap-3">
+                    <path
+                       id="path10288"
+                       d="m 8.5625662,0.575 0.575,23.329861 -7.3457852,0.575 C 0.78993144,19.21205 0.575,15.057523 0.575,11.493056 0.575,8.0163115 0.77964128,4.5461324 1.1889103,1.0825257 v 0 z"
+                       inkscape:connector-curvature="0" />
+                  </g>
+                </g>
+                <g
+                   transform="translate(197.3204,69.482376)"
+                   id="g10296"
+                   style="stroke:#bcbaba;stroke-width:1.14999998">
+                  <g
+                     transform="matrix(-1,0,0,1,9.888784,0)"
+                     id="Mounting-Big-Snap-Copy-0">
+                    <path
+                       id="path10293"
+                       d="m 8.5625662,0.575 0.575,23.329861 -7.3457852,0.575 C 0.78993144,19.21205 0.575,15.057523 0.575,11.493056 0.575,8.0163115 0.77964128,4.5461324 1.1889103,1.0825257 v 0 z"
+                       inkscape:connector-curvature="0" />
+                  </g>
+                </g>
+              </g>
+              <ellipse
+                 ry="102.97743"
+                 rx="103.02726"
+                 cy="112.05729"
+                 cx="112.11121"
+                 id="ellipse10299"
+                 style="stroke:#979797;stroke-width:1.14999998" />
+            </g>
+            <g
+               transform="translate(95.438266,137.22708)"
+               id="Level-7"
+               style="opacity:0.46028646">
+              <rect
+                 rx="1.84"
+                 height="12.181806"
+                 width="32.195873"
+                 y="0.69"
+                 x="0.69"
+                 id="rect10302"
+                 style="fill:#6fcdef;stroke:#20abdd;stroke-width:1.38" />
+              <path
+                 id="Oval-8"
+                 d="m 16.787936,8.275 c 2.032158,0 3.679547,-1.9101151 3.679547,-4.2663615 0,-2.3562464 -1.65205,-2.6294718 -3.684208,-2.6294718 -2.032158,0 -3.674887,0.2732254 -3.674887,2.6294718 0,2.3562464 1.64739,4.2663615 3.679548,4.2663615 z"
+                 inkscape:connector-curvature="0"
+                 style="fill:#c8e4fe" />
+              <path
+                 id="Oval-Copy-6"
+                 d="m 16.787936,5.4735677 c 1.905148,0 3.449576,-1.0612833 3.449576,-2.3704427 0,-1.3091594 -1.544428,-1.7239583 -3.449576,-1.7239583 -1.905148,0 -3.449576,0.4147989 -3.449576,1.7239583 0,1.3091594 1.544428,2.3704427 3.449576,2.3704427 z"
+                 inkscape:connector-curvature="0"
+                 style="fill:#e4ebf3" />
+              <rect
+                 height="10.803473"
+                 width="1"
+                 y="1.3791667"
+                 x="10.118756"
+                 id="rect10306"
+                 style="fill:#0198d0" />
+              <rect
+                 height="10.803473"
+                 width="1"
+                 y="1.3791667"
+                 x="22.53723"
+                 id="Rectangle-Copy-8"
+                 style="fill:#0198d0" />
+              <path
+                 id="path10309"
+                 d="m 23.687088,0 h 2.989632 v 2.0684722 c 0,0.254051 -0.205949,0.46 -0.46,0.46 h -2.069632 c -0.254051,0 -0.46,-0.205949 -0.46,-0.46 z"
+                 inkscape:connector-curvature="0"
+                 style="fill:#f8f8f8" />
+              <path
+                 id="Rectangle-Copy-2-8"
+                 d="m 6.66918,0 h 2.9896324 v 2.0684722 c 0,0.254051 -0.205949,0.46 -0.46,0.46 H 7.12918 c -0.254051,0 -0.46,-0.205949 -0.46,-0.46 z"
+                 inkscape:connector-curvature="0"
+                 style="fill:#f8f8f8" />
+              <path
+                 transform="matrix(1,0,0,-1,0,24.595138)"
+                 id="Rectangle-Copy-3-4"
+                 d="m 6.66918,11.033333 h 2.9896324 v 2.068473 c 0,0.254051 -0.205949,0.46 -0.46,0.46 H 7.12918 c -0.254051,0 -0.46,-0.205949 -0.46,-0.46 z"
+                 inkscape:connector-curvature="0"
+                 style="fill:#f8f8f8" />
+              <path
+                 transform="matrix(1,0,0,-1,0,24.595138)"
+                 id="Rectangle-Copy-4-3"
+                 d="m 23.687088,11.033333 h 2.989632 v 2.068473 c 0,0.254051 -0.205949,0.46 -0.46,0.46 h -2.069632 c -0.254051,0 -0.46,-0.205949 -0.46,-0.46 z"
+                 inkscape:connector-curvature="0"
+                 style="fill:#f8f8f8" />
+            </g>
+            <g
+               transform="translate(66.6918,49.420139)"
+               id="Terminal-Holder-Ridge-1"
+               style="fill:#d8d8d8">
+              <rect
+                 rx="0.92000002"
+                 height="3.9076388"
+                 width="91.298775"
+                 y="0"
+                 x="0"
+                 id="rect10315" />
+              <rect
+                 rx="0.92000002"
+                 height="3.9076388"
+                 width="91.298775"
+                 y="25.974306"
+                 x="0"
+                 id="rect10317" />
+            </g>
+            <g
+               transform="translate(30.646592,75)"
+               id="Group-4-4">
+              <g
+                 transform="translate(1.353408)"
+                 id="Green-Wire-9">
+                <g
+                   transform="matrix(-1,0,0,1,46,0)"
+                   id="Wire-1-2">
+                  <g
+                     transform="translate(0,2.451429)"
+                     id="Wire-Focused---Green-0"
+                     style="fill:#000000;stroke:#ffffff;stroke-width:0.884">
+                    <g
+                       id="g10322">
+                      <path
+                         id="path10320"
+                         d="m 0,0 h 6.6160714 c 0,15.07483 0,22.686531 0,22.835102 0,2.102596 1.4631795,3.907755 3.3594219,3.907755 0.2873207,0 21.4164627,0 21.7980847,0 9.990359,0 14.226422,6.842462 14.226422,13.546619 0,0.246015 0,10.499741 0,30.761179 L 38.457101,79 c 0,-24.067314 0,-36.467791 0,-37.201429 0,-6.75 -2.473458,-8.213252 -6.683523,-8.213252 -0.758351,0 -21.720342,0 -21.7980847,0 C 4.0776781,33.585319 0,29.187525 0,21.45711 0,21.30854 0,14.15617 0,0 Z"
+                         inkscape:connector-curvature="0" />
+                    </g>
+                  </g>
+                  <g
+                     transform="translate(1.323214,0.111429)"
+                     id="Top-Tip-6">
+                    <rect
+                       height="2.6742857"
+                       width="3.9696429"
+                       y="0.11142857"
+                       x="0"
+                       id="rect10325"
+                       style="fill:#c4c4c4" />
+                    <rect
+                       height="2.2285714"
+                       width="1"
+                       y="0.55714285"
+                       x="0.44107142"
+                       id="rect10327"
+                       style="fill:#f2f2f2" />
+                  </g>
+                </g>
+                <text
+                   font-weight="bold"
+                   font-style="italic"
+                   font-size="5.61"
+                   id="B-8"
+                   style="font-style:italic;font-weight:bold;font-size:5.61000013px;font-family:Lato-BoldItalic, Lato;fill:#ffffff">
+                  <tspan
+                     id="tspan10331"
+                     y="12.829412"
+                     x="40.817001">B</tspan>
+                </text>
+              </g>
+              <g
+                 transform="translate(22.353408)"
+                 id="Black-Wire-9">
+                <g
+                   transform="matrix(-1,0,0,1,47,0)"
+                   id="g10347">
+                  <g
+                     transform="translate(0,2.451429)"
+                     id="g10339"
+                     style="fill:#e3515f;stroke:#ffffff;stroke-width:0.884">
+                    <g
+                       id="g10337">
+                      <path
+                         id="path10335"
+                         d="m 0,0 h 6.6160714 c 0,19.421648 0,29.206758 0,29.35533 0,9.64467 3.3048961,15.387527 11.6889776,15.387527 0.287321,0 17.466376,0 17.847998,0 6.271867,0 10.846953,2.987545 10.846953,11.354391 0,0.246016 0,7.230484 0,20.953407 L 39.457101,77 c 0,-13.20153 0,-20.169114 0,-20.902752 0,-4.668677 -1.577259,-4.668677 -2.889282,-4.668677 -0.758351,0 -18.185027,-0.38 -18.26277,-0.38 C 3.7970841,51.048571 0,42.122029 0,26.278805 0,26.130235 0,17.370633 0,0 Z"
+                         inkscape:connector-curvature="0" />
+                    </g>
+                  </g>
+                  <g
+                     transform="translate(1.323214,0.111429)"
+                     id="g10345">
+                    <rect
+                       height="2.6742857"
+                       width="3.9696429"
+                       y="0.11142857"
+                       x="0"
+                       id="rect10341"
+                       style="fill:#c4c4c4" />
+                    <rect
+                       height="2.2285714"
+                       width="1"
+                       y="0.55714285"
+                       x="0.44107142"
+                       id="rect10343"
+                       style="fill:#f2f2f2" />
+                  </g>
+                </g>
+                <text
+                   font-weight="bold"
+                   font-style="italic"
+                   font-size="5.61"
+                   id="R-2"
+                   style="font-style:italic;font-weight:bold;font-size:5.61000013px;font-family:Lato-BoldItalic, Lato;fill:#ffffff">
+                  <tspan
+                     id="tspan10349"
+                     y="13"
+                     x="41.804379">R</tspan>
+                </text>
+              </g>
+              <g
+                 transform="translate(11.353408)"
+                 id="Red-Layer-6">
+                <g
+                   transform="matrix(-1,0,0,1,47,0)"
+                   id="g10365">
+                  <g
+                     transform="translate(0,2.451429)"
+                     id="g10357"
+                     style="fill:#4aa346;stroke:#ffffff;stroke-width:0.884">
+                    <g
+                       id="g10355">
+                      <path
+                         id="path10353"
+                         d="m 0,0 h 6.6160714 c 0,17.882414 0,26.897907 0,27.046478 0,8.696379 3.9713596,8.696379 6.5675896,8.696379 0.287321,0 22.434718,0 22.816339,0 8.312558,0 11,4.257143 11,13.334372 0,0.246015 0,10.237157 0,29.973426 L 39.457101,79 c 0,-20.510833 0,-31.133068 0,-31.866706 0,-2.900576 -0.381574,-4.723503 -2.676016,-4.723503 -0.758351,0 -23.519681,-0.246325 -23.597424,-0.246325 C 4.2352161,42.163466 0,38.048571 0,24.02639 0,23.87782 0,15.869023 0,0 Z"
+                         inkscape:connector-curvature="0" />
+                    </g>
+                  </g>
+                  <g
+                     transform="translate(1.323214,0.111429)"
+                     id="g10363">
+                    <rect
+                       height="2.6742857"
+                       width="3.9696429"
+                       y="0.11142857"
+                       x="0"
+                       id="rect10359"
+                       style="fill:#c4c4c4" />
+                    <rect
+                       height="2.2285714"
+                       width="1"
+                       y="0.55714285"
+                       x="0.44107142"
+                       id="rect10361"
+                       style="fill:#f2f2f2" />
+                  </g>
+                </g>
+                <text
+                   font-weight="bold"
+                   font-style="italic"
+                   font-size="5.61"
+                   id="G"
+                   style="font-style:italic;font-weight:bold;font-size:5.61000013px;font-family:Lato-BoldItalic, Lato;fill:#ffffff">
+                  <tspan
+                     id="tspan10367"
+                     y="13"
+                     x="41.638882">G</tspan>
+                </text>
+              </g>
+              <g
+                 transform="translate(0,65.555398)"
+                 id="Group-2-6">
+                <path
+                   id="Path-4"
+                   d="M 0.25628774,0 C 1.2984746,3.3612789 8.4390519,12.462828 9.5398249,13.667665"
+                   inkscape:connector-curvature="0"
+                   style="stroke:#979797;stroke-width:1.36000001" />
+                <line
+                   id="Line-9"
+                   y2="13.444602"
+                   x2="34.353409"
+                   y1="13.444602"
+                   x1="9.3534079"
+                   style="stroke:#979797;stroke-width:2;stroke-linecap:square" />
+                <path
+                   id="Path-2-5"
+                   d="M 0,1.2114087 1,20.763241 H 35.930222 V 13.946685 C 22.64366,14.229555 13.773292,14.370991 9.3191177,14.370991 6.7455105,11.556629 3.6391379,7.170102 0,1.2114087 Z"
+                   inkscape:connector-curvature="0"
+                   style="fill:#f8f8f8" />
+              </g>
+              <g
+                 transform="matrix(-1,0,0,1,164,63.555398)"
+                 id="g10381">
+                <path
+                   id="path10375"
+                   d="M 0.37373687,0.58398755 C 1.4159237,3.9452664 9.4390519,14.462828 10.539825,15.667665"
+                   inkscape:connector-curvature="0"
+                   style="stroke:#979797;stroke-width:1.39999998" />
+                <line
+                   id="line10377"
+                   y2="15.444602"
+                   x2="35.353409"
+                   y1="15.444602"
+                   x1="10.353408"
+                   style="stroke:#979797;stroke-width:2;stroke-linecap:square" />
+                <path
+                   id="path10379"
+                   d="M 0.37373687,2.4174391 2,22.763241 H 36.930222 V 15.946685 C 23.64366,16.229555 14.773292,16.370991 10.319118,16.370991 7.7455105,13.556629 4.4303836,8.9054455 0.37373687,2.4174391 Z"
+                   inkscape:connector-curvature="0"
+                   style="fill:#f8f8f8" />
+              </g>
+            </g>
+            <g
+               transform="translate(68.991517,52.408333)"
+               id="g10513">
+              <g
+                 transform="translate(37.38909,18.359961)"
+                 id="g10392">
+                <g
+                   transform="translate(0,0.863998)"
+                   id="Tamper-Bridge-0">
+                  <rect
+                     height="4.9679894"
+                     width="1.5172385"
+                     y="0"
+                     x="0"
+                     id="rect10384"
+                     style="fill:#d8d8d8;stroke:#979797;stroke-width:0.5" />
+                  <rect
+                     height="4.9679894"
+                     width="1.5172385"
+                     y="0"
+                     x="11.270914"
+                     id="rect10386"
+                     style="fill:#d8d8d8;stroke:#979797;stroke-width:0.5" />
+                  <path
+                     id="Line-13-4"
+                     d="m 0.75861923,4.7519898 c 0,1.3122257 1.06376917,2.3759949 2.37599487,2.3759949 h 6.5731116 c 1.3122253,0 2.3759953,-1.0637692 2.3759953,-2.3759949 v 0 0"
+                     inkscape:connector-curvature="0"
+                     style="stroke:#989898;stroke-width:1.08387494;stroke-linecap:square" />
+                  <path
+                     id="path10389"
+                     d="m 0.70443214,5.3999884 c 0,0.954346 0.77365026,1.7279963 1.72799626,1.7279963 h 7.8691086 c 0.954346,0 1.727996,-0.7736503 1.727996,-1.7279963 v 0 0"
+                     inkscape:connector-curvature="0"
+                     style="stroke:#4f4f4f;stroke-width:2.16774988;stroke-linecap:square" />
+                </g>
+              </g>
+              <g
+                 id="Block-8">
+                <rect
+                   height="24.839947"
+                   width="86.699341"
+                   y="0"
+                   x="0"
+                   id="Terminal-Connector-7"
+                   style="fill:#d8d8d8" />
+                <path
+                   id="path10395"
+                   d="m 0.8671,0 h 84.96514 c 0.478886,0 0.8671,0.38821389 0.8671,0.8671 v 9.500878 0 H 0 V 0.8671 C 0,0.38821389 0.38821389,0 0.8671,0 Z"
+                   inkscape:connector-curvature="0"
+                   style="fill:#323232" />
+                <path
+                   id="path10397"
+                   d="m 0,10.367978 h 86.69934 v 13.604869 c 0,0.478886 -0.388214,0.8671 -0.8671,0.8671 H 0.8671 C 0.38821389,24.839947 0,24.451733 0,23.972847 Z"
+                   inkscape:connector-curvature="0"
+                   style="fill:#4a4a4a" />
+              </g>
+              <g
+                 transform="translate(70.443214,1.727996)"
+                 id="g10411">
+                <g
+                   transform="rotate(43,5.5406318,13.413962)"
+                   id="Screw-1">
+                  <ellipse
+                     ry="3.2345648"
+                     rx="3.2510388"
+                     cy="4.9647069"
+                     cx="4.8265615"
+                     id="ellipse10400"
+                     style="stroke:#4a4a4a;stroke-width:3.03484988" />
+                  <g
+                     transform="translate(5.315808,5.895399)"
+                     id="g10408">
+                    <ellipse
+                       ry="4.64399"
+                       rx="4.6600895"
+                       cy="4.6913567"
+                       cx="4.8561707"
+                       id="ellipse10402"
+                       style="fill:#d8d8d8" />
+                    <polygon
+                       points="8.6308139,3.9770051 8.6308139,5.7109919 1.0708301,5.7109919 1.0708301,3.9770051 "
+                       transform="rotate(90,4.850822,4.843998)"
+                       id="polygon10404"
+                       style="fill:#979797" />
+                    <polygon
+                       points="8.6439181,3.9800003 8.6439181,5.7079966 1.0577259,5.7079966 1.0577259,3.9800003 "
+                       id="polygon10406"
+                       style="fill:#979797" />
+                  </g>
+                </g>
+              </g>
+              <g
+                 transform="translate(59.822545,1.727996)"
+                 id="g10425">
+                <g
+                   transform="rotate(43,5.5406318,13.413962)"
+                   id="g10423">
+                  <ellipse
+                     ry="3.2345648"
+                     rx="3.2510388"
+                     cy="4.9647069"
+                     cx="4.8265615"
+                     id="ellipse10413"
+                     style="stroke:#4a4a4a;stroke-width:3.03484988" />
+                  <g
+                     transform="translate(5.315808,5.895399)"
+                     id="g10421">
+                    <ellipse
+                       ry="4.64399"
+                       rx="4.6600895"
+                       cy="4.6913567"
+                       cx="4.8561707"
+                       id="ellipse10415"
+                       style="fill:#d8d8d8" />
+                    <polygon
+                       points="8.6308139,3.9770051 8.6308139,5.7109919 1.0708301,5.7109919 1.0708301,3.9770051 "
+                       transform="rotate(90,4.850822,4.843998)"
+                       id="polygon10417"
+                       style="fill:#979797" />
+                    <polygon
+                       points="8.6439181,3.9800003 8.6439181,5.7079966 1.0577259,5.7079966 1.0577259,3.9800003 "
+                       id="polygon10419"
+                       style="fill:#979797" />
+                  </g>
+                </g>
+              </g>
+              <g
+                 transform="translate(49.201876,1.727996)"
+                 id="g10439">
+                <g
+                   transform="rotate(43,5.5406318,13.413962)"
+                   id="g10437">
+                  <ellipse
+                     ry="3.2345648"
+                     rx="3.2510388"
+                     cy="4.9647069"
+                     cx="4.8265615"
+                     id="ellipse10427"
+                     style="stroke:#4a4a4a;stroke-width:3.03484988" />
+                  <g
+                     transform="translate(5.315808,5.895399)"
+                     id="g10435">
+                    <ellipse
+                       ry="4.64399"
+                       rx="4.6600895"
+                       cy="4.6913567"
+                       cx="4.8561707"
+                       id="ellipse10429"
+                       style="fill:#d8d8d8" />
+                    <polygon
+                       points="8.6308139,3.9770051 8.6308139,5.7109919 1.0708301,5.7109919 1.0708301,3.9770051 "
+                       transform="rotate(90,4.850822,4.843998)"
+                       id="polygon10431"
+                       style="fill:#979797" />
+                    <polygon
+                       points="8.6439181,3.9800003 8.6439181,5.7079966 1.0577259,5.7079966 1.0577259,3.9800003 "
+                       id="polygon10433"
+                       style="fill:#979797" />
+                  </g>
+                </g>
+              </g>
+              <g
+                 transform="translate(38.364458,1.727996)"
+                 id="g10453">
+                <g
+                   transform="rotate(43,5.5406318,13.413962)"
+                   id="g10451">
+                  <ellipse
+                     ry="3.2345648"
+                     rx="3.2510388"
+                     cy="4.9647069"
+                     cx="4.8265615"
+                     id="ellipse10441"
+                     style="stroke:#4a4a4a;stroke-width:3.03484988" />
+                  <g
+                     transform="translate(5.315808,5.895399)"
+                     id="g10449">
+                    <ellipse
+                       ry="4.64399"
+                       rx="4.6600895"
+                       cy="4.6913567"
+                       cx="4.8561707"
+                       id="ellipse10443"
+                       style="fill:#d8d8d8" />
+                    <polygon
+                       points="8.6308139,3.9770051 8.6308139,5.7109919 1.0708301,5.7109919 1.0708301,3.9770051 "
+                       transform="rotate(90,4.850822,4.843998)"
+                       id="polygon10445"
+                       style="fill:#979797" />
+                    <polygon
+                       points="8.6439181,3.9800003 8.6439181,5.7079966 1.0577259,5.7079966 1.0577259,3.9800003 "
+                       id="polygon10447"
+                       style="fill:#979797" />
+                  </g>
+                </g>
+              </g>
+              <g
+                 transform="translate(27.527041,1.727996)"
+                 id="g10467">
+                <g
+                   transform="rotate(43,5.5406318,13.413962)"
+                   id="g10465">
+                  <ellipse
+                     ry="3.2345648"
+                     rx="3.2510388"
+                     cy="4.9647069"
+                     cx="4.8265615"
+                     id="ellipse10455"
+                     style="stroke:#4a4a4a;stroke-width:3.03484988" />
+                  <g
+                     transform="translate(5.315808,5.895399)"
+                     id="g10463">
+                    <ellipse
+                       ry="4.64399"
+                       rx="4.6600895"
+                       cy="4.6913567"
+                       cx="4.8561707"
+                       id="ellipse10457"
+                       style="fill:#d8d8d8" />
+                    <polygon
+                       points="8.6308139,3.9770051 8.6308139,5.7109919 1.0708301,5.7109919 1.0708301,3.9770051 "
+                       transform="rotate(90,4.850822,4.843998)"
+                       id="polygon10459"
+                       style="fill:#979797" />
+                    <polygon
+                       points="8.6439181,3.9800003 8.6439181,5.7079966 1.0577259,5.7079966 1.0577259,3.9800003 "
+                       id="polygon10461"
+                       style="fill:#979797" />
+                  </g>
+                </g>
+              </g>
+              <g
+                 transform="translate(16.689623,1.727996)"
+                 id="g10481">
+                <g
+                   transform="rotate(43,5.5406318,13.413962)"
+                   id="g10479">
+                  <ellipse
+                     ry="3.2345648"
+                     rx="3.2510388"
+                     cy="4.9647069"
+                     cx="4.8265615"
+                     id="ellipse10469"
+                     style="stroke:#4a4a4a;stroke-width:3.03484988" />
+                  <g
+                     transform="translate(5.315808,5.895399)"
+                     id="g10477">
+                    <ellipse
+                       ry="4.64399"
+                       rx="4.6600895"
+                       cy="4.6913567"
+                       cx="4.8561707"
+                       id="ellipse10471"
+                       style="fill:#d8d8d8" />
+                    <polygon
+                       points="8.6308139,3.9770051 8.6308139,5.7109919 1.0708301,5.7109919 1.0708301,3.9770051 "
+                       transform="rotate(90,4.850822,4.843998)"
+                       id="polygon10473"
+                       style="fill:#979797" />
+                    <polygon
+                       points="8.6439181,3.9800003 8.6439181,5.7079966 1.0577259,5.7079966 1.0577259,3.9800003 "
+                       id="polygon10475"
+                       style="fill:#979797" />
+                  </g>
+                </g>
+              </g>
+              <g
+                 transform="translate(5.852205,1.727996)"
+                 id="g10495">
+                <g
+                   transform="rotate(43,5.5406318,13.413962)"
+                   id="g10493">
+                  <ellipse
+                     ry="3.2345648"
+                     rx="3.2510388"
+                     cy="4.9647069"
+                     cx="4.8265615"
+                     id="ellipse10483"
+                     style="stroke:#4a4a4a;stroke-width:3.03484988" />
+                  <g
+                     transform="translate(5.315808,5.895399)"
+                     id="g10491">
+                    <ellipse
+                       ry="4.64399"
+                       rx="4.6600895"
+                       cy="4.6913567"
+                       cx="4.8561707"
+                       id="ellipse10485"
+                       style="fill:#d8d8d8" />
+                    <polygon
+                       points="8.6308139,3.9770051 8.6308139,5.7109919 1.0708301,5.7109919 1.0708301,3.9770051 "
+                       transform="rotate(90,4.850822,4.843998)"
+                       id="polygon10487"
+                       style="fill:#979797" />
+                    <polygon
+                       points="8.6439181,3.9800003 8.6439181,5.7079966 1.0577259,5.7079966 1.0577259,3.9800003 "
+                       id="polygon10489"
+                       style="fill:#979797" />
+                  </g>
+                </g>
+              </g>
+              <g
+                 transform="translate(-4.985212,1.727996)"
+                 id="g10509">
+                <g
+                   transform="rotate(43,5.5406318,13.413962)"
+                   id="g10507">
+                  <ellipse
+                     ry="3.2345648"
+                     rx="3.2510388"
+                     cy="4.9647069"
+                     cx="4.8265615"
+                     id="ellipse10497"
+                     style="stroke:#4a4a4a;stroke-width:3.03484988" />
+                  <g
+                     transform="translate(5.315808,5.895399)"
+                     id="g10505">
+                    <ellipse
+                       ry="4.64399"
+                       rx="4.6600895"
+                       cy="4.6913567"
+                       cx="4.8561707"
+                       id="ellipse10499"
+                       style="fill:#d8d8d8" />
+                    <polygon
+                       points="8.6308139,3.9770051 8.6308139,5.7109919 1.0708301,5.7109919 1.0708301,3.9770051 "
+                       transform="rotate(90,4.850822,4.843998)"
+                       id="polygon10501"
+                       style="fill:#979797" />
+                    <polygon
+                       points="8.6439181,3.9800003 8.6439181,5.7079966 1.0577259,5.7079966 1.0577259,3.9800003 "
+                       id="polygon10503"
+                       style="fill:#979797" />
+                  </g>
+                </g>
+              </g>
+              <rect
+                 height="10.542152"
+                 width="20.697454"
+                 y="11.344273"
+                 x="33.345901"
+                 id="rect10511"
+                 style="fill:#4a4a4a" />
+            </g>
+          </g>
+          <text
+             font-weight="normal"
+             font-size="9.03681"
+             id="Meter-1-7"
+             style="font-weight:normal;font-size:9.03680992px;font-family:Lato-Regular, Lato;fill:#989898">
+            <tspan
+               id="tspan10516"
+               y="205"
+               x="47.108768">Meter 1</tspan>
+          </text>
+          <text
+             font-weight="normal"
+             font-size="9.03681"
+             id="Meter-2-2"
+             style="font-weight:normal;font-size:9.03680992px;font-family:Lato-Regular, Lato;fill:#989898">
+            <tspan
+               id="tspan10519"
+               y="205"
+               x="167.10876">Meter 2</tspan>
+          </text>
+          <circle
+             r="11.5"
+             cy="149.5"
+             cx="122.5"
+             id="circle10522"
+             style="stroke:#d3d3d3;stroke-width:0.5" />
+          <circle
+             r="8.5"
+             cy="149.5"
+             cx="122.5"
+             id="circle10524"
+             style="fill:#d3d3d3" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

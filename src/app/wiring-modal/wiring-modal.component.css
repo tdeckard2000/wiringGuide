@@ -49,9 +49,7 @@ img{
 }
 
 .imgRR4{
-  margin-top: -58px;
-  padding-top: 4px;
-  width: 75%;
+height: 100%;
 }
 
 .imgTR201{
@@ -119,9 +117,9 @@ img{
 
 /* Media Queries */
 @media screen and (max-width: 500px){
+
   .imgRR4{
-    margin-top: 0;
-    width: 95%;
+    width: 100%;
   }
 
   .imgTR4{
