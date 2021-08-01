@@ -3,42 +3,64 @@ h4{
 }
 
 hr{
-    border-top: none;
-    border-bottom: 1px solid #e2e2e2;
+  border-top: none;
+  border-bottom: 1px solid #e2e2e2;
+  margin-top: 0;
 }
 
 img{
-    padding-top: 10px;
-    width: 100%;
+  display: block;
+  margin: auto;
 }
 
 .buttonClose{
-    align-self: flex-end;
-    background-color: #777;
-    border: 2px solid;
-    border-radius: 6px;
-    color: white;
-    display: block;
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-top: 20px;
-    padding: .375rem .75rem;
-    text-align: center;
-    width: 75px;
+  align-self: flex-end;
+  background-color: #777;
+  border: 2px solid;
+  border-radius: 6px;
+  color: white;
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 20px;
+  padding: .375rem .75rem;
+  text-align: center;
+  width: 75px;
 }
 
 .buttonClose:hover{
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .buttonClose:focus{
-    background-color: #666;
-    border: 2px solid rgb(163, 163, 163);
+  background-color: #666;
+  border: 2px solid rgb(163, 163, 163);
 }
 
 .flexBox{
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+}
+
+.imgContainer{
+  display: flex;
+  height: 300px;
+  overflow: hidden;
+}
+
+.imgRR4{
+  margin-top: -58px;
+  padding-top: 4px;
+  width: 75%;
+}
+
+.imgTR201{
+  width: 75%;
+}
+
+.imgTR4{
+  height: 300px;
+  width: 70%;
 }
 
 .infoSVG{
@@ -47,50 +69,63 @@ img{
 }
 
 .meterName{
-    font-family: sans-serif;
-    font-weight: 400;
-    margin-bottom: 15px;
-    margin-top: 10px;
+  font-family: sans-serif;
+  font-weight: 400;
+  margin-bottom: 15px;
+  margin-top: 10px;
 }
 
 .meterNotes {
-    font-family: sans-serif;
-    font-weight: 300;
+  font-family: sans-serif;
+  font-weight: 300;
 }
 
 .meterNotes h4{
-    font-weight: 400;
-    margin-bottom: 0px;
+  font-weight: 400;
+  margin-bottom: 0px;
 }
 
 .meterNotes p{
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .modalBody{
-    background-color: white;
-    border-radius: 3px;
-    margin: -20px;
-    padding: 20px;
+  background-color: white;
+  border-radius: 3px;
+  margin: -20px;
+  padding: 20px;
 }
 
 .meterSummary p{
-    font-family: sans-serif;
-    font-weight: 100;
-    margin-top: 0;
+  font-family: sans-serif;
+  font-weight: 100;
+  margin-top: 0;
 }
 
 .modalContent{
-    max-width: 100%;
-    width: 450px;
+  max-width: 100%;
+  width: 450px;
 }
 
 /* Adjust size of wiring guide selector tabs */
 :host ::ng-deep .mat-tab-label{
-    min-width: 50px;
+  min-width: 50px;
 }
 
 /* Change color of selector tab underline */
 ::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
-    background-color: rgb(92, 159, 232) !important;
+  background-color: rgb(92, 159, 232) !important;
+}
+
+/* Media Queries */
+@media screen and (max-width: 500px){
+  .imgRR4{
+    margin-top: 0;
+    width: 95%;
+  }
+
+  .imgTR4{
+    width: 100%;
+  }
+
 }

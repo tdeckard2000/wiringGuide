@@ -3,6 +3,7 @@
 
     <!-- Meter Name -->
     <h2 class="meterName">{{ meterData.meterName }}</h2>
+    <!-- <p style="color: red">{{meterData.wiringProtocol | json}}</p> -->
 
     <!-- Human Readable Summary of Meter -->
     <div class="meterSummary">
@@ -21,15 +22,41 @@
       <mat-tab-group mat-align-tabs="start">
 
         <mat-tab *ngIf="meterData.compatibleWith.TR201" label="TR201">
-          <img src="assets/images/placeholderImage.jpeg" alt="">
+          <div class="imgContainer">
+            <img src="assets/images/placeholderImage.jpeg" alt="" class="imgTR201">
+          </div>
         </mat-tab>
 
         <mat-tab *ngIf="meterData.compatibleWith.TR4" label="TR4">
-          <img src="assets/images/placeholderImage.jpeg" alt="">
+          <div class="imgContainer">
+            <img viewBox="0 0 100 100" *ngIf="meterData.wiringProtocol === 'Amco' || meterData.wiringProtocol === 'Elster'"
+            class="imgTR4" src="assets/images/Wiring/TR4/Amco.svg" alt="wiring example image">
+
+            <img *ngIf="meterData.wiringProtocol === 'Neptune'"
+            class="imgTR4" src="assets/images/Wiring/TR4/Neptune.svg" alt="wiring example image">
+
+            <img *ngIf="meterData.wiringProtocol === 'Pulse'"
+            class="imgTR4" src="assets/images/Wiring/TR4/Pulse.svg" alt="wiring example image">
+
+            <img *ngIf="meterData.wiringProtocol === 'Sensus' || meterData.wiringProtocol === 'GWF'"
+            class="imgTR4" src="assets/images/Wiring/TR4/Sensus.svg" alt="wiring example image">
+          </div>
         </mat-tab>
 
         <mat-tab *ngIf="meterData.compatibleWith.RR4" label="RR4">
-          <img src="assets/images/placeholderImage.jpeg" alt="">
+          <div class="imgContainer">
+            <img *ngIf="meterData.wiringProtocol === 'Amco' || meterData.wiringProtocol === 'Elster'"
+            class="imgRR4" src="assets/images/Wiring/RR4/Amco.svg" alt="wiring example image">
+
+            <img *ngIf="meterData.wiringProtocol === 'Neptune'"
+            class="imgRR4" src="assets/images/Wiring/RR4/Neptune.svg" alt="wiring example image">
+
+            <img *ngIf="meterData.wiringProtocol === 'Pulse'"
+            class="imgRR4" src="assets/images/Wiring/RR4/Pulse.svg" alt="wiring example image">
+
+            <img *ngIf="meterData.wiringProtocol === 'Sensus' || meterData.wiringProtocol === 'GWF'"
+            class="imgRR4" src="assets/images/Wiring/RR4/Sensus.svg" alt="wiring example image">
+          </div>
         </mat-tab>
 
       </mat-tab-group>
