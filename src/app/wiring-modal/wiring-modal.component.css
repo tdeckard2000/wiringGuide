@@ -20,7 +20,9 @@ img{
   border-radius: 6px;
   color: white;
   display: block;
+  font-family: lato, sans-serif;
   font-size: 1rem;
+  font-weight: bold;
   line-height: 1.5;
   margin-top: 20px;
   padding: .375rem .75rem;
@@ -67,14 +69,14 @@ height: 100%;
 }
 
 .meterName{
-  font-family: sans-serif;
+  font-family: lato, sans-serif;
   font-weight: 400;
   margin-bottom: 15px;
   margin-top: 10px;
 }
 
 .meterNotes {
-  font-family: sans-serif;
+  font-family: lato, sans-serif;
   font-weight: 300;
 }
 
@@ -95,7 +97,7 @@ height: 100%;
 }
 
 .meterSummary p{
-  font-family: sans-serif;
+  font-family: lato, sans-serif;
   font-weight: 100;
   margin-top: 0;
 }
@@ -107,6 +109,8 @@ height: 100%;
 
 /* Adjust size of wiring guide selector tabs */
 :host ::ng-deep .mat-tab-label{
+  font-family: lato, sans-serif;
+  font-weight: bold;
   min-width: 50px;
 }
 
