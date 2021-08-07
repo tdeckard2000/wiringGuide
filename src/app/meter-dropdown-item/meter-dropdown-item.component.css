@@ -113,7 +113,7 @@
 
 .itemHeader{
   display: inline-block;
-  font-family: sans-serif;
+  font-family: lato, sans-serif;
   font-weight: 300;
   margin-bottom: 0;
 }
@@ -128,7 +128,7 @@
 }
 
 .textMeterName{
-  font-family: sans-serif;
+  font-family: lato, sans-serif;
   font-size: .95rem;
 }
 
