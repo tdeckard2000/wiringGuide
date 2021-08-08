@@ -1,0 +1,16 @@
+.filterContainer{
+  display: flex;
+  height: 100%;
+  position: relative;
+  width: 100px;
+}
+
+.icon{
+  font-size: 1.12rem;
+}
+
+.iconDiv{
+  align-self: center;
+  cursor: pointer;
+  flex-grow: 1;
+}
