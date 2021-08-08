@@ -37,6 +37,7 @@ import { DeleteModalComponent } from './edit-page/delete-modal/delete-modal.comp
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DeleteModalSimpleComponent } from './edit-page/delete-modal-simple/delete-modal-simple.component';
 import { HighlightPipe } from './pipes/highlight.pipe';
+import { UtilityFilterComponent } from './utility-filter/utility-filter.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { HighlightPipe } from './pipes/highlight.pipe';
     SavingModalComponent,
     DeleteModalComponent,
     DeleteModalSimpleComponent,
-    HighlightPipe
+    HighlightPipe,
+    UtilityFilterComponent
   ],
   imports: [
     BrowserModule,
