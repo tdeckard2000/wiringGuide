@@ -33,6 +33,7 @@
   display: inline-block;
   font-family: lato, sans-serif;
   font-size: .8rem;
+  margin-right: 2px;
   text-align: center;
   width: 55px;
 }
@@ -217,5 +218,9 @@
 
   .flexBox{
     flex-direction: column;
+  }
+
+  .textSignalType{
+    margin-left: -5px;
   }
 }
