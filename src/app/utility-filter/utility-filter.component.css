@@ -1,6 +1,7 @@
 .filterContainer{
   display: flex;
   height: 100%;
+  margin-right: 5px;
   position: relative;
   width: 100px;
 }
@@ -12,5 +13,8 @@
 .iconDiv{
   align-self: center;
   cursor: pointer;
+  display: flex;
   flex-grow: 1;
+  justify-content: center;
+  text-align: center;
 }
