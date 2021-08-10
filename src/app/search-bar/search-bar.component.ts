@@ -8,7 +8,7 @@ import { MainService } from '../main.service';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
-  constructor(private mainService : MainService){}
+  constructor(public mainService : MainService){}
   focusSearchBar = false;
   searchBarText= '';
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainService } from '../main.service';
 
 @Component({
   selector: 'app-utility-filter',
@@ -11,9 +12,10 @@ export class UtilityFilterComponent implements OnInit {
 
   onSetFilter(utilityFilter: 'water' | 'gas' | 'electric'){
     this.activeFilter = utilityFilter;
+    this.mainService.activeFilter = utilityFilter;
   };
 
-  constructor() { }
+  constructor(private mainService:MainService) { }
 
   ngOnInit(): void {
   }

@@ -111,6 +111,7 @@ export class MainService {
       'Content-Type': 'application/json'
     })
   };
+  activeFilter = 'water';
   searchBarText = '';
   searchBarText$: BehaviorSubject<string>;
 

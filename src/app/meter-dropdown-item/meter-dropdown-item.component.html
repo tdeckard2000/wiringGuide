@@ -1,12 +1,13 @@
 <div class="itemClusterDiv">
+  <p>Active Filter: {{mainService.activeFilter}}</p>
   <!-- Water Meters Section -->
   <div class="itemContainer" *ngFor="let item of (meterData | filterMeters:searchBarText); index as i">
     <mat-accordion>
       <mat-expansion-panel [expanded]="(dropdownOpen[i])">
         <mat-expansion-panel-header class="itemDropdownHeader" (click)="onMeterItemClick(i)">
           <mat-panel-title>
-              <!-- Meter Manufacturer Name -->
-              <h3 class="itemHeader" [innerHtml]="item.manufacturer | highlight:searchBarText"></h3>
+            <!-- Meter Manufacturer Name -->
+            <h3 class="itemHeader" [innerHtml]="item.manufacturer | highlight:searchBarText"></h3>
           </mat-panel-title>
           </mat-expansion-panel-header>
           <!-- Dropdown Body -->

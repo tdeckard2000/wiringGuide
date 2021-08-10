@@ -17,7 +17,7 @@ export class MeterDropdownItemComponent implements OnInit {
   searchBarText = '';
   meterData:Array<object> = [];
 
-  constructor(private mainService : MainService,  public dialog: MatDialog){}
+  constructor(public mainService : MainService,  public dialog: MatDialog){}
 
   closeAllDropdowns(){
     for(let i = 0; i<this.dropdownOpen.length; i++){
