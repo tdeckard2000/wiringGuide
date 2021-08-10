@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UtilityFilterComponent implements OnInit {
 
+  activeFilter = 'water'
+
+  onSetFilter(utilityFilter: 'water' | 'gas' | 'electric'){
+    this.activeFilter = utilityFilter;
+  };
+
   constructor() { }
 
   ngOnInit(): void {

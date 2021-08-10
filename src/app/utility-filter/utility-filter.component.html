@@ -1,11 +1,11 @@
 <div class="filterContainer">
-  <div class="iconDiv">
-    <i class="icon icon-all-water" style="color: rgb(62, 137, 191);"></i>
+  <div (click)="onSetFilter('water')" class="iconDiv" class="iconDiv">
+    <i class="icon icon-all-water" [ngStyle]="{'color': activeFilter=='water' ? 'rgb(62, 137, 191)' : 'rgb(169 169 169)'}"></i>
   </div>
-  <div class="iconDiv">
-    <i class="icon icon-gas" style="color: rgb(123, 193, 71);"></i>
+  <div (click)="onSetFilter('gas')" class="iconDiv" class="iconDiv">
+    <i class="icon icon-gas" [ngStyle]="{'color': activeFilter=='gas' ? 'rgb(123, 193, 71)' : 'rgb(169 169 169)'}"></i>
   </div>
-  <div class="iconDiv">
-    <i class="icon icon-electric" style="color: rgb(234, 223, 89);"></i>
+  <div (click)="onSetFilter('electric')" class="iconDiv">
+    <i class="icon icon-electric" [ngStyle]="{'color': activeFilter=='electric' ? 'rgb(234, 223, 89)' : 'rgb(169 169 169)'}"></i>
   </div>
 </div>
