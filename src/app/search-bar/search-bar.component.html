@@ -1,4 +1,4 @@
-<div class="searchBarDiv">
-    <input [(ngModel)]="searchBarText" (keyup)="onTextInput()" type="text" placeholder="Search Meters">
+<div class="searchBarDiv" [ngClass]="{'highlightSearchBar': focusSearchBar == true}">
+    <input [(ngModel)]="searchBarText" (keyup)="onTextInput()" (focus)="focusSearchBar = true" (focusout)="focusSearchBar = false" type="text" placeholder="Search Meters">
     <app-utility-filter></app-utility-filter>
 </div>

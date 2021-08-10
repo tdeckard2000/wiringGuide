@@ -9,16 +9,16 @@ input{
     font-weight: 300;
     line-height: 1.15;
     padding-left: 10px;
-    transition: box-shadow 0.3s linear;
     width: 100%;
 }
 
 /* remove outline from text box when active */
 input:focus{
-    box-shadow: 0 1px 1px 9px rgb(255 255 255 / 30%);
     outline: none;
+}
 
-
+.highlightSearchBar{
+  box-shadow: 0 1px 1px 9px rgb(255 255 255 / 30%);
 }
 
 .searchBarDiv{
@@ -28,7 +28,6 @@ input:focus{
     height: 40px;
     margin: auto;
     max-width: 600px;
-}
-
-.searchBarDiv:focus {
+    /* for box-shadow */
+    transition: box-shadow 0.3s linear;
 }

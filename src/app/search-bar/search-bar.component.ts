@@ -9,12 +9,13 @@ import { MainService } from '../main.service';
 })
 export class SearchBarComponent implements OnInit {
   constructor(private mainService : MainService){}
+  focusSearchBar = false;
   searchBarText= '';
 
   onTextInput(){
     this.mainService.updateString(this.searchBarText);
   }
-  
+
   ngOnInit(): void {
   }
 
