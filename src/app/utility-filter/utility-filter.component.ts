@@ -8,9 +8,9 @@ import { MainService } from '../main.service';
 })
 export class UtilityFilterComponent implements OnInit {
 
-  activeFilter = 'water'
+  activeFilter = 'Water'
 
-  onSetFilter(utilityFilter: 'water' | 'gas' | 'electric'){
+  onSetFilter(utilityFilter: 'Water' | 'Gas' | 'Electric'){
     this.activeFilter = utilityFilter;
     this.mainService.activeFilter = utilityFilter;
   };
