@@ -10,7 +10,27 @@
 
 .content{
     padding: 0 15px;
-    
+
+}
+
+.itemClusterDiv{
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 3px 3px 6px rgb(0, 0, 0, .2);
+  margin: auto;
+  max-width: 950px;
+  overflow: auto;
+  padding: 20px 10px;
+  height: 65vh;
+}
+
+.itemClusterDiv::-webkit-scrollbar{
+  display: none;
+}
+
+.itemContainer{
+  max-width: 950px;
+  margin: auto;
 }
 
 .topDiv{
@@ -24,6 +44,13 @@
     margin-bottom: 20px;
     margin-top: 80px;
     padding: 35px 15px;
+}
+
+.utilityHeader{
+  font-family: lato, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin: 0;
 }
 
 /* Media Queries */

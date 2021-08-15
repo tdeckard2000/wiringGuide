@@ -1,9 +1,4 @@
-<div class="itemClusterDiv">
-  <p>Active Filter: {{mainService.activeFilter}}</p>
-  <!-- Water Meters Section -->
-  <div class="itemContainer" *ngFor="let item of (meterData | filterMeters:searchBarText); index as i">
-    <!-- {{item | json}} -->
-    <mat-accordion *ngIf="item.utilityType == mainService.activeFilter">
+    <mat-accordion>
       <mat-expansion-panel [expanded]="(dropdownOpen[i])">
         <mat-expansion-panel-header class="itemDropdownHeader" (click)="onMeterItemClick(i)">
           <mat-panel-title>
@@ -56,6 +51,3 @@
       </mat-expansion-panel>
       <hr [ngStyle]="{'opacity': (dropdownOpen[i] === true) ? '0' : '.25'}" class="underlineDivider">
     </mat-accordion>
-    <!-- <hr *ngIf="dropdownOpen[i] !== true" class="underlineDivider"> -->
-  </div>
-</div>

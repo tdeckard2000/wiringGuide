@@ -92,7 +92,7 @@
   position: relative;
 }
 
-.itemClusterDiv{
+/* .itemClusterDiv{
   background-color: white;
   border-radius: 4px;
   box-shadow: 3px 3px 6px rgb(0, 0, 0, .2);
@@ -110,7 +110,7 @@
 .itemContainer{
   max-width: 950px;
   margin: auto;
-}
+} */
 
 .itemHeader{
   display: inline-block;

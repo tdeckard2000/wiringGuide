@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { MainService } from '../main.service';
 import { MatDialog } from '@angular/material/dialog';
 import { WiringModalComponent } from '../wiring-modal/wiring-modal.component'
@@ -12,6 +12,9 @@ import { HighlightPipe } from '../pipes/highlight.pipe';
 })
 
 export class MeterDropdownItemComponent implements OnInit {
+  @Input() item: any;
+  @Input() i: any;
+
   dropdownOpen:Array<boolean> = [];
   panelOpenState = true;
   searchBarText = '';
@@ -53,11 +56,6 @@ export class MeterDropdownItemComponent implements OnInit {
     this.mainService.searchBarText$.subscribe(data =>{
       this.searchBarText = data;
       this.closeAllDropdowns();
-    });
-
-    this.mainService.getAllMeters().subscribe((res:any)=>{
-      this.meterData = res;
-      this.populateDropdownOpenArray(this.meterData);
     });
   };
 
