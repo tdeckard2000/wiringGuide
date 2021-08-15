@@ -11,8 +11,14 @@ export class UtilityFilterComponent implements OnInit {
   activeFilter = 'Water'
 
   onSetFilter(utilityFilter: 'Water' | 'Gas' | 'Electric'){
-    this.activeFilter = utilityFilter;
-    this.mainService.activeFilter = utilityFilter;
+    if(this.activeFilter == utilityFilter){
+      this.activeFilter = 'None';
+      this.mainService.activeFilter = 'None';
+    }else{
+      this.activeFilter = utilityFilter;
+      this.mainService.activeFilter = utilityFilter;
+    }
+
   };
 
   constructor(private mainService:MainService) { }

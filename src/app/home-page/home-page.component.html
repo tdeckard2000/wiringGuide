@@ -5,9 +5,9 @@
         <app-search-bar></app-search-bar>
       </div>
       <div class="itemClusterDiv">
-
+        <p>Filter: {{mainService.activeFilter}}</p>
         <!-- Water -->
-        <div *ngIf="mainService.activeFilter == 'Water'">
+        <div *ngIf="mainService.activeFilter == 'Water' || mainService.activeFilter == 'None'">
           <p class="utilityHeader"><i class="icon icon-all-water" style="color: rgb(62, 137, 191);"></i> Water</p>
           <div class="itemContainer" *ngFor="let item of (meterData | filterMeters:searchBarText); index as i">
               <app-meter-dropdown-item *ngIf="item.utilityType == 'Water'" [item]="item" [i]="i"></app-meter-dropdown-item>
@@ -15,7 +15,7 @@
         </div>
 
         <!-- Gas -->
-        <div *ngIf="mainService.activeFilter == 'Gas'">
+        <div *ngIf="mainService.activeFilter == 'Gas' || mainService.activeFilter == 'None'">
           <p class="utilityHeader"><i class="icon icon-gas" style="color: rgb(123, 193, 71);"></i> Gas</p>
           <div class="itemContainer" *ngFor="let item of (meterData | filterMeters:searchBarText); index as i">
               <app-meter-dropdown-item *ngIf="item.utilityType == 'Gas'" [item]="item" [i]="i"></app-meter-dropdown-item>
@@ -23,7 +23,7 @@
         </div>
 
         <!-- Electric -->
-        <div *ngIf="mainService.activeFilter == 'Electric'">
+        <div *ngIf="mainService.activeFilter == 'Electric' || mainService.activeFilter == 'None'">
           <p class="utilityHeader"><i class="icon icon-electric" style="color: rgb(234, 223, 89);"></i> Electric</p>
           <div class="itemContainer" *ngFor="let item of (meterData | filterMeters:searchBarText); index as i">
               <app-meter-dropdown-item *ngIf="item.utilityType == 'Electric'" [item]="item" [i]="i"></app-meter-dropdown-item>
