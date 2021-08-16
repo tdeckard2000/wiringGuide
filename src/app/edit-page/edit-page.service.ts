@@ -49,7 +49,7 @@ export class EditPageService {
   public utilityTypeOptions = [
     "Electric",
     "Gas",
-    "Run Time",
+    "Runtime",
     "Thermal",
     "Water"
   ];
