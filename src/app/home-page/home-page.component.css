@@ -48,12 +48,12 @@
 
 .utilityHeader{
   background: linear-gradient(to bottom, rgb(255, 255, 255) 80%, rgba(255, 255, 255, 0) 100%);
-
   font-family: lato, sans-serif;
   font-size: 1.2rem;
   font-weight: 300;
   margin: 0;
-  padding: 15px 5px 10px;
+  margin-bottom: -10px;
+  padding: 15px 5px 15px;
   z-index: 100;
 }
 

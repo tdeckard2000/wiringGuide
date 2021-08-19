@@ -8,7 +8,7 @@ import { MainService } from '../main.service';
 })
 export class UtilityFilterComponent implements OnInit {
 
-  activeFilter = 'Water'
+  activeFilter = 'None'
 
   onSetFilter(utilityFilter: 'Water' | 'Gas' | 'Electric' | 'Runtime' | 'Thermal'){
     if(this.activeFilter == utilityFilter){

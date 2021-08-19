@@ -154,8 +154,9 @@
 
 .textSelectMeterNote{
   color: #999;
-  font-family: sans-serif;
+  font-family: lato, sans-serif;
   font-size: .7rem;
+  margin-bottom: 0;
 }
 
 .textSeriesModel{
