@@ -38,6 +38,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DeleteModalSimpleComponent } from './edit-page/delete-modal-simple/delete-modal-simple.component';
 import { HighlightPipe } from './pipes/highlight.pipe';
 import { UtilityFilterComponent } from './utility-filter/utility-filter.component';
+import { AngularStickyThingsModule } from '@w11k/angular-sticky-things';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { UtilityFilterComponent } from './utility-filter/utility-filter.componen
     MatAutocompleteModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    AngularStickyThingsModule
   ],
   providers: [
     {provide: MAT_RADIO_DEFAULT_OPTIONS, useValue: {color: 'primary'}}

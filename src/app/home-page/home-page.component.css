@@ -20,7 +20,7 @@
   margin: auto;
   max-width: 950px;
   overflow: auto;
-  padding: 20px 10px;
+  padding: 0 10px 20px 10px;
   height: 65vh;
 }
 
@@ -47,10 +47,14 @@
 }
 
 .utilityHeader{
+  background: linear-gradient(to bottom, rgb(255, 255, 255) 80%, rgba(255, 255, 255, 0) 100%);
+
   font-family: lato, sans-serif;
   font-size: 1.2rem;
   font-weight: 300;
   margin: 0;
+  padding: 15px 5px 10px;
+  z-index: 100;
 }
 
 /* Media Queries */
