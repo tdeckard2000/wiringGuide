@@ -1,17 +1,17 @@
 <div class="filterContainer">
   <div (click)="onSetFilter('Water')" class="iconDiv" class="iconDiv">
-    <i class="icon icon-all-water" [ngStyle]="{'color': activeFilter == 'Water' || activeFilter == 'None' ? 'rgb(62, 137, 191)' : 'rgb(169 169 169)'}"></i>
+    <i class="icon icon-all-water" [ngStyle]="{'color': activeFilter == 'Water' ? 'rgb(62, 137, 191)' : 'rgb(169 169 169)'}"></i>
   </div>
   <div (click)="onSetFilter('Gas')" class="iconDiv" class="iconDiv">
-    <i class="icon icon-gas" [ngStyle]="{'color': activeFilter == 'Gas' || activeFilter == 'None' ? 'rgb(123, 193, 71)' : 'rgb(169 169 169)'}"></i>
+    <i class="icon icon-gas" [ngStyle]="{'color': activeFilter == 'Gas' ? 'rgb(123, 193, 71)' : 'rgb(169 169 169)'}"></i>
   </div>
   <div (click)="onSetFilter('Electric')" class="iconDiv">
-    <i class="icon icon-electric" [ngStyle]="{'color': activeFilter == 'Electric' || activeFilter == 'None' ? 'rgb(234, 223, 89)' : 'rgb(169 169 169)'}"></i>
+    <i class="icon icon-electric" [ngStyle]="{'color': activeFilter == 'Electric' ? 'rgb(234, 223, 89)' : 'rgb(169 169 169)'}"></i>
   </div>
   <div (click)="onSetFilter('Runtime')" class="iconDiv">
-    <i class="icon icon-runtime" [ngStyle]="{'color': activeFilter == 'Runtime' || activeFilter == 'None' ? 'rgb(117, 75, 193)' : 'rgb(169 169 169)'}"></i>
+    <i class="icon icon-runtime" [ngStyle]="{'color': activeFilter == 'Runtime' ? 'rgb(117, 75, 193)' : 'rgb(169 169 169)'}"></i>
   </div>
   <div (click)="onSetFilter('Thermal')" class="iconDiv">
-    <i class="icon icon-thermal" [ngStyle]="{'color': activeFilter == 'Thermal' || activeFilter == 'None' ? 'rgb(227, 81, 95)' : 'rgb(169 169 169)'}"></i>
+    <i class="icon icon-thermal" [ngStyle]="{'color': activeFilter == 'Thermal' ? 'rgb(227, 81, 95)' : 'rgb(169 169 169)'}"></i>
   </div>
 </div>
