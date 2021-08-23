@@ -1,11 +1,12 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { MeterData } from '../main.service';
 
 @Component({
   selector: 'app-wiring-modal',
   templateUrl: './wiring-modal.component.html',
-  styleUrls: ['./wiring-modal.component.css']
+  styleUrls: ['./wiring-modal.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WiringModalComponent implements OnInit {
 

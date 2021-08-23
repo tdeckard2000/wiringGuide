@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MainService } from '../main.service';
 
 @Component({
   selector: 'app-utility-filter',
   templateUrl: './utility-filter.component.html',
-  styleUrls: ['./utility-filter.component.css']
+  styleUrls: ['./utility-filter.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UtilityFilterComponent implements OnInit {
 

@@ -1,3 +1,5 @@
+import { chainedInstruction } from '@angular/compiler/src/render3/view/util';
+import { ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { MainService } from '../main.service';
 import { MeterDropdownItemComponent } from '../meter-dropdown-item/meter-dropdown-item.component';
@@ -5,11 +7,13 @@ import { MeterDropdownItemComponent } from '../meter-dropdown-item/meter-dropdow
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+  styleUrls: ['./home-page.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
+
 export class HomePageComponent implements OnInit {
 
-  constructor(public mainService:MainService) { }
+  constructor(public mainService:MainService, private _change: ChangeDetectorRef) { }
 
   dropdownOpen:Array<boolean> = [];
   meterData: Array<object> = [];
@@ -25,10 +29,12 @@ export class HomePageComponent implements OnInit {
     this.mainService.getAllMeters().subscribe((res:any)=>{
       this.meterData = res;
       this.populateDropdownOpenArray(this.meterData);
+      this._change.markForCheck();
     });
 
     this.mainService.searchBarText$.subscribe(data =>{
       this.searchBarText = data;
+      this._change.markForCheck();
     });
   }
 

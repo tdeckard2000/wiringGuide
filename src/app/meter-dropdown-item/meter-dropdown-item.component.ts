@@ -1,14 +1,16 @@
-import { Component, Input, OnInit} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import { MainService } from '../main.service';
 import { MatDialog } from '@angular/material/dialog';
 import { WiringModalComponent } from '../wiring-modal/wiring-modal.component'
 import { Observable } from 'rxjs';
 import { HighlightPipe } from '../pipes/highlight.pipe';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-meter-dropdown-item',
   templateUrl: './meter-dropdown-item.component.html',
-  styleUrls: ['./meter-dropdown-item.component.css']
+  styleUrls: ['./meter-dropdown-item.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class MeterDropdownItemComponent implements OnInit {
@@ -20,7 +22,7 @@ export class MeterDropdownItemComponent implements OnInit {
   searchBarText = '';
   meterData:Array<object> = [];
 
-  constructor(public mainService : MainService,  public dialog: MatDialog){}
+  constructor(public mainService : MainService,  public dialog: MatDialog, private _change: ChangeDetectorRef){}
 
   closeAllDropdowns(){
     for(let i = 0; i<this.dropdownOpen.length; i++){
@@ -56,6 +58,7 @@ export class MeterDropdownItemComponent implements OnInit {
     this.mainService.searchBarText$.subscribe(data =>{
       this.searchBarText = data;
       this.closeAllDropdowns();
+      this._change.markForCheck();
     });
   };
 
