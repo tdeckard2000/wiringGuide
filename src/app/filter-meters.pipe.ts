@@ -1,11 +1,12 @@
 import { ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { Pipe, PipeTransform } from '@angular/core';
+import { MeterManufacturer } from './main.service';
 
 @Pipe({
   name: 'filterMeters'
 })
 export class FilterMetersPipe implements PipeTransform {
-  transform(meterData:Array<object> , searchBarText: string) {
+  transform(meterData:Array<MeterManufacturer> , searchBarText: string) {
     let filteredMeterData:any;
 
       searchBarText = searchBarText.toLowerCase();
