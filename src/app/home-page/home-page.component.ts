@@ -26,6 +26,7 @@ export class HomePageComponent implements OnInit {
   manufacturersWater: Array<MeterManufacturer> = [];
 
   groupManufacturersByUtilityType(meterData: Array<MeterManufacturer>){
+    console.log("running" + meterData)
     meterData.forEach((manufacturer: MeterManufacturer) => {
       if(manufacturer.utilityType === 'Electric'){
         this.manufacturersElectric.push(manufacturer)
@@ -39,22 +40,24 @@ export class HomePageComponent implements OnInit {
         this.manufacturersWater.push(manufacturer)
       }
     });
+    console.log("done")
   };
 
   populateDropdownOpenArray(meterData:Array<object>){
     meterData.forEach((itemInArray:object)=>{
       this.dropdownOpen.push(false)
     });
+    console.log("populateDropdown")
   }
 
   ngOnInit(): void {
     this.mainService.getAllMeters().subscribe((res:any)=>{
       this.meterData = res;
-      this.populateDropdownOpenArray(this.meterData);
+      console.log(res)
       this.groupManufacturersByUtilityType(this.meterData);
+      this.populateDropdownOpenArray(this.meterData);
       this._change.markForCheck();
     });
-
 
     this.mainService.searchBarText$.subscribe(data =>{
       this.searchBarText = data;
