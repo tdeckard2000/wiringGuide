@@ -177,12 +177,13 @@
 }
 
 .underlineDivider{
-  background: linear-gradient(to right, black 95%, white);
+  /* background: linear-gradient(to right, black 95%, white); */
+  background: #e4e4e4;
   border: 0;
   height: 1px;
   margin-left: 23px;
   margin-top: 5px;
-  opacity: .15;
+  opacity: 1;
   width: 85%;
 }
 
