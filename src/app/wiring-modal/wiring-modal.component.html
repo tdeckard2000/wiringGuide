@@ -18,7 +18,7 @@
     </div>
 
     <!-- NextCentury Compatibility List/Images-->
-    <div *ngIf="meterData.compatibleWith.TR201 || meterData.compatibleWith.TR4 || meterData.compatibleWith.RR4">
+    <div *ngIf="(meterData.compatibleWith.TR201 || meterData.compatibleWith.TR4 || meterData.compatibleWith.RR4) && meterData.signalType != 'Integrated'">
       <mat-tab-group mat-align-tabs="start">
 
         <mat-tab *ngIf="meterData.compatibleWith.TR201" label="TR201">
