@@ -10,6 +10,8 @@ app.use(bodyParser.json());
 app.use(cors());
 require('dotenv').config();
 
+port = process.env.port || 3000
+
 // ************************************
 //            DB Settings
 // ************************************
@@ -269,6 +271,6 @@ const sortMeterManufacturers = function(meterA, meterB){
 //              Server
 // ************************************
 
-app.listen(3000, (req, res)=>{
-  console.warn('Listening on Port 3000');
+app.listen(port, (req, res)=>{
+  console.warn('Listening on Port ' + port);
 });
