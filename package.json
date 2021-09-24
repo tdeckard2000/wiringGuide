@@ -4,7 +4,8 @@
   "scripts": {
     "heroku-postbuild": "ng build --prod",
     "ng": "ng",
-    "start": "ng serve && nodemon server.js",
+    "start": "ng serve",
+    "start:prod": "nodemon server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
