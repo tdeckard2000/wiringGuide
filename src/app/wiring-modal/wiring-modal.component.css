@@ -131,4 +131,13 @@ height: 100%;
     width: 100%;
   }
 
+  .modalBody{
+    /* bottom attribute needs to be fixed!! */
+    bottom: calc(100vh/6);
+    left: 4px;
+    position: absolute;
+    /* 20px padding plus 2px offset leaving 2px edge */
+    width: calc(100vw - 48px);
+  }
+
 }
