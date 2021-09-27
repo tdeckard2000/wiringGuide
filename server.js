@@ -11,7 +11,7 @@ app.use(cors());
 require('dotenv').config();
 app.use(express.static('./dist/wiringGuide'));
 
-port = process.env.PORT || 3000
+PORT = process.env.PORT || 3000;
 
 // ************************************
 //            DB Settings
@@ -50,8 +50,12 @@ client.connect(err => {
   });
 
   app.get('/', (req, res)=>{
-    console.log("here");
     res.sendFile('/index.html', {root: 'src'});
+  });
+
+  app.get('/edit', (req, res)=>{
+    console.log('Edit Page Served')
+    res.sendFile('/app/edit-page/edit-page.component.html', {root: 'src'});
   });
 
   app.get('/api/allMeters', async(req, res)=>{
@@ -277,6 +281,6 @@ const sortMeterManufacturers = function(meterA, meterB){
 //              Server
 // ************************************
 
-app.listen(port, (req, res)=>{
+app.listen(PORT, ()=>{
   console.warn('Listening on Port ' + port);
 });
