@@ -142,7 +142,7 @@ export class MainService {
   }
 
   getAllMeters(){
-    return this.http.get('http://localhost:3000/api/allmeters', {
+    return this.http.get('/api/allmeters', {
       observe: 'body',
       responseType: 'json'
     });
