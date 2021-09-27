@@ -9,6 +9,7 @@ const { ObjectID } = require('bson');
 app.use(bodyParser.json());
 app.use(cors());
 require('dotenv').config();
+app.use(express.static('./dist/wiringGuide'));
 
 port = process.env.PORT || 3000
 
@@ -46,6 +47,11 @@ client.connect(err => {
         res.json(result);
       }
     );
+  });
+
+  app.get('/', (req, res)=>{
+    console.log("here");
+    res.sendFile('/index.html', {root: 'src'});
   });
 
   app.get('/api/allMeters', async(req, res)=>{
