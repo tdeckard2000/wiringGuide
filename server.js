@@ -282,5 +282,5 @@ const sortMeterManufacturers = function(meterA, meterB){
 // ************************************
 
 app.listen(PORT, ()=>{
-  console.warn('Listening on Port ' + port);
+  console.warn('Listening on Port ' + PORT);
 });
