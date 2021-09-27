@@ -126,7 +126,7 @@ export class MainService {
   deleteManufacturer(manufacturerId:string){
     //Set manufacturer "deleted" field to "true" (object is not actually deleted)
     const manufacturerIdObject = {manufacturerId : manufacturerId}
-    return this.http.patch('http://localhost:3000/api/deleteManufacturer', manufacturerIdObject, this.httpOptions);
+    return this.http.patch('/api/deleteManufacturer', manufacturerIdObject, this.httpOptions);
   };
 
   deleteMeter(meterLocation: MeterLocation){
@@ -138,7 +138,7 @@ export class MainService {
       body: meterLocation
     };
 
-    return this.http.delete('http://localhost:3000/api/deleteMeter', options)
+    return this.http.delete('/api/deleteMeter', options)
   }
 
   getAllMeters(){
@@ -149,7 +149,7 @@ export class MainService {
   };
 
   getArrayOfManufacturersByUtility(utilityType:string){
-    return this.http.get('http://localhost:3000/api/meterManufacturers/' + utilityType, {
+    return this.http.get('/api/meterManufacturers/' + utilityType, {
       observe: 'body',
       responseType: 'json'
     });
@@ -164,28 +164,28 @@ export class MainService {
     };
 
     const dataString = JSON.stringify(data);
-    return this.http.get('http://localhost:3000/api/metersFromSection/' + dataString, {
+    return this.http.get('/api/metersFromSection/' + dataString, {
       observe: 'body',
       responseType: 'json'
     });
   };
 
   getArrayOfSectionNamesByUtilityAndManufacturer(utilityType: string, manufacturerName: string){
-    return this.http.get<SectionNamesArray>('http://localhost:3000/api/sectionData/' + utilityType + '/' + manufacturerName, {
+    return this.http.get<SectionNamesArray>('/api/sectionData/' + utilityType + '/' + manufacturerName, {
       observe: 'body',
       responseType: 'json'
     });
   };
 
   getMeterManufacturerData(utilityType:string, manufacturerName:string){
-    return this.http.get('http://localhost:3000/api/meterManufacturerData/' + utilityType + '/' + manufacturerName, {
+    return this.http.get('/api/meterManufacturerData/' + utilityType + '/' + manufacturerName, {
       observe: 'body',
       responseType: 'json'
     });
   };
 
   postNewMeter(newMeterData: NewMeterForm){
-    return this.http.post('http://localhost:3000/api/newMeter', newMeterData, this.httpOptions);
+    return this.http.post('/api/newMeter', newMeterData, this.httpOptions);
   };
 
   postNewMeterManufacturer(manufacturerName: string, utilityTypeSelected: string, newSectionsArray: Array<NewSectionsArrayObject>){
@@ -209,7 +209,7 @@ export class MainService {
       });
     };
 
-    return this.http.post('http://localhost:3000/api/newMeterManufacturer', manufacturerObject, this.httpOptions);
+    return this.http.post('/api/newMeterManufacturer', manufacturerObject, this.httpOptions);
   };
 
   postUpdatedMeter(meterLocation:MeterLocation, updatedMeterInfo:UpdatedMeterInfo){
@@ -217,11 +217,11 @@ export class MainService {
      meterLocation: meterLocation,
      updatedMeterInfo: updatedMeterInfo
    };
-    return this.http.patch('http://localhost:3000/api/updateMeter', data, this.httpOptions);
+    return this.http.patch('/api/updateMeter', data, this.httpOptions);
   };
 
   postUpdatedMeterManufacturer(meterManufacturerData:MeterManufacturer){
-    return this.http.post('http://localhost:3000/api/updateMeterManufacturer', meterManufacturerData, this.httpOptions);
+    return this.http.post('/api/updateMeterManufacturer', meterManufacturerData, this.httpOptions);
   };
 
 }
