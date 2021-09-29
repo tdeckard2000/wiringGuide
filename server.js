@@ -55,7 +55,7 @@ client.connect(err => {
 
   app.get('/edit', (req, res)=>{
     console.log('Edit Page Served')
-    res.sendFile('/app/edit-page/edit-page.component.html', {root: 'src'});
+    res.sendFile('/index.html', {root: 'src'});
   });
 
   app.get('/api/allMeters', async(req, res)=>{
