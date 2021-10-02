@@ -139,7 +139,6 @@ export class EditManufacturerComponent implements OnInit {
 
   onDeleteSection(data:any){
     //Determine which element should be deleted
-    console.log(data)
     let sectionToDelete = (data.srcElement.name).split(".")[1];
     //Remove that element from local copy of object (DOM will then update)
     this.manufacturerData.sections[sectionToDelete].deleted = true;

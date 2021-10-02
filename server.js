@@ -54,7 +54,6 @@ client.connect(err => {
   });
 
   app.get('/edit', (req, res)=>{
-    console.log('Edit Page Served')
     res.sendFile('/index.html', {root: 'src'});
   });
 

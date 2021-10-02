@@ -18,7 +18,6 @@ export class DeleteModalSimpleComponent implements OnInit {
   onDeleteClick(){
     this.onConfirmDelete.emit();
     this.canClickCancel = false;
-    console.log(this.data)
   };
 
   onDoneClick(){

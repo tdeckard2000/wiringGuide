@@ -33,7 +33,6 @@ export class MeterDropdownItemComponent implements OnInit {
   //Hide meter manufacturer underline while tile is open
   onMeterItemClick(i:any){
     this.dropdownOpen[i] = this.dropdownOpen[i] === true ? false : true;
-    console.log(this.dropdownOpen)
   }
 
   //Open Wiring Guide Modal
