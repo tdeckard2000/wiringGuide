@@ -60,6 +60,8 @@ export class NewManufacturerComponent implements OnInit {
     // Ensure all manufacturers have an empty series name and models name section
     if(this.newSectionValues.some(section => section.modelsName !== null && section.seriesName !== null)){
       this.newSectionValues.push({seriesName: null, modelsName: null});
+    }else if(!this.newSectionValues.length){
+      this.newSectionValues.push({seriesName: null, modelsName: null});
     };
 
     this.mainService.postNewMeterManufacturer(this.manufacturerName, this.utilityTypeSelected, this.newSectionValues)
@@ -88,6 +90,7 @@ export class NewManufacturerComponent implements OnInit {
     console.log(this.newSectionValues)
     this.newSectionsCount.length --;
     this.newSectionValues.pop();
+    console.log(this.newSectionValues)
     this.canAddNewSection = this.hasSeriesOrModelName();
     this.canClickSave();
   };
