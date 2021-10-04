@@ -11,7 +11,7 @@ app.use(cors());
 require('dotenv').config();
 app.use(express.static('./dist/wiringGuide'));
 
-PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 // ************************************
 //            DB Settings

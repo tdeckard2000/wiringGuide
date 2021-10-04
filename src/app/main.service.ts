@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatTabBody } from '@angular/material/tabs';
@@ -102,6 +102,8 @@ export class MainService {
     this.searchBarText$ = new BehaviorSubject(this.searchBarText);
   }
 
+PORT = isDevMode()? 'http://localhost:3000' : '';
+
 // ************************************
 //       Track Search Bar Input
 // ************************************
@@ -126,7 +128,7 @@ export class MainService {
   deleteManufacturer(manufacturerId:string){
     //Set manufacturer "deleted" field to "true" (object is not actually deleted)
     const manufacturerIdObject = {manufacturerId : manufacturerId}
-    return this.http.patch('/api/deleteManufacturer', manufacturerIdObject, this.httpOptions);
+    return this.http.patch(this.PORT + '/api/deleteManufacturer', manufacturerIdObject, this.httpOptions);
   };
 
   deleteMeter(meterLocation: MeterLocation){
@@ -138,18 +140,18 @@ export class MainService {
       body: meterLocation
     };
 
-    return this.http.delete('/api/deleteMeter', options)
+    return this.http.delete(this.PORT + '/api/deleteMeter', options)
   }
 
   getAllMeters(){
-    return this.http.get('/api/allmeters', {
+    return this.http.get(this.PORT + '/api/allmeters', {
       observe: 'body',
       responseType: 'json'
     });
   };
 
   getArrayOfManufacturersByUtility(utilityType:string){
-    return this.http.get('/api/meterManufacturers/' + utilityType, {
+    return this.http.get(this.PORT + '/api/meterManufacturers/' + utilityType, {
       observe: 'body',
       responseType: 'json'
     });
@@ -164,28 +166,28 @@ export class MainService {
     };
 
     const dataString = JSON.stringify(data);
-    return this.http.get('/api/metersFromSection/' + dataString, {
+    return this.http.get(this.PORT + '/api/metersFromSection/' + dataString, {
       observe: 'body',
       responseType: 'json'
     });
   };
 
   getArrayOfSectionNamesByUtilityAndManufacturer(utilityType: string, manufacturerName: string){
-    return this.http.get<SectionNamesArray>('/api/sectionData/' + utilityType + '/' + manufacturerName, {
+    return this.http.get<SectionNamesArray>(this.PORT + '/api/sectionData/' + utilityType + '/' + manufacturerName, {
       observe: 'body',
       responseType: 'json'
     });
   };
 
   getMeterManufacturerData(utilityType:string, manufacturerName:string){
-    return this.http.get('/api/meterManufacturerData/' + utilityType + '/' + manufacturerName, {
+    return this.http.get(this.PORT + '/api/meterManufacturerData/' + utilityType + '/' + manufacturerName, {
       observe: 'body',
       responseType: 'json'
     });
   };
 
   postNewMeter(newMeterData: NewMeterForm){
-    return this.http.post('/api/newMeter', newMeterData, this.httpOptions);
+    return this.http.post(this.PORT + '/api/newMeter', newMeterData, this.httpOptions);
   };
 
   postNewMeterManufacturer(manufacturerName: string, utilityTypeSelected: string, newSectionsArray: Array<NewSectionsArrayObject>){
@@ -209,7 +211,7 @@ export class MainService {
       });
     };
 
-    return this.http.post('/api/newMeterManufacturer', manufacturerObject, this.httpOptions);
+    return this.http.post(this.PORT + '/api/newMeterManufacturer', manufacturerObject, this.httpOptions);
   };
 
   postUpdatedMeter(meterLocation:MeterLocation, updatedMeterInfo:UpdatedMeterInfo){
@@ -217,11 +219,11 @@ export class MainService {
      meterLocation: meterLocation,
      updatedMeterInfo: updatedMeterInfo
    };
-    return this.http.patch('/api/updateMeter', data, this.httpOptions);
+    return this.http.patch(this.PORT + '/api/updateMeter', data, this.httpOptions);
   };
 
   postUpdatedMeterManufacturer(meterManufacturerData:MeterManufacturer){
-    return this.http.post('/api/updateMeterManufacturer', meterManufacturerData, this.httpOptions);
+    return this.http.post(this.PORT + '/api/updateMeterManufacturer', meterManufacturerData, this.httpOptions);
   };
 
 }

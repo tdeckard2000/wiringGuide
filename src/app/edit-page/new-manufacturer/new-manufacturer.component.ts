@@ -85,6 +85,7 @@ export class NewManufacturerComponent implements OnInit {
   };
 
   onRemoveSection(){
+    console.log(this.newSectionValues)
     this.newSectionsCount.length --;
     this.newSectionValues.pop();
     this.canAddNewSection = this.hasSeriesOrModelName();
