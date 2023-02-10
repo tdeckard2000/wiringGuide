@@ -1,6 +1,8 @@
 # View Project
 Home: http://wireguide.herokuapp.com/#/
+
 Edit Tool: https://wireguide.herokuapp.com/#/edit
+
 # WiringGuide
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
